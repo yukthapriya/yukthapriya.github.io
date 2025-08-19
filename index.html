@@ -3,314 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yuktha Priya Masupalli | Full-Stack & AI Developer</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- React and ReactDOM CDNs -->
-    <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
-    <!-- Babel CDN -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <!-- GSAP CDN for animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <!-- Inter Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Yuktha Priya Masupalli's Portfolio</title>
     <style>
-        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        .fade-in { opacity: 0; transform: translateX(-50px); }
-        .fade-in-right { opacity: 0; transform: translateX(50px); }
-        .fade-in.visible, .fade-in-right.visible { opacity: 1; transform: translateX(0); }
-        .navbar { transition: background-color 0.3s ease; }
-        .navbar.scrolled { background-color: rgba(255, 255, 255, 0.95); }
-        .card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .card:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); }
-        .active-nav { border-bottom: 2px solid #2563eb; }
-        .project-card { opacity: 0; transform: translateX(-20px); }
-        .project-card.visible { opacity: 1; transform: translateX(0); }
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
+        header { background-color: #007bff; color: white; text-align: center; padding: 50px 20px; }
+        section { max-width: 800px; margin: 20px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1, h2 { margin: 0; }
+        ul { list-style-type: none; padding: 0; }
+        li { margin: 10px 0; }
+        a { color: #007bff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+        .skills-grid li { background: #e9ecef; padding: 10px; border-radius: 5px; text-align: center; }
+        .education-item, .experience-item { margin-bottom: 20px; }
+        footer { text-align: center; padding: 20px; background: #007bff; color: white; }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-900">
-    <div id="root"></div>
-
-    <script type="text/babel">
-        const { useState, useEffect } = React;
-
-        const Portfolio = () => {
-            const [filter, setFilter] = useState('all');
-            const [activeSection, setActiveSection] = useState('home');
-
-            const projects = [
-                { id: 1, title: 'Rust System Programming Vulnerabilities Detection', category: 'AI', description: 'Built a system using ML and static analysis to detect Rust vulnerabilities, leveraging its type system for memory safety.', link: 'https://github.com/yukthapriya/rust-vulnerabilities-detection', image: 'rust-vulnerabilities.jpg' },
-                { id: 2, title: 'University Recommendation System', category: 'Full-Stack', description: 'Developed a Flask app with Neo4j and KNN for personalized university recommendations based on GPA and rankings.', link: 'https://github.com/yukthapriya/university-recommendation-system', image: 'university-recommendation.jpg' },
-                { id: 3, title: 'Healthcare Monitoring & Diabetes Prediction', category: 'AI', description: 'Created a web app using NLP and classification for diabetes prediction, with a responsive UI and SQLite backend.', link: 'https://github.com/yukthapriya/healthcare-monitoring-system', image: 'healthcare-monitoring.jpg' },
-                { id: 4, title: 'MOODINTELLECT.AI', category: 'AI', description: 'Real-time facial emotion recognition using MediaPipe and CNN (FER-2013 dataset) for online learning and mental health.', link: 'https://github.com/yukthapriya/moodintellect', image: 'moodintellect.jpg' },
-            ];
-
-            const filteredProjects = filter === 'all' ? projects : projects.filter(p => p.category === filter);
-
-            useEffect(() => {
-                // GSAP Animations for Sections
-                gsap.registerPlugin(ScrollTrigger);
-                gsap.utils.toArray('.fade-in').forEach((element, index) => {
-                    gsap.fromTo(element, { opacity: 0, x: index % 2 === 0 ? -50 : 50 }, {
-                        opacity: 1,
-                        x: 0,
-                        duration: 0.8,
-                        scrollTrigger: { trigger: element, start: 'top 80%' }
-                    });
-                });
-
-                // GSAP Animations for Project Cards
-                const animateProjects = () => {
-                    gsap.utils.toArray('.project-card').forEach((card, i) => {
-                        gsap.fromTo(card, { opacity: 0, x: -20 }, {
-                            opacity: 1,
-                            x: 0,
-                            duration: 0.5,
-                            delay: i * 0.1,
-                            scrollTrigger: { trigger: card, start: 'top 90%' }
-                        });
-                    });
-                };
-                animateProjects();
-
-                // Active nav highlighting
-                const sections = document.querySelectorAll('section[id]');
-                const observer = new IntersectionObserver(entries => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            setActiveSection(entry.target.id);
-                        }
-                    });
-                }, { threshold: 0.5 });
-                sections.forEach(section => observer.observe(section));
-
-                // Navbar scroll effect
-                const handleScroll = () => {
-                    const navbar = document.querySelector('.navbar');
-                    if (window.scrollY > 50) {
-                        navbar.classList.add('scrolled');
-                    } else {
-                        navbar.classList.remove('scrolled');
-                    }
-                };
-                window.addEventListener('scroll', handleScroll);
-                return () => window.removeEventListener('scroll', handleScroll);
-            }, [filter]);
-
-            const handleSubmit = (e) => {
-                e.preventDefault();
-                console.log('Form submitted:', {
-                    name: e.target.name.value,
-                    email: e.target.email.value,
-                    message: e.target.message.value
-                });
-                alert('Message logged to console (GitHub Pages does not support backend).');
-                e.target.reset();
-            };
-
-            return (
-                <div>
-                    {/* Navigation Bar */}
-                    <nav className="navbar fixed top-0 left-0 w-full bg-white bg-opacity-80 backdrop-blur-md z-50">
-                        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-                            <a href="#home" className="text-xl font-bold text-blue-600">Yuktha Priya</a>
-                            <div className="space-x-4">
-                                {['home', 'about', 'education', 'skills', 'experience', 'projects', 'learning', 'collaboration', 'publications', 'connect'].map(section => (
-                                    <a
-                                        key={section}
-                                        href={`#${section}`}
-                                        className={`hover:text-blue-600 transition ${activeSection === section ? 'active-nav' : ''}`}
-                                    >
-                                        {section.charAt(0).toUpperCase() + section.slice(1)}
-                                    </a>
-                                ))}
-                            </div>
-                        </div>
-                    </nav>
-
-                    {/* Home/Hero Section */}
-                    <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-200 to-indigo-200">
-                        <div className="text-center fade-in">
-                            <h1 className="text-5xl md:text-6xl font-bold mb-4">Yuktha Priya Masupalli</h1>
-                            <p className="text-xl md:text-2xl mb-6">Full-Stack Developer & AI Researcher</p>
-                            <div className="space-x-4">
-                                <a href="#projects" className="inline-block px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">View Projects</a>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Main Content */}
-                    <main className="container mx-auto px-4 pt-20">
-                        {/* About */}
-                        <section id="about" className="py-12 fade-in">
-                            <div className="card bg-white p-6 rounded-lg shadow-lg">
-                                <h2 className="text-3xl font-semibold mb-4">About Me</h2>
-                                {/* Uncomment if profile.jpg is uploaded */}
-                                {/* <img src="profile.jpg" alt="Yuktha Priya Masupalli" className="w-32 h-32 rounded-full mx-auto mb-4" loading="lazy" /> */}
-                                <p className="text-lg">
-                                    Master's student at Texas A&M University-San Antonio, specializing in AI, data engineering, and full-stack development. I craft scalable, secure systems and research multimodal AI, LLMs, and graph databases. Active in GDSC and Women Techmakers, I'm driven to innovate with AI.
-                                </p>
-                            </div>
-                        </section>
-
-                        {/* Education */}
-                        <section id="education" className="py-12 fade-in-right">
-                            <div className="card bg-white p-6 rounded-lg shadow-lg">
-                                <h2 className="text-3xl font-semibold mb-4">Education</h2>
-                                <ul className="space-y-4">
-                                    <li>
-                                        <strong>Texas A&M University-San Antonio</strong>, San Antonio, USA<br />
-                                        MS in Computer Science, GPA: 3.87/4.0, Aug 2024 - Dec 2025
-                                    </li>
-                                    <li>
-                                        <strong>JNTUA College of Engineering</strong>, Kalikiri, India<br />
-                                        B.Tech in Computer Science, GPA: 8.1/10, Nov 2020 - May 2023
-                                    </li>
-                                    <li>
-                                        <strong>S.V Govt. Polytechnic</strong>, Tirupati, India<br />
-                                        Diploma in Computer Engineering, 93.6/100, Jun 2017 - Apr 2020
-                                    </li>
-                                </ul>
-                            </div>
-                        </section>
-
-                        {/* Skills */}
-                        <section id="skills" className="py-12 fade-in">
-                            <div className="card bg-white p-6 rounded-lg shadow-lg">
-                                <h2 className="text-3xl font-semibold mb-4">Key Skills</h2>
-                                <div className="flex flex-wrap gap-2">
-                                    {['Python', 'JavaScript', 'Rust', 'ReactJS', 'NodeJS', 'Django', 'TensorFlow', 'Pytorch', 'Keras', 'AWS', 'GCP', 'Azure', 'PostgreSQL', 'MongoDB', 'Neo4j', 'Kubernetes', 'Git'].map(skill => (
-                                        <span key={skill} className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">{skill}</span>
-                                    ))}
-                                </div>
-                            </div>
-                        </section>
-
-                        {/* Experience */}
-                        <section id="experience" className="py-12 fade-in-right">
-                            <div className="card bg-white p-6 rounded-lg shadow-lg">
-                                <h2 className="text-3xl font-semibold mb-4">Experience</h2>
-                                <ul className="space-y-6">
-                                    <li>
-                                        <strong>Texas A&M University-San Antonio</strong>, Graduate Research Assistant, Feb 2025 – May 2025<br />
-                                        Developed a cross-domain retrieval system with CLIP, optimized pipelines (20% latency reduction), and fine-tuned LLMs and diffusion models for multimodal AI. Built audio-video analysis for JagCoach AI on GCP.
-                                    </li>
-                                    <li>
-                                        <strong>Digitalsoft AI Solutions</strong>, Associate Data Engineer, Chennai, India, Jul 2023 - Jun 2024<br />
-                                        Designed scalable UI with AngularJS, integrated APIs with AWS, researched recommendation systems, and built GenAI chat assistants with LangChain and LLMs.
-                                    </li>
-                                </ul>
-                            </div>
-                        </section>
-
-                        {/* Projects */}
-                        <section id="projects" className="py-12 fade-in">
-                            <div className="card bg-white p-6 rounded-lg shadow-lg">
-                                <h2 className="text-3xl font-semibold mb-4">Projects</h2>
-                                <div className="flex space-x-4 mb-4">
-                                    <button onClick={() => setFilter('all')} className={`px-4 py-2 rounded-full ${filter === 'all' ? 'bg-blue-600 text-white' : 'bg-blue-100 text-blue-800'}`}>All</button>
-                                    <button onClick={() => setFilter('AI')} className={`px-4 py-2 rounded-full ${filter === 'AI' ? 'bg-blue-600 text-white' : 'bg-blue-100 text-blue-800'}`}>AI</button>
-                                    <button onClick={() => setFilter('Full-Stack')} className={`px-4 py-2 rounded-full ${filter === 'Full-Stack' ? 'bg-blue-600 text-white' : 'bg-blue-100 text-blue-800'}`}>Full-Stack</button>
-                                </div>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    {filteredProjects.map(project => (
-                                        <div key={project.id} className="card bg-gray-50 p-4 rounded-lg project-card">
-                                            <img src={project.image} alt={project.title} className="w-full h-40 object-cover rounded-lg mb-4" loading="lazy" onError={e => e.target.src = 'https://via.placeholder.com/300x150?text=Project+Image'} />
-                                            <h3 className="text-xl font-semibold">{project.title}</h3>
-                                            <p className="text-sm text-gray-600">{project.description}</p>
-                                            <a href={project.link} className="text-blue-600 hover:underline mt-2 inline-block">GitHub</a>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </section>
-                        {/* Currently Learning */}
-                        <section id="learning" className="py-12 fade-in-right">
-                            <div className="card bg-white p-6 rounded-lg shadow-lg">
-                                <h2 className="text-3xl font-semibold mb-4">Currently Learning</h2>
-                                <ul className="space-y-2">
-                                    <li>Agentic AI for autonomous decision-making systems</li>
-                                    <li>Generative AI for innovative content creation</li>
-                                    <li>Multimodal AI integrating vision, language, and audio</li>
-                                    <li>Large Language Models (LLMs) for advanced NLP</li>
-                                    <li>Natural Language Processing (NLP) for text analysis</li>
-                                    <li>Computer Vision (CV) for image and video processing</li>
-                                    <li>Cloud Infrastructure & DevOps (AWS, GCP, Azure, Kubernetes)</li>
-                                    <li>Graph Databases (Neo4j) for advanced analytics</li>
-                                </ul>
-                            </div>
-                        </section>
-
-                        {/* Collaboration */}
-                        <section id="collaboration" className="py-12 fade-in">
-                            <div className="card bg-white p-6 rounded-lg shadow-lg">
-                                <h2 className="text-3xl font-semibold mb-4">Looking to Collaborate On</h2>
-                                <ul className="space-y-2">
-                                    <li>Open-source ML, AI, and software engineering projects</li>
-                                    <li>AI-cybersecurity tools and platforms</li>
-                                    <li>Vision-language models and secure networking research</li>
-                                </ul>
-                            </div>
-                        </section>
-
-                        {/* Publications */}
-                        <section id="publications" className="py-12 fade-in-right">
-                            <div className="card bg-white p-6 rounded-lg shadow-lg">
-                                <h2 className="text-3xl font-semibold mb-4">Publications</h2>
-                                <ul className="space-y-2">
-                                    <li>
-                                        <strong>Benchmarking the Robustness of Contrastive Learning Models for Medical Image-Report Retrieval</strong><br />
-                                        AAAI Workshop. <a href="https://doi.org/10.48550/arXiv.2501.09134" className="text-blue-600 hover:underline">arXiv</a>
-                                    </li>
-                                    <li>
-                                        <strong>Improving Medical Imaging Model Calibration through Probabilistic Embedding</strong><br />
-                                        IEEE Big Data Conference. <a href="https://ieeexplore.ieee.org/document/10908492" className="text-blue-600 hover:underline">IEEE Xplore</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </section>
-
-                        {/* Connect & Contact */}
-                        <section id="connect" className="py-12 fade-in">
-                            <div className="card bg-white p-6 rounded-lg shadow-lg">
-                                <h2 className="text-3xl font-semibold mb-4">Connect With Me</h2>
-                                <ul className="space-y-2 mb-6">
-                                    <li><a href="https://www.linkedin.com/in/yukthapriya" className="text-blue-600 hover:underline">LinkedIn</a></li>
-                                    <li><a href="https://github.com/yukthapriya" className="text-blue-600 hover:underline">GitHub</a></li>
-                                  
-                                </ul>
-                                <h2 className="text-3xl font-semibold mb-4">Contact</h2>
-                                <form onSubmit={handleSubmit} className="space-y-4">
-                                    <div>
-                                        <label htmlFor="name" className="block text-sm">Name</label>
-                                        <input id="name" name="name" type="text" required className="w-full px-4 py-2 bg-gray-50 text-gray-900 rounded-lg border border-gray-300" />
-                                    </div>
-                                    <div>
-                                        <label htmlFor="email" className="block text-sm">Email</label>
-                                        <input id="email" name="email" type="email" required className="w-full px-4 py-2 bg-gray-50 text-gray-900 rounded-lg border border-gray-300" />
-                                    </div>
-                                    <div>
-                                        <label htmlFor="message" className="block text-sm">Message</label>
-                                        <textarea id="message" name="message" required className="w-full px-4 py-2 bg-gray-50 text-gray-900 rounded-lg border border-gray-300"></textarea>
-                                    </div>
-                                    <button type="submit" className="px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">Send</button>
-                                </form>
-                                <p className="mt-4 text-sm text-gray-600">Or email: <a href="mailto:myukthapriya@gmail.com" className="text-blue-600 hover:underline">myukthapriya@gmail.com</a></p>
-                            </div>
-                        </section>
-                    </main>
-
-                    {/* Footer */}
-                    <footer className="bg-gradient-to-br from-blue-200 to-indigo-200 text-center py-6">
-                        <p>&copy; 2025 Yuktha Priya Masupalli. All rights reserved.</p>
-                    </footer>
-                </div>
-            );
-        };
-
-        ReactDOM.render(<Portfolio />, document.getElementById('root'));
-    </script>
+<body>
+    <header>
+        <h1>Yuktha Priya Masupalli</h1>
+        <p>Computer Science Graduate Student | Data Engineer | AI Enthusiast</p>
+    </header>
+    
+    <section id="bio">
+        <h2>About Me</h2>
+        <p>I'm a Master's student in Computer Science at Texas A&M University-San Antonio, passionate about AI, data engineering, full-stack web development, and graph databases. My research focuses on cross-domain information retrieval systems using transformer-based models and optimizing data pipelines for large-scale AI applications. I have experience as a Data Engineer at Digitalsoft AI Solutions and am a member of GDSC and Women Techmakers.</p>
+    </section>
+    
+    <section id="education">
+        <h2>Education</h2>
+        <ul>
+            <li class="education-item">
+                <strong>Texas A&M University-San Antonio, San Antonio, USA</strong><br>
+                MS in Computer Science; GPA: 3.87/4.0<br>
+                Aug 2024 - Dec 2025
+            </li>
+            <li class="education-item">
+                <strong>JNTUA College of Engineering, Kalikiri, India</strong><br>
+                B.Tech in Computer Science; GPA: 8.1/10<br>
+                Nov 2020 - May 2023
+            </li>
+            <li class="education-item">
+                <strong>S.V Govt. Polytechnic, Tirupati, India</strong><br>
+                Diploma in Computer Engineering; Percentage: 93.6/100<br>
+                Jun 2017 - Apr 2020
+            </li>
+        </ul>
+    </section>
+    
+    <section id="skills">
+        <h2>Skills Summary</h2>
+        <ul class="skills-grid">
+            <li>Python</li>
+            <li>Java</li>
+            <li>JavaScript</li>
+            <li>PHP</li>
+            <li>HTML/CSS</li>
+            <li>SQL</li>
+            <li>C</li>
+            <li>C++</li>
+            <li>Kotlin</li>
+            <li>Scala</li>
+            <li>Rust</li>
+            <li>ReactJS</li>
+            <li>AngularJS</li>
+            <li>NodeJS</li>
+            <li>Django</li>
+            <li>TensorFlow</li>
+            <li>Pytorch</li>
+            <li>Keras</li>
+            <li>AWS</li>
+            <li>GCP</li>
+            <li>Azure</li>
+            <li>PostgreSQL</li>
+            <li>MySQL</li>
+            <li>SQLite</li>
+            <li>MongoDB</li>
+            <li>Neo4j</li>
+            <li>Kubernetes</li>
+            <li>Git</li>
+            <li>Leadership</li>
+            <li>Event Management</li>
+            <li>Adaptability</li>
+            <li>Public Speaking</li>
+            <li>Problem-Solving</li>
+            <li>Time Management</li>
+            <li>Hadoop</li>
+            <li>SAS</li>
+            <li>Big Data Analytics</li>
+            <li>HPC</li>
+        </ul>
+    </section>
+    
+    <section id="certifications">
+        <h2>Certifications</h2>
+        <ul>
+            <li>Microsoft Certified: Azure AI Fundamentals <a href="https://www.credly.com/badges/d6dbbe88-14df-4d67-be3c-3f54c55fd2ea/public_url">(View Certificate)</a></li>
+        </ul>
+    </section>
+    
+    <section id="experience">
+        <h2>Experience</h2>
+        <ul>
+            <li class="experience-item">
+                <strong>Texas A&M University–San Antonio, San Antonio, TX</strong><br>
+                Graduate Research Assistant<br>
+                Feb 2025 – May 2025<br>
+                ◦ Designed and implemented a scalable cross-domain information retrieval system using CLIP, retrieving semantically relevant captions for query images from a dataset of over 100,000 entries.<br>
+                ◦ Optimized data pipelines and leveraged parallel processing techniques, reducing retrieval latency by 20% on large-scale multimodal datasets.<br>
+                ◦ Developed improved probabilistic image-text representations for image-text matching, boosting performance on COCO and CXR-CLIP datasets through advanced embedding and optimization techniques.<br>
+                ◦ Researched and fine-tuned diffusion models and large language models (LLMs) for cross-modal content generation, integrating vision-language embeddings to enhance semantic understanding and improve image captioning and multimodal alignment accuracy.<br>
+                ◦ Utilized CUDA-based acceleration in HPC environments to train and evaluate multiple models efficiently.<br>
+                ◦ Contributed to the JagCoach AI assistant project by developing audio-video analysis pipelines for feedback generation on oral presentations and managing machine learning model deployment and resource optimization on Google Cloud Platform (GCP).
+            </li>
+            <li class="experience-item">
+                <strong>Digitalsoft AI Solutions India Pvt. Ltd (DAIS), Chennai, India</strong><br>
+                Associate Data Engineer<br>
+                July 2023 - Jun 2024<br>
+                ◦ Orchestrated UI design using AngularJS, elevating project frontend for a superior user interface.<br>
+                ◦ Enhanced project functionality by integrating APIs, optimizing scalability and reliability through AWS services.<br>
+                ◦ Pioneered research on recommendation systems, refining user experiences through innovative solutions.<br>
+                ◦ Developed GenAI-powered chat assistants using LangChain and LLMs, enabling intelligent user interactions.
+            </li>
+        </ul>
+    </section>
+    
+    <section id="projects">
+        <h2>Projects</h2>
+        <ul>
+            <li><strong>Rust System Programming Vulnerabilities Detection Using Machine Learning and Static Analysis Tools</strong>: Developed a system to detect vulnerabilities in Rust programming using machine learning and static analysis. Utilized Rust’s strong type system and borrow checker to minimize memory safety issues. Applied machine learning models to classify potential security vulnerabilities with high accuracy. Integrated static analysis tools to automate vulnerability detection, improving software security. <a href="https://github.com/yukthapriya/rust-vulnerabilities-detection">(View on GitHub)</a></li>
+            <li><strong>University Recommendation System (Neo4j, Machine Learning)</strong>: Used Neo4j’s graph database and KNN algorithm to generate personalized university recommendations. Calculated similarity scores based on GPA, rankings, and reputation in engineering and business departments. Developed a Flask web app, integrating Neo4j queries for real-time user input and personalized suggestions. <a href="https://github.com/yukthapriya/university-recommendation-system">(View on GitHub)</a></li>
+            <li><strong>Public HealthCare Monitoring and Diabetes Prediction System (NLP, Classification Algorithms)</strong>: Developed a web application for public healthcare, focusing on diabetes prediction with NLP and classification algorithms. Created an interactive and responsive UI with HTML, CSS, and JavaScript to improve user experience. Integrated a SQLite database for secure user data storage, enabling seamless data retrieval and updates. <a href="https://github.com/yukthapriya/healthcare-monitoring-system">(View on GitHub)</a></li>
+        </ul>
+    </section>
+    
+    <section id="publications">
+        <h2>Publications</h2>
+        <ul>
+            <li><strong>Benchmarking the Robustness of Contrastive Learning Models for Medical Image-Report Retrieval under Occlusion Attacks</strong> – Accepted at AAAI Workshop. <a href="https://arxiv.org/abs/2501.09134">View on arXiv</a><grok-card data-id="9e311a" data-type="citation_card"></grok-card> | <a href="https://www.researchgate.net/publication/388080896_Benchmarking_Robustness_of_Contrastive_Learning_Models_for_Medical_Image-Report_Retrieval">View on ResearchGate</a><grok-card data-id="af3e76" data-type="citation_card"></grok-card></li>
+            <li><strong>Improving Medical Imaging Model Calibration through Probabilistic Embedding</strong> – Published at IEEE Big Data Conference. <a href="https://ieeexplore.ieee.org/document/10825661/">View on IEEE Xplore</a><grok-card data-id="02875f" data-type="citation_card"></grok-card> | <a href="https://www.researchgate.net/publication/388100542_Improving_Medical_Imaging_Model_Calibration_through_Probabilistic_Embedding">View on ResearchGate</a><grok-card data-id="ac7e6b" data-type="citation_card"></grok-card></li>
+        </ul>
+    </section>
+    
+    <section id="social">
+        <h2>Social Media Links</h2>
+        <ul>
+            <li><a href="https://www.linkedin.com/in/yukthapriya">LinkedIn</a></li>
+            <li><a href="https://github.com/yukthapriya">GitHub</a></li>
+           
+        </ul>
+    </section>
+    
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:myukthapriya@gmail.com">myukthapriya@gmail.com</a><br>
+        Mobile: +1(830)318-5495</p>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Yuktha Priya Masupalli. All rights reserved.</p>
+    </footer>
 </body>
 </html>
