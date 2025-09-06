@@ -119,6 +119,14 @@
             letter-spacing: 2px;
         }
 
+        .phonetic-name {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-family: 'Share Tech Mono', monospace;
+            text-shadow: 0 0 10px rgba(0, 255, 157, 0.5);
+        }
+
         .subtitle {
             font-size: 1.5rem;
             color: var(--text-secondary);
@@ -496,6 +504,24 @@
             100% { transform: translate(0); }
         }
 
+        .voice-selector {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(10, 10, 26, 0.7);
+            border-radius: 10px;
+            border: 1px solid var(--primary);
+        }
+
+        .voice-selector select {
+            background: var(--dark);
+            color: var(--text);
+            border: 1px solid var(--primary);
+            padding: 8px 15px;
+            border-radius: 5px;
+            width: 100%;
+            margin-top: 8px;
+        }
+
         @media (max-width: 768px) {
             .title {
                 font-size: 2.5rem;
@@ -531,6 +557,7 @@
             <div class="header-content">
                 <div class="hologram-avatar"></div>
                 <h1 class="title">Yuktha Priya Masupalli</h1>
+                <p class="phonetic-name">Pronunciation: Yook-tha Pree-ya Ma-su-pal-li</p>
                 <p class="subtitle">AI Researcher & Data Engineer</p>
                 
                 <div class="cyber-tags">
@@ -553,6 +580,15 @@
                     <div class="voice-bar"></div>
                 </div>
                 <p>Play my professional introduction to learn about my work and research focus</p>
+                
+                <div class="voice-selector">
+                    <label for="voice-select">Select Voice:</label>
+                    <select id="voice-select">
+                        <option value="default">Default Voice</option>
+                        <option value="female">Female Voice (Recommended)</option>
+                        <option value="male">Male Voice</option>
+                    </select>
+                </div>
                 
                 <div class="voice-controls">
                     <button class="voice-btn" id="play-intro">
@@ -652,6 +688,7 @@
         // Voice introduction functionality
         const playIntroBtn = document.getElementById('play-intro');
         const replayIntroBtn = document.getElementById('replay-intro');
+        const voiceSelect = document.getElementById('voice-select');
         const voiceBars = document.querySelectorAll('.voice-bar');
         
         // Function to animate voice bars
@@ -666,13 +703,14 @@
             });
         }
         
-        // Function to speak the introduction with female voice
+        // Function to speak the introduction with improved pronunciation
         function speakIntroduction() {
             // Stop any ongoing speech
             window.speechSynthesis.cancel();
             
-            // Create introduction text
-            const introText = "Hello, I'm Yuktha Priya Masupalli. " +
+            // Create introduction text with phonetic hints for better pronunciation
+            // Using comma to create a pause between name parts
+            const introText = "Hello, I'm Yuktha, Priya, Masupalli. " +
                 "I'm a Master's student in Computer Science passionate about advancing the frontiers of AI, data engineering, and full-stack development. " +
                 "My research focuses on building sophisticated cross-domain information retrieval systems using transformer-based models and optimizing large-scale AI data pipelines. " +
                 "I'm currently exploring Agentic AI and LLMs, building systems where language models can autonomously plan and execute complex tasks. " +
@@ -681,21 +719,49 @@
             // Create speech synthesis utterance
             const utterance = new SpeechSynthesisUtterance(introText);
             
-            // Configure for female voice
-            const voices = window.speechSynthesis.getVoices();
-            const femaleVoice = voices.find(voice => 
-                voice.name.includes('Female') || 
-                voice.name.includes('Woman') || 
-                voice.name.includes('Zira') || 
-                voice.name.toLowerCase().includes('samantha') ||
-                voice.name.toLowerCase().includes('tessa')
-            );
+            // Configure voice based on selection
+            const voiceType = voiceSelect.value;
             
-            if (femaleVoice) {
-                utterance.voice = femaleVoice;
+            if (voiceType === 'female') {
+                // Try to find a female voice
+                const voices = window.speechSynthesis.getVoices();
+                const femaleVoice = voices.find(voice => 
+                    voice.name.includes('Female') || 
+                    voice.name.includes('Woman') || 
+                    voice.name.includes('Zira') ||
+                    voice.name.includes('Samantha') ||
+                    voice.name.includes('Karen') ||
+                    voice.name.includes('Victoria')
+                );
+                
+                if (femaleVoice) {
+                    utterance.voice = femaleVoice;
+                }
+                utterance.rate = 0.95;
+                utterance.pitch = 1.1;
+            } else if (voiceType === 'male') {
+                // Try to find a male voice
+                const voices = window.speechSynthesis.getVoices();
+                const maleVoice = voices.find(voice => 
+                    voice.name.includes('Male') || 
+                    voice.name.includes('Man') || 
+                    voice.name.includes('David') ||
+                    voice.name.includes('Alex') ||
+                    voice.name.includes('Daniel') ||
+                    voice.name.includes('Fred')
+                );
+                
+                if (maleVoice) {
+                    utterance.voice = maleVoice;
+                }
+                utterance.rate = 0.9;
+                utterance.pitch = 0.9;
+            } else {
+                // Default settings
+                utterance.rate = 1.0;
+                utterance.pitch = 1.0;
             }
-            utterance.rate = 0.95;
-            utterance.pitch = 1.1;
+            
             utterance.volume = 1;
             
             // Start animation when speech begins
@@ -727,12 +793,17 @@
             if (speechSynthesis.getVoices().length === 0) {
                 speechSynthesis.addEventListener('voiceschanged', function() {
                     const voices = speechSynthesis.getVoices();
-                    console.log('Available voices:', voices);
+                    populateVoiceList(voices);
                 });
             } else {
                 const voices = speechSynthesis.getVoices();
-                console.log('Available voices:', voices);
+                populateVoiceList(voices);
             }
+        }
+        
+        // Populate voice list if needed (for future expansion)
+        function populateVoiceList(voices) {
+            console.log('Available voices:', voices);
         }
         
         // Play/Pause introduction
