@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yuktha Priya | AI Visionary 2050</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Exo+2:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #00f7ff;
@@ -26,69 +26,12 @@
         }
 
         body {
-            font-family: 'Exo 2', sans-serif;
+            font-family: 'Rajdhani', sans-serif;
             background-color: var(--darker);
             color: var(--text);
             min-height: 100vh;
             overflow-x: hidden;
             line-height: 1.6;
-            background-image: 
-                linear-gradient(rgba(5, 5, 16, 0.9), rgba(5, 5, 16, 0.9)),
-                url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h100v100H0z' fill='none'/%3E%3Cpath d='M0 0v100M20 0v100M40 0v100M60 0v100M80 0v100M100 0v100M0 0h100M0 20h100M0 40h100M0 60h100M0 80h100M0 100h100' stroke='%2300f7ff' stroke-width='0.5' stroke-opacity='0.2' fill='none'/%3E%3C/svg%3E");
-        }
-
-        .cyber-border {
-            position: fixed;
-            pointer-events: none;
-            z-index: 1000;
-        }
-
-        .cyber-border-top {
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--primary), var(--secondary), transparent);
-            box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
-            animation: borderPulse 3s infinite alternate;
-        }
-
-        .cyber-border-bottom {
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--secondary), var(--primary), transparent);
-            box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--primary);
-            animation: borderPulse 3s infinite alternate-reverse;
-        }
-
-        .cyber-border-left {
-            top: 0;
-            left: 0;
-            width: 2px;
-            height: 100%;
-            background: linear-gradient(transparent, var(--primary), var(--accent), transparent);
-            box-shadow: 0 0 10px var(--primary), 0 0 20px var(--accent);
-            animation: borderPulseVertical 4s infinite alternate;
-        }
-
-        .cyber-border-right {
-            top: 0;
-            right: 0;
-            width: 2px;
-            height: 100%;
-            background: linear-gradient(transparent, var(--accent), var(--primary), transparent);
-            box-shadow: 0 0 10px var(--accent), 0 0 20px var(--primary);
-            animation: borderPulseVertical 4s infinite alternate-reverse;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
-            z-index: 2;
         }
 
         .cyber-grid {
@@ -114,21 +57,13 @@
             animation: lineAnimation 10s infinite linear;
         }
 
-        .header {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
         .particles {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            z-index: 0;
         }
 
         .particle {
@@ -137,6 +72,23 @@
             border-radius: 50%;
             opacity: 0.5;
             animation: particleFloat 15s infinite linear;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 40px 0;
         }
 
         .header-content {
@@ -191,15 +143,6 @@
             filter: blur(20px);
         }
 
-        .hologram-avatar:hover {
-            transform: scale(1.05) rotate(5deg);
-            box-shadow: 
-                0 0 70px rgba(0, 247, 255, 0.7),
-                0 0 120px rgba(0, 247, 255, 0.4),
-                0 0 200px rgba(0, 247, 255, 0.2),
-                inset 0 0 60px rgba(0, 0, 0, 0.8);
-        }
-
         .title {
             font-size: 4.5rem;
             font-weight: 900;
@@ -219,7 +162,7 @@
             font-size: 1.8rem;
             color: var(--text-secondary);
             margin-bottom: 40px;
-            font-family: 'Share Tech Mono', monospace;
+            font-family: 'Orbitron', sans-serif;
             letter-spacing: 2px;
             position: relative;
             display: inline-block;
@@ -324,11 +267,12 @@
             animation: sectionLine 3s infinite;
         }
 
-        .voice-player {
-            max-width: 600px;
-            margin: 40px auto;
-            background: rgba(10, 10, 26, 0.7);
+        .interview-intro {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
             padding: 40px;
+            background: rgba(10, 10, 26, 0.7);
             border-radius: 20px;
             border: 1px solid var(--primary);
             backdrop-filter: blur(10px);
@@ -338,7 +282,7 @@
             overflow: hidden;
         }
 
-        .voice-player::before {
+        .interview-intro::before {
             content: '';
             position: absolute;
             top: -2px;
@@ -351,82 +295,22 @@
             animation: borderRotate 3s linear infinite;
         }
 
-        .voice-wave {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100px;
+        .interview-intro h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .interview-intro p {
+            font-size: 1.2rem;
+            line-height: 1.8;
             margin-bottom: 30px;
-            gap: 6px;
         }
 
-        .voice-bar {
-            width: 8px;
-            height: 40px;
-            background: var(--primary);
-            border-radius: 4px;
-            animation: wave 1.5s infinite ease-in-out;
-            transform-origin: bottom;
-            box-shadow: 0 0 10px var(--primary);
-        }
-
-        .voice-bar:nth-child(2) { animation-delay: 0.2s; }
-        .voice-bar:nth-child(3) { animation-delay: 0.4s; }
-        .voice-bar:nth-child(4) { animation-delay: 0.6s; }
-        .voice-bar:nth-child(5) { animation-delay: 0.8s; }
-        .voice-bar:nth-child(6) { animation-delay: 1.0s; }
-        .voice-bar:nth-child(7) { animation-delay: 1.2s; }
-
-        .voice-controls {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .voice-btn {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            color: var(--dark);
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            font-size: 1.8rem;
-            box-shadow: 0 0 20px rgba(0, 247, 255, 0.5);
-        }
-
-        .voice-btn::before {
-            content: '';
-            position: absolute;
-            top: -5px;
-            left: -5px;
-            right: -5px;
-            bottom: -5px;
-            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent), var(--primary));
-            border-radius: 50%;
-            z-index: -1;
-            animation: rotate 3s linear infinite;
-        }
-
-        .voice-btn::after {
-            content: '';
-            position: absolute;
-            inset: 2px;
-            background: var(--dark);
-            border-radius: 50%;
-            z-index: -1;
-        }
-
-        .voice-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 30px rgba(0, 247, 255, 0.8);
+        .interview-highlight {
+            color: var(--accent);
+            font-weight: bold;
         }
 
         .profile-links {
@@ -624,7 +508,7 @@
             border-radius: 20px;
             font-size: 0.9rem;
             color: var(--primary);
-            font-family: 'Share Tech Mono', monospace;
+            font-family: 'Rajdhani', sans-serif;
             transition: all 0.3s ease;
         }
 
@@ -639,7 +523,7 @@
             font-style: italic;
             margin-bottom: 15px;
             font-size: 1rem;
-            font-family: 'Share Tech Mono', monospace;
+            font-family: 'Rajdhani', sans-serif;
         }
 
         .publication-links {
@@ -657,21 +541,13 @@
             color: var(--primary);
             text-decoration: none;
             transition: all 0.3s ease;
-            font-family: 'Share Tech Mono', monospace;
+            font-family: 'Rajdhani', sans-serif;
         }
 
         .publication-link:hover {
             background: rgba(0, 247, 255, 0.2);
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0, 247, 255, 0.2);
-        }
-
-        .pronunciation-guide {
-            margin-top: 20px;
-            font-size: 1rem;
-            color: var(--text-secondary);
-            font-style: italic;
-            font-family: 'Share Tech Mono', monospace;
         }
 
         /* Animations */
@@ -685,11 +561,6 @@
         @keyframes rotate {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
-        }
-
-        @keyframes wave {
-            0%, 100% { transform: scaleY(1); }
-            50% { transform: scaleY(3); }
         }
 
         @keyframes titleGlow {
@@ -707,31 +578,6 @@
             50% { transform: scaleX(1); transform-origin: left; }
             51% { transform-origin: right; }
             100% { transform: scaleX(0); transform-origin: right; }
-        }
-
-        @keyframes borderPulse {
-            0% { opacity: 0.3; }
-            100% { opacity: 1; }
-        }
-
-        @keyframes borderPulseVertical {
-            0% { opacity: 0.2; }
-            <html>
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      margin: 0;
-      padding: 20px;
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
-    }
-  </style>
-</head>
-<body>
-  <!-- Your content here -->
-</body>
-</html>100% { opacity: 0.7; }
         }
 
         @keyframes borderRotate {
@@ -790,11 +636,6 @@
                 text-align: center;
             }
             
-            .voice-btn {
-                width: 70px;
-                height: 70px;
-            }
-            
             .section-title {
                 font-size: 2.2rem;
             }
@@ -821,19 +662,10 @@
             .section-title {
                 font-size: 1.8rem;
             }
-            
-            .voice-player {
-                padding: 30px 20px;
-            }
         }
     </style>
 </head>
 <body>
-    <div class="cyber-border cyber-border-top"></div>
-    <div class="cyber-border cyber-border-bottom"></div>
-    <div class="cyber-border cyber-border-left"></div>
-    <div class="cyber-border cyber-border-right"></div>
-    
     <div class="cyber-grid"></div>
     
     <div class="particles" id="particles"></div>
@@ -855,28 +687,14 @@
         </header>
 
         <section class="section">
-            <h2 class="section-title">Voice Introduction</h2>
-            <div class="voice-player">
-                <div class="voice-wave">
-                    <div class="voice-bar"></div>
-                    <div class="voice-bar"></div>
-                    <div class="voice-bar"></div>
-                    <div class="voice-bar"></div>
-                    <div class="voice-bar"></div>
-                    <div class="voice-bar"></div>
-                    <div class="voice-bar"></div>
-                </div>
-                <p>Play my professional introduction to learn about my work and research focus</p>
-                <p class="pronunciation-guide">Pronunciation: Yook-tha Pree-ya Ma-su-pa-li</p>
+            <h2 class="section-title">Professional Introduction</h2>
+            <div class="interview-intro">
+                <h3>Hello, I'm Yuktha Priya</h3>
+                <p>I am a passionate <span class="interview-highlight">AI Researcher and Data Engineer</span> with expertise in building sophisticated AI systems and optimizing large-scale data pipelines. My work focuses on the intersection of machine learning, data engineering, and full-stack development to create innovative solutions for complex problems.</p>
                 
-                <div class="voice-controls">
-                    <button class="voice-btn" id="play-intro">
-                        <i class="fas fa-play"></i>
-                    </button>
-                    <button class="voice-btn" id="replay-intro">
-                        <i class="fas fa-redo"></i>
-                    </button>
-                </div>
+                <p>I specialize in <span class="interview-highlight">cross-domain information retrieval systems</span> using transformer-based models and have successfully reduced retrieval latency by 20% through optimized data pipelines. My current research explores <span class="interview-highlight">Agentic AI and LLMs</span>, building systems where language models can autonomously plan and execute complex tasks.</p>
+                
+                <p>With a strong foundation in both theoretical and applied computer science, I bring a unique perspective to AI research and development, combining technical expertise with creative problem-solving skills.</p>
             </div>
         </section>
 
@@ -1038,152 +856,6 @@
     </div>
 
     <script>
-        // Voice introduction functionality
-        const playIntroBtn = document.getElementById('play-intro');
-        const replayIntroBtn = document.getElementById('replay-intro');
-        const voiceBars = document.querySelectorAll('.voice-bar');
-        
-        // Function to animate voice bars
-        function animateBars(playing) {
-            voiceBars.forEach(bar => {
-                if (playing) {
-                    bar.style.animationPlayState = 'running';
-                } else {
-                    bar.style.animationPlayState = 'paused';
-                    bar.style.transform = 'scaleY(1)';
-                }
-            });
-        }
-        
-        // Function to find the best available female voice
-        function findFemaleVoice() {
-            const voices = speechSynthesis.getVoices();
-            
-            // Try to find the most natural-sounding female voice
-            const preferredVoices = [
-                'Samantha', // macOS
-                'Karen', // macOS Australian
-                'Tessa', // macOS South African
-                'Veena', // Indian English
-                'Fiona', // Scottish English
-                'Moira', // Irish English
-                'Microsoft Zira Desktop', // Windows
-                'Google UK English Female', // Chrome OS
-                'Microsoft Hazel Desktop' // Windows UK
-            ];
-            
-            // First try to find preferred voices
-            for (const voiceName of preferredVoices) {
-                const voice = voices.find(v => v.name.includes(voiceName));
-                if (voice) return voice;
-            }
-            
-            // Then try to find any female voice
-            const femaleVoice = voices.find(voice => 
-                voice.name.includes('Female') || 
-                voice.name.includes('Woman') || 
-                voice.name.includes('Zira') || 
-                voice.name.includes('Samantha') ||
-                voice.name.includes('Karen') ||
-                voice.name.includes('Tessa') ||
-                voice.name.includes('Veena') ||
-                voice.name.includes('Fiona') ||
-                voice.name.includes('Moira') ||
-                voice.name.includes('Hazel')
-            );
-            
-            return femaleVoice || null;
-        }
-        
-        // Function to speak the introduction with female voice
-        function speakIntroduction() {
-            // Stop any ongoing speech
-            window.speechSynthesis.cancel();
-            
-            // Create introduction text with phonetic spelling for name
-            const introText = "Hello, I'm Yuktha Priya Masupalli. " +
-                "That's pronounced Yook-tha Pree-ya Ma-su-pa-li. " +
-                "I'm a Master's student in Computer Science passionate about advancing the frontiers of AI, data engineering, and full-stack development. " +
-                "My research focuses on building sophisticated cross-domain information retrieval systems using transformer-based models and optimizing large-scale AI data pipelines. " +
-                "I'm currently exploring Agentic AI and LLMs, building systems where language models can autonomously plan and execute complex tasks. " +
-                "Feel free to explore my profiles to learn more about my work.";
-            
-            // Create speech synthesis utterance
-            const utterance = new SpeechSynthesisUtterance(introText);
-            
-            // Configure for female voice
-            const femaleVoice = findFemaleVoice();
-            
-            if (femaleVoice) {
-                utterance.voice = femaleVoice;
-                console.log("Using voice: ", femaleVoice.name);
-            } else {
-                console.log("No specific female voice found, using default");
-            }
-            
-            // Configure for more natural speech
-            utterance.rate = 0.95;
-            utterance.pitch = 1.1;
-            utterance.volume = 1;
-            
-            // Start animation when speech begins
-            utterance.onstart = function() {
-                animateBars(true);
-                playIntroBtn.innerHTML = '<i class="fas fa-pause"></i>';
-            };
-            
-            // Stop animation when speech ends
-            utterance.onend = function() {
-                animateBars(false);
-                playIntroBtn.innerHTML = '<i class="fas fa-play"></i>';
-            };
-            
-            // Handle speech errors
-            utterance.onerror = function() {
-                animateBars(false);
-                playIntroBtn.innerHTML = '<i class="fas fa-play"></i>';
-                alert('Speech synthesis failed. Please try again.');
-            };
-            
-            // Speak the text
-            window.speechSynthesis.speak(utterance);
-        }
-        
-        // Load available voices
-        function loadVoices() {
-            // Chrome needs time to load voices
-            if (speechSynthesis.getVoices().length === 0) {
-                speechSynthesis.addEventListener('voiceschanged', function() {
-                    const voices = speechSynthesis.getVoices();
-                    console.log('Available voices:', voices);
-                });
-            } else {
-                const voices = speechSynthesis.getVoices();
-                console.log('Available voices:', voices);
-            }
-        }
-        
-        // Play/Pause introduction
-        playIntroBtn.addEventListener('click', () => {
-            if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
-                window.speechSynthesis.pause();
-                animateBars(false);
-                playIntroBtn.innerHTML = '<i class="fas fa-play"></i>';
-            } else if (window.speechSynthesis.speaking && window.speechSynthesis.paused) {
-                window.speechSynthesis.resume();
-                animateBars(true);
-                playIntroBtn.innerHTML = '<i class="fas fa-pause"></i>';
-            } else {
-                speakIntroduction();
-            }
-        });
-        
-        // Replay introduction
-        replayIntroBtn.addEventListener('click', () => {
-            window.speechSynthesis.cancel();
-            speakIntroduction();
-        });
-        
         // Create particles
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
@@ -1242,17 +914,10 @@
             }
         }
         
-        // Load voices when page loads
+        // Initialize when page loads
         window.addEventListener('load', () => {
-            loadVoices();
             createParticles();
             createCyberLines();
-            
-            // Wait a moment before starting the introduction
-            setTimeout(() => {
-                // Uncomment the line below to enable auto-play
-                // speakIntroduction();
-            }, 1000);
         });
     </script>
 </body>
