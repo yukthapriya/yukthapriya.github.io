@@ -3,165 +3,749 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yuktha Priya Masupalli's Portfolio</title>
+    <title>Yuktha Priya Masupalli | Data Engineer & AI Specialist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
-        header { background-color: #007bff; color: white; text-align: center; padding: 50px 20px; }
-        section { max-width: 800px; margin: 20px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h1, h2 { margin: 0; }
-        ul { list-style-type: none; padding: 0; }
-        li { margin: 10px 0; }
-        a { color: #007bff; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
-        .skills-grid li { background: #e9ecef; padding: 10px; border-radius: 5px; text-align: center; }
-        .education-item, .experience-item { margin-bottom: 20px; }
-        footer { text-align: center; padding: 20px; background: #007bff; color: white; }
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #64748b;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --accent: #06b6d4;
+            --success: #10b981;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f9fafb;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        h1, h2, h3, h4 {
+            margin-bottom: 1rem;
+            color: var(--dark);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 2rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 100px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,218.7C672,224,768,160,864,138.7C960,117,1056,139,1152,138.7C1248,139,1344,117,1392,106.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: bottom;
+            opacity: 0.1;
+        }
+
+        .nav-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .tag-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 2rem;
+        }
+
+        .tag {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .section-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        #bio {
+            background-color: white;
+        }
+
+        .education-item {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .education-item:last-child {
+            border-bottom: none;
+        }
+
+        .education-item h3 {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .education-details {
+            display: flex;
+            justify-content: space-between;
+            color: var(--secondary);
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-category {
+            margin-bottom: 30px;
+        }
+
+        .skill-category h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-item {
+            background-color: #f1f5f9;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .skill-item:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .experience-item {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .company {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .date {
+            color: var(--secondary);
+            font-style: italic;
+        }
+
+        .position {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .responsibilities {
+            list-style-type: none;
+        }
+
+        .responsibilities li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+        }
+
+        .responsibilities li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .project-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .project-description {
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tech-tag {
+            background-color: #e0f2fe;
+            color: var(--primary-dark);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .publication-item {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .publication-item:last-child {
+            border-bottom: none;
+        }
+
+        .publication-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .publication-conference {
+            color: var(--secondary);
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        #contact {
+            background-color: var(--light);
+            text-align: center;
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+
+        .contact-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 15px 0;
+            }
+
+            .nav-links {
+                margin-top: 15px;
+            }
+
+            .nav-links li {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-header {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 <body>
+    <div class="nav-container">
+        <div class="container navbar">
+            <div class="logo">Yuktha Priya</div>
+            <ul class="nav-links">
+                <li><a href="#bio">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+
     <header>
-        <h1>Yuktha Priya Masupalli</h1>
-        <p>Computer Science Graduate Student | Data Engineer | AI Enthusiast</p>
+        <div class="container hero-content">
+            <h1>Yuktha Priya Masupalli</h1>
+            <p>Computer Science Graduate | Data Engineer | AI Researcher</p>
+            <div class="tag-list">
+                <span class="tag">Machine Learning</span>
+                <span class="tag">Data Engineering</span>
+                <span class="tag">AI Solutions</span>
+                <span class="tag">Full-Stack Development</span>
+            </div>
+        </div>
     </header>
-    
-    <section id="bio">
-        <h2>About Me</h2>
-        <p>I'm a Master's student in Computer Science at Texas A&M University-San Antonio, passionate about AI, data engineering, full-stack web development, and graph databases. My research focuses on cross-domain information retrieval systems using transformer-based models and optimizing data pipelines for large-scale AI applications. I have experience as a Data Engineer at Digitalsoft AI Solutions and am a member of GDSC and Women Techmakers.</p>
-    </section>
-    
-    <section id="education">
-        <h2>Education</h2>
-        <ul>
-            <li class="education-item">
-                <strong>Texas A&M University-San Antonio, San Antonio, USA</strong><br>
-                MS in Computer Science; GPA: 3.87/4.0<br>
-                Aug 2024 - Dec 2025
-            </li>
-            <li class="education-item">
-                <strong>JNTUA College of Engineering, Kalikiri, India</strong><br>
-                B.Tech in Computer Science; GPA: 8.1/10<br>
-                Nov 2020 - May 2023
-            </li>
-            <li class="education-item">
-                <strong>S.V Govt. Polytechnic, Tirupati, India</strong><br>
-                Diploma in Computer Engineering; Percentage: 93.6/100<br>
-                Jun 2017 - Apr 2020
-            </li>
-        </ul>
-    </section>
-    
-    <section id="skills">
-        <h2>Skills Summary</h2>
-        <ul class="skills-grid">
-            <li>Python</li>
-            <li>Java</li>
-            <li>JavaScript</li>
-            <li>PHP</li>
-            <li>HTML/CSS</li>
-            <li>SQL</li>
-            <li>C</li>
-            <li>C++</li>
-            <li>Kotlin</li>
-            <li>Scala</li>
-            <li>Rust</li>
-            <li>ReactJS</li>
-            <li>AngularJS</li>
-            <li>NodeJS</li>
-            <li>Django</li>
-            <li>TensorFlow</li>
-            <li>Pytorch</li>
-            <li>Keras</li>
-            <li>AWS</li>
-            <li>GCP</li>
-            <li>Azure</li>
-            <li>PostgreSQL</li>
-            <li>MySQL</li>
-            <li>SQLite</li>
-            <li>MongoDB</li>
-            <li>Neo4j</li>
-            <li>Kubernetes</li>
-            <li>Git</li>
-            <li>Leadership</li>
-            <li>Event Management</li>
-            <li>Adaptability</li>
-            <li>Public Speaking</li>
-            <li>Problem-Solving</li>
-            <li>Time Management</li>
-            <li>Hadoop</li>
-            <li>SAS</li>
-            <li>Big Data Analytics</li>
-            <li>HPC</li>
-        </ul>
-    </section>
-    
-    <section id="certifications">
-        <h2>Certifications</h2>
-        <ul>
-            <li>Microsoft Certified: Azure AI Fundamentals <a href="https://www.credly.com/badges/d6dbbe88-14df-4d67-be3c-3f54c55fd2ea/public_url">(View Certificate)</a></li>
-        </ul>
-    </section>
-    
-    <section id="experience">
-        <h2>Experience</h2>
-        <ul>
-            <li class="experience-item">
-                <strong>Texas A&M University–San Antonio, San Antonio, TX</strong><br>
-                Graduate Research Assistant<br>
-                Feb 2025 – May 2025<br>
-                ◦ Designed and implemented a scalable cross-domain information retrieval system using CLIP, retrieving semantically relevant captions for query images from a dataset of over 100,000 entries.<br>
-                ◦ Optimized data pipelines and leveraged parallel processing techniques, reducing retrieval latency by 20% on large-scale multimodal datasets.<br>
-                ◦ Developed improved probabilistic image-text representations for image-text matching, boosting performance on COCO and CXR-CLIP datasets through advanced embedding and optimization techniques.<br>
-                ◦ Researched and fine-tuned diffusion models and large language models (LLMs) for cross-modal content generation, integrating vision-language embeddings to enhance semantic understanding and improve image captioning and multimodal alignment accuracy.<br>
-                ◦ Utilized CUDA-based acceleration in HPC environments to train and evaluate multiple models efficiently.<br>
-                ◦ Contributed to the JagCoach AI assistant project by developing audio-video analysis pipelines for feedback generation on oral presentations and managing machine learning model deployment and resource optimization on Google Cloud Platform (GCP).
-            </li>
-            <li class="experience-item">
-                <strong>Digitalsoft AI Solutions India Pvt. Ltd (DAIS), Chennai, India</strong><br>
-                Associate Data Engineer<br>
-                July 2023 - Jun 2024<br>
-                ◦ Orchestrated UI design using AngularJS, elevating project frontend for a superior user interface.<br>
-                ◦ Enhanced project functionality by integrating APIs, optimizing scalability and reliability through AWS services.<br>
-                ◦ Pioneered research on recommendation systems, refining user experiences through innovative solutions.<br>
-                ◦ Developed GenAI-powered chat assistants using LangChain and LLMs, enabling intelligent user interactions.
-            </li>
-        </ul>
-    </section>
-    
-    <section id="projects">
-        <h2>Projects</h2>
-        <ul>
-            <li><strong>Rust System Programming Vulnerabilities Detection Using Machine Learning and Static Analysis Tools</strong>: Developed a system to detect vulnerabilities in Rust programming using machine learning and static analysis. Utilized Rust’s strong type system and borrow checker to minimize memory safety issues. Applied machine learning models to classify potential security vulnerabilities with high accuracy. Integrated static analysis tools to automate vulnerability detection, improving software security. <a href="https://github.com/yukthapriya/rust-vulnerabilities-detection">(View on GitHub)</a></li>
-            <li><strong>University Recommendation System (Neo4j, Machine Learning)</strong>: Used Neo4j’s graph database and KNN algorithm to generate personalized university recommendations. Calculated similarity scores based on GPA, rankings, and reputation in engineering and business departments. Developed a Flask web app, integrating Neo4j queries for real-time user input and personalized suggestions. <a href="https://github.com/yukthapriya/university-recommendation-system">(View on GitHub)</a></li>
-            <li><strong>Public HealthCare Monitoring and Diabetes Prediction System (NLP, Classification Algorithms)</strong>: Developed a web application for public healthcare, focusing on diabetes prediction with NLP and classification algorithms. Created an interactive and responsive UI with HTML, CSS, and JavaScript to improve user experience. Integrated a SQLite database for secure user data storage, enabling seamless data retrieval and updates. <a href="https://github.com/yukthapriya/healthcare-monitoring-system">(View on GitHub)</a></li>
-        </ul>
-    </section>
-    
-    <section id="publications">
-        <h2>Publications</h2>
-        <ul>
-            <li><strong>Benchmarking the Robustness of Contrastive Learning Models for Medical Image-Report Retrieval under Occlusion Attacks</strong> – Accepted at AAAI Workshop. <a href="https://arxiv.org/abs/2501.09134">View on arXiv</a><grok-card data-id="9e311a" data-type="citation_card"></grok-card> | <a href="https://www.researchgate.net/publication/388080896_Benchmarking_Robustness_of_Contrastive_Learning_Models_for_Medical_Image-Report_Retrieval">View on ResearchGate</a><grok-card data-id="af3e76" data-type="citation_card"></grok-card></li>
-            <li><strong>Improving Medical Imaging Model Calibration through Probabilistic Embedding</strong> – Published at IEEE Big Data Conference. <a href="https://ieeexplore.ieee.org/document/10825661/">View on IEEE Xplore</a><grok-card data-id="02875f" data-type="citation_card"></grok-card> | <a href="https://www.researchgate.net/publication/388100542_Improving_Medical_Imaging_Model_Calibration_through_Probabilistic_Embedding">View on ResearchGate</a><grok-card data-id="ac7e6b" data-type="citation_card"></grok-card></li>
-        </ul>
-    </section>
-    
-    <section id="social">
-        <h2>Social Media Links</h2>
-        <ul>
-            <li><a href="https://www.linkedin.com/in/yukthapriya">LinkedIn</a></li>
-            <li><a href="https://github.com/yukthapriya">GitHub</a></li>
-           
-        </ul>
-    </section>
-    
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:myukthapriya@gmail.com">myukthapriya@gmail.com</a><br>
-        Mobile: +1(830)318-5495</p>
-    </section>
-    
+
+    <div class="container">
+        <section id="bio">
+            <div class="section-container">
+                <h2>About Me</h2>
+                <p>I'm a Master's student in Computer Science with a strong passion for AI, data engineering, and full-stack web development. My research focuses on cross-domain information retrieval systems using transformer-based models and optimizing data pipelines for large-scale AI applications.</p>
+                <p>With professional experience as a Data Engineer and active participation in tech communities, I continuously strive to expand my knowledge and contribute to innovative solutions in the technology field.</p>
+            </div>
+        </section>
+
+        <section id="education">
+            <div class="section-container">
+                <h2>Education</h2>
+                <div class="education-item">
+                    <h3>Master of Science in Computer Science</h3>
+                    <div class="education-details">
+                        <span>Texas A&M University-San Antonio</span>
+                        <span>2024 - 2025</span>
+                    </div>
+                </div>
+                
+                <div class="education-item">
+                    <h3>Bachelor of Technology in Computer Science</h3>
+                    <div class="education-details">
+                        <span>JNTUA College of Engineering, India</span>
+                        <span>2020 - 2023</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="section-container">
+                <h2>Skills Summary</h2>
+                
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h3>Programming Languages</h3>
+                        <div class="skills-grid">
+                            <div class="skill-item">Python</div>
+                            <div class="skill-item">Java</div>
+                            <div class="skill-item">JavaScript</div>
+                            <div class="skill-item">C/C++</div>
+                            <div class="skill-item">Rust</div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Web Technologies</h3>
+                        <div class="skills-grid">
+                            <div class="skill-item">ReactJS</div>
+                            <div class="skill-item">AngularJS</div>
+                            <div class="skill-item">NodeJS</div>
+                            <div class="skill-item">Django</div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>AI & Machine Learning</h3>
+                        <div class="skills-grid">
+                            <div class="skill-item">TensorFlow</div>
+                            <div class="skill-item">PyTorch</div>
+                            <div class="skill-item">LLMs</div>
+                            <div class="skill-item">LangChain</div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Databases</h3>
+                        <div class="skills-grid">
+                            <div class="skill-item">PostgreSQL</div>
+                            <div class="skill-item">MySQL</div>
+                            <div class="skill-item">MongoDB</div>
+                            <div class="skill-item">Neo4j</div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Cloud & DevOps</h3>
+                        <div class="skills-grid">
+                            <div class="skill-item">AWS</div>
+                            <div class="skill-item">GCP</div>
+                            <div class="skill-item">Azure</div>
+                            <div class="skill-item">Kubernetes</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <div class="section-container">
+                <h2>Professional Experience</h2>
+                
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <span class="company">Texas A&M University–San Antonio</span>
+                        <span class="date">2025</span>
+                    </div>
+                    <div class="position">Graduate Research Assistant</div>
+                    <ul class="responsibilities">
+                        <li>Designed and implemented a scalable cross-domain information retrieval system using CLIP</li>
+                        <li>Optimized data pipelines and leveraged parallel processing techniques, reducing retrieval latency by 20%</li>
+                        <li>Developed improved probabilistic image-text representations for image-text matching</li>
+                        <li>Researched and fine-tuned diffusion models and large language models for cross-modal content generation</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <span class="company">Digitalsoft AI Solutions India Pvt. Ltd (DAIS)</span>
+                        <span class="date">2023 - 2024</span>
+                    </div>
+                    <div class="position">Associate Data Engineer</div>
+                    <ul class="responsibilities">
+                        <li>Orchestrated UI design using AngularJS, elevating project frontend for superior user interface</li>
+                        <li>Enhanced project functionality by integrating APIs, optimizing scalability through AWS services</li>
+                        <li>Pioneered research on recommendation systems, refining user experiences</li>
+                        <li>Developed GenAI-powered chat assistants using LangChain and LLMs</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="section-container">
+                <h2>Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3 class="project-title">Rust System Programming Vulnerabilities Detection</h3>
+                            <p class="project-description">Developed a system to detect vulnerabilities in Rust programming using machine learning and static analysis.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Rust</span>
+                                <span class="tech-tag">Machine Learning</span>
+                                <span class="tech-tag">Security</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/yukthapriya/rust-vulnerabilities-detection" class="btn btn-outline">View on GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3 class="project-title">University Recommendation System</h3>
+                            <p class="project-description">Used Neo4j's graph database and KNN algorithm to generate personalized university recommendations.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Neo4j</span>
+                                <span class="tech-tag">Machine Learning</span>
+                                <span class="tech-tag">Flask</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/yukthapriya/university-recommendation-system" class="btn btn-outline">View on GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="publications">
+            <div class="section-container">
+                <h2>Publications</h2>
+                
+                <div class="publication-item">
+                    <div class="publication-title">Benchmarking the Robustness of Contrastive Learning Models for Medical Image-Report Retrieval under Occlusion Attacks</div>
+                    <div class="publication-conference">Accepted at AAAI Workshop</div>
+                    <div class="publication-links">
+                        <a href="https://arxiv.org/abs/2501.09134" class="btn btn-outline">View on arXiv</a>
+                    </div>
+                </div>
+                
+                <div class="publication-item">
+                    <div class="publication-title">Improving Medical Imaging Model Calibration through Probabilistic Embedding</div>
+                    <div class="publication-conference">Published at IEEE Big Data Conference</div>
+                    <div class="publication-links">
+                        <a href="https://ieeexplore.ieee.org/document/10825661/" class="btn btn-outline">View on IEEE Xplore</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="section-container">
+                <h2>Contact</h2>
+                <p>I'm always interested in new opportunities and collaborations. Feel free to reach out!</p>
+                
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> Email: <a href="mailto:ymasu01@jaguar.tamu.edu">ymasu01@jaguar.tamu.edu</a></p>
+                </div>
+                
+                <div class="contact-links">
+                    <a href="https://www.linkedin.com/in/yukthapriya" class="contact-link">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="https://github.com/yukthapriya" class="contact-link">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
     <footer>
-        <p>&copy; 2025 Yuktha Priya Masupalli. All rights reserved.</p>
+        <div class="container">
+            <p>&copy; 2025 Yuktha Priya Masupalli. All rights reserved.</p>
+        </div>
     </footer>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('.nav-container');
+            if (window.scrollY > 50) {
+                nav.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                nav.style.boxShadow = 'none';
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+    </script>
 </body>
 </html>
