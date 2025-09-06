@@ -91,7 +91,7 @@
             display: flex;
             align-items: center;
             position: relative;
-            background: url('profile.jpg') center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('profile.jpg') center/cover;
             color: white;
             text-align: center;
         }
@@ -227,14 +227,14 @@
             text-align: center;
         }
 
-        /* Skills Section */
+        /* Skills Section - IMPROVED */
         #skills {
             background-color: #f8fafc;
         }
 
         .skills-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
 
@@ -254,39 +254,73 @@
             color: var(--primary);
             margin-bottom: 20px;
             font-size: 1.5rem;
+            text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e2e8f0;
         }
 
-        .skills-list {
-            list-style: none;
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 12px;
         }
 
-        .skills-list li {
-            padding: 10px 0;
-            border-bottom: 1px solid #e2e8f0;
-            display: flex;
-            align-items: center;
+        .skill-item {
+            background: #f1f5f9;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            transition: var(--transition);
+            font-weight: 500;
         }
 
-        .skills-list li:before {
-            content: '•';
-            color: var(--accent);
-            font-weight: bold;
-            margin-right: 10px;
+        .skill-item:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
         }
 
-        /* Experience Section */
+        /* Experience Section - IMPROVED */
         #experience {
             background-color: white;
         }
 
-        .experience-item {
-            margin-bottom: 50px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid #e2e8f0;
+        .experience-timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
-        .experience-item:last-child {
-            border-bottom: none;
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--accent);
+        }
+
+        .experience-item {
+            margin-bottom: 50px;
+            padding-left: 80px;
+            position: relative;
+        }
+
+        .experience-icon {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .experience-header {
@@ -294,6 +328,7 @@
             justify-content: space-between;
             margin-bottom: 15px;
             flex-wrap: wrap;
+            align-items: center;
         }
 
         .company {
@@ -305,6 +340,10 @@
         .date {
             color: var(--text-light);
             font-style: italic;
+            background: #f1f5f9;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
         }
 
         .position {
@@ -429,25 +468,33 @@
             color: white;
         }
 
-        /* Publications Section */
+        /* Publications Section - IMPROVED */
         #publications {
             background-color: white;
         }
 
-        .publication-item {
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #e2e8f0;
+        .publications-container {
+            max-width: 900px;
+            margin: 0 auto;
         }
 
-        .publication-item:last-child {
-            border-bottom: none;
+        .publication-item {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: #f8fafc;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+
+        .publication-item:hover {
+            transform: translateY(-5px);
         }
 
         .publication-title {
             font-weight: 600;
             margin-bottom: 10px;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: var(--primary);
         }
 
@@ -455,6 +502,13 @@
             color: var(--text-light);
             font-style: italic;
             margin-bottom: 15px;
+            display: block;
+        }
+
+        .publication-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
         }
 
         /* Contact Section */
@@ -521,6 +575,20 @@
             .projects-grid {
                 grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             }
+            
+            .experience-timeline::before {
+                left: 25px;
+            }
+            
+            .experience-item {
+                padding-left: 70px;
+            }
+            
+            .experience-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
         }
 
         @media (max-width: 768px) {
@@ -562,11 +630,30 @@
             .experience-header {
                 flex-direction: column;
                 gap: 10px;
+                align-items: flex-start;
+            }
+            
+            .experience-timeline::before {
+                left: 20px;
+            }
+            
+            .experience-item {
+                padding-left: 60px;
+            }
+            
+            .experience-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
             }
 
             .contact-links {
                 flex-direction: column;
                 align-items: center;
+            }
+            
+            .publication-links {
+                flex-direction: column;
             }
         }
     </style>
@@ -614,77 +701,90 @@
             </div>
         </section>
 
-        <!-- Skills Section -->
+        <!-- Skills Section - IMPROVED -->
         <section id="skills">
             <div class="section-title">
                 <h2>Skills Summary</h2>
             </div>
             <div class="skills-container">
                 <div class="skill-category">
-                    <h3>Programming</h3>
-                    <ul class="skills-list">
-                        <li>Python</li>
-                        <li>Java</li>
-                        <li>JavaScript</li>
-                        <li>Rust</li>
-                        <li>SQL</li>
-                    </ul>
+                    <h3>Programming Languages</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">Python</div>
+                        <div class="skill-item">Java</div>
+                        <div class="skill-item">JavaScript</div>
+                        <div class="skill-item">Rust</div>
+                        <div class="skill-item">SQL</div>
+                        <div class="skill-item">C/C++</div>
+                    </div>
                 </div>
                 
                 <div class="skill-category">
                     <h3>Frameworks & Tools</h3>
-                    <ul class="skills-list">
-                        <li>ReactJS</li>
-                        <li>TensorFlow</li>
-                        <li>PyTorch</li>
-                        <li>NodeJS</li>
-                        <li>Django</li>
-                    </ul>
+                    <div class="skills-grid">
+                        <div class="skill-item">ReactJS</div>
+                        <div class="skill-item">TensorFlow</div>
+                        <div class="skill-item">PyTorch</div>
+                        <div class="skill-item">NodeJS</div>
+                        <div class="skill-item">Django</div>
+                        <div class="skill-item">AngularJS</div>
+                    </div>
                 </div>
                 
                 <div class="skill-category">
                     <h3>Data & Cloud</h3>
-                    <ul class="skills-list">
-                        <li>AWS</li>
-                        <li>GCP</li>
-                        <li>PostgreSQL</li>
-                        <li>MongoDB</li>
-                        <li>Neo4j</li>
-                    </ul>
+                    <div class="skills-grid">
+                        <div class="skill-item">AWS</div>
+                        <div class="skill-item">GCP</div>
+                        <div class="skill-item">PostgreSQL</div>
+                        <div class="skill-item">MongoDB</div>
+                        <div class="skill-item">Neo4j</div>
+                        <div class="skill-item">Kubernetes</div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Experience Section -->
+        <!-- Experience Section - IMPROVED -->
         <section id="experience">
             <div class="section-title">
                 <h2>Professional Experience</h2>
             </div>
             
-            <div class="experience-item">
-                <div class="experience-header">
-                    <span class="company">Texas A&M University–San Antonio</span>
-                    <span class="date">2025</span>
+            <div class="experience-timeline">
+                <div class="experience-item">
+                    <div class="experience-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="experience-header">
+                        <span class="company">Texas A&M University–San Antonio</span>
+                        <span class="date">2025</span>
+                    </div>
+                    <div class="position">Graduate Research Assistant</div>
+                    <ul class="responsibilities">
+                        <li>Designed and implemented a scalable cross-domain information retrieval system using CLIP</li>
+                        <li>Optimized data pipelines and leveraged parallel processing techniques, reducing retrieval latency by 20%</li>
+                        <li>Developed improved probabilistic image-text representations for image-text matching</li>
+                        <li>Researched and fine-tuned diffusion models and large language models for cross-modal content generation</li>
+                    </ul>
                 </div>
-                <div class="position">Graduate Research Assistant</div>
-                <ul class="responsibilities">
-                    <li>Designed and implemented a scalable cross-domain information retrieval system using CLIP</li>
-                    <li>Optimized data pipelines and leveraged parallel processing techniques, reducing retrieval latency by 20%</li>
-                    <li>Developed improved probabilistic image-text representations for image-text matching</li>
-                </ul>
-            </div>
-            
-            <div class="experience-item">
-                <div class="experience-header">
-                    <span class="company">Digitalsoft AI Solutions India Pvt. Ltd (DAIS)</span>
-                    <span class="date">2023 - 2024</span>
+                
+                <div class="experience-item">
+                    <div class="experience-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="experience-header">
+                        <span class="company">Digitalsoft AI Solutions India Pvt. Ltd (DAIS)</span>
+                        <span class="date">2023 - 2024</span>
+                    </div>
+                    <div class="position">Associate Data Engineer</div>
+                    <ul class="responsibilities">
+                        <li>Orchestrated UI design using AngularJS, elevating project frontend for superior user interface</li>
+                        <li>Enhanced project functionality by integrating APIs, optimizing scalability through AWS services</li>
+                        <li>Developed GenAI-powered chat assistants using LangChain and LLMs, enabling intelligent user interactions</li>
+                        <li>Pioneered research on recommendation systems, refining user experiences through innovative solutions</li>
+                    </ul>
                 </div>
-                <div class="position">Associate Data Engineer</div>
-                <ul class="responsibilities">
-                    <li>Orchestrated UI design using AngularJS, elevating project frontend for superior user interface</li>
-                    <li>Enhanced project functionality by integrating APIs, optimizing scalability through AWS services</li>
-                    <li>Developed GenAI-powered chat assistants using LangChain and LLMs</li>
-                </ul>
             </div>
         </section>
 
@@ -747,29 +847,38 @@
             </div>
         </section>
 
-        <!-- Publications Section -->
+        <!-- Publications Section - IMPROVED -->
         <section id="publications">
             <div class="section-title">
                 <h2>Publications</h2>
             </div>
-            
-            <div class="publication-item">
-                <div class="publication-title">Benchmarking the Robustness of Contrastive Learning Models for Medical Image-Report Retrieval under Occlusion Attacks</div>
-                <div class="publication-conference">Accepted at AAAI Workshop</div>
-                <div class="project-links">
-                    <a href="https://arxiv.org/abs/2501.09134" class="btn btn-outline">
-                        <i class="ai ai-arxiv"></i> View on arXiv
-                    </a>
+            <div class="publications-container">
+                <div class="publication-item">
+                    <div class="publication-title">Benchmarking the Robustness of Contrastive Learning Models for Medical Image-Report Retrieval under Occlusion Attacks</div>
+                    <span class="publication-conference">Accepted at AAAI Workshop</span>
+                    <p>This research evaluates the resilience of contrastive learning models against occlusion attacks in medical image-text retrieval tasks.</p>
+                    <div class="publication-links">
+                        <a href="https://arxiv.org/abs/2501.09134" class="btn btn-outline">
+                            <i class="ai ai-arxiv"></i> View on arXiv
+                        </a>
+                        <a href="https://www.researchgate.net/publication/388080896_Benchmarking_Robustness_of_Contrastive_Learning_Models_for_Medical_Image-Report_Retrieval" class="btn btn-outline">
+                            <i class="ai ai-researchgate"></i> View on ResearchGate
+                        </a>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="publication-item">
-                <div class="publication-title">Improving Medical Imaging Model Calibration through Probabilistic Embedding</div>
-                <div class="publication-conference">Published at IEEE Big Data Conference</div>
-                <div class="project-links">
-                    <a href="https://ieeexplore.ieee.org/document/10825661/" class="btn btn-outline">
-                        <i class="ai ai-ieee"></i> View on IEEE Xplore
-                    </a>
+                
+                <div class="publication-item">
+                    <div class="publication-title">Improving Medical Imaging Model Calibration through Probabilistic Embedding</div>
+                    <span class="publication-conference">Published at IEEE Big Data Conference</span>
+                    <p>This paper introduces a novel approach to enhance model calibration in medical imaging applications using probabilistic embedding techniques.</p>
+                    <div class="publication-links">
+                        <a href="https://ieeexplore.ieee.org/document/10825661/" class="btn btn-outline">
+                            <i class="ai ai-ieee"></i> View on IEEE Xplore
+                        </a>
+                        <a href="https://www.researchgate.net/publication/388100542_Improving_Medical_Imaging_Model_Calibration_through_Probabilistic_Embedding" class="btn btn-outline">
+                            <i class="ai ai-researchgate"></i> View on ResearchGate
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
