@@ -294,7 +294,7 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            background: linear-gradient(90deg, var(--primary), var(--secondary);
             transform: scaleX(0);
             transform-origin: left;
             transition: transform 0.5s ease;
@@ -470,6 +470,28 @@
             color: var(--primary);
         }
 
+        .publication-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .publication-link {
+            padding: 8px 15px;
+            background: rgba(0, 247, 255, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .publication-link:hover {
+            background: rgba(0, 247, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
         @keyframes hologramFloat {
             0%, 100% { transform: translateY(0) rotate(0deg); }
             25% { transform: translateY(-10px) rotate(1deg); }
@@ -513,6 +535,10 @@
                 width: 60px;
                 height: 60px;
             }
+            
+            .publication-links {
+                flex-direction: column;
+            }
         }
 
         .pronunciation-guide {
@@ -522,36 +548,11 @@
             font-style: italic;
         }
 
-        .voice-selector {
-            margin-top: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        select {
-            background: rgba(10, 10, 26, 0.7);
-            color: var(--text);
-            border: 1px solid var(--primary);
-            padding: 10px 15px;
-            border-radius: 20px;
-            width: 100%;
-            max-width: 300px;
-        }
-
-        .voice-sample {
-            margin-top: 10px;
-            padding: 8px 15px;
-            background: rgba(0, 247, 255, 0.1);
-            border: 1px solid var(--primary);
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .voice-sample:hover {
-            background: rgba(0, 247, 255, 0.2);
+        .publication-conference {
+            color: var(--accent);
+            font-style: italic;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
         }
     </style>
 </head>
@@ -592,12 +593,6 @@
                     <button class="voice-btn" id="replay-intro">
                         <i class="fas fa-redo"></i>
                     </button>
-                </div>
-
-                <div class="voice-selector">
-                    <label for="voice-select">Select Voice:</label>
-                    <select id="voice-select"></select>
-                    <div class="voice-sample" id="test-voice">Test Selected Voice</div>
                 </div>
             </div>
         </section>
@@ -683,6 +678,80 @@
                 </div>
             </div>
         </section>
+
+        <section class="work-highlights">
+            <h2 class="section-title">Publications</h2>
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <div class="highlight-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Benchmarking the Robustness of Contrastive Learning Models for Medical Image-Report Retrieval under Occlusion Attacks</h3>
+                    <p class="publication-conference">Accepted at AAAI Workshop</p>
+                    <p>This research evaluates the resilience of contrastive learning models against occlusion attacks in medical image-text retrieval tasks, proposing novel evaluation metrics and robustness benchmarks.</p>
+                    <div class="publication-links">
+                        <a href="#" class="publication-link">View on arXiv</a>
+                        <a href="#" class="publication-link">View on ResearchGate</a>
+                    </div>
+                </div>
+                
+                <div class="highlight-card">
+                    <div class="highlight-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Improving Medical Imaging Model Calibration through Probabilistic Embedding</h3>
+                    <p class="publication-conference">Published at IEEE Big Data Conference</p>
+                    <p>This paper introduces a novel approach to enhance model calibration in medical imaging applications using probabilistic embedding techniques, demonstrating significant improvements in prediction reliability.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="work-highlights">
+            <h2 class="section-title">Projects</h2>
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <div class="highlight-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Rust System Programming Vulnerabilities Detection</h3>
+                    <p>Developed a system to detect vulnerabilities in Rust programming using machine learning and static analysis.</p>
+                    <div class="highlight-tags">
+                        <span class="highlight-tag">Rust</span>
+                        <span class="highlight-tag">Machine Learning</span>
+                        <span class="highlight-tag">Security</span>
+                    </div>
+                    <a href="#" class="publication-link">View on GitHub</a>
+                </div>
+                
+                <div class="highlight-card">
+                    <div class="highlight-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>University Recommendation System</h3>
+                    <p>Used Neo4j's graph database and KNN algorithm to generate personalized university recommendations.</p>
+                    <div class="highlight-tags">
+                        <span class="highlight-tag">Neo4j</span>
+                        <span class="highlight-tag">Machine Learning</span>
+                        <span class="highlight-tag">Flask</span>
+                    </div>
+                    <a href="#" class="publication-link">View on GitHub</a>
+                </div>
+                
+                <div class="highlight-card">
+                    <div class="highlight-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Healthcare Monitoring System</h3>
+                    <p>Developed a web application for public healthcare, focusing on diabetes prediction with NLP and classification algorithms.</p>
+                    <div class="highlight-tags">
+                        <span class="highlight-tag">NLP</span>
+                        <span class="highlight-tag">JavaScript</span>
+                        <span class="highlight-tag">SQLite</span>
+                    </div>
+                    <a href="#" class="publication-link">View on GitHub</a>
+                </div>
+            </div>
+        </section>
     </div>
 
     <script>
@@ -690,12 +759,6 @@
         const playIntroBtn = document.getElementById('play-intro');
         const replayIntroBtn = document.getElementById('replay-intro');
         const voiceBars = document.querySelectorAll('.voice-bar');
-        const voiceSelect = document.getElementById('voice-select');
-        const testVoiceBtn = document.getElementById('test-voice');
-        
-        let voices = [];
-        let selectedVoice = null;
-        let currentUtterance = null;
         
         // Function to animate voice bars
         function animateBars(playing) {
@@ -709,107 +772,76 @@
             });
         }
         
-        // Function to populate voice options
-        function populateVoiceList() {
-            voices = speechSynthesis.getVoices();
-            
-            // Clear existing options
-            voiceSelect.innerHTML = '';
-            
-            // Filter for female voices and add them to the dropdown
-            const femaleVoices = voices.filter(voice => 
-                voice.name.includes('Female') || 
-                voice.name.includes('Woman') || 
-                voice.name.includes('Zira') || 
-                voice.name.includes('Samantha') ||
-                voice.name.includes('Karen') ||
-                voice.name.includes('Tessa') ||
-                voice.name.includes('Veena') ||
-                voice.name.includes('Fiona') ||
-                voice.name.includes('Moira') ||
-                voice.name.includes('Hazel') ||
-                voice.name.includes('Alice') ||
-                voice.name.includes('Laura') ||
-                voice.name.includes('Emily')
-            );
-            
-            // Add female voices to the dropdown
-            femaleVoices.forEach(voice => {
-                const option = document.createElement('option');
-                option.value = voice.name;
-                option.textContent = `${voice.name} (${voice.lang})`;
-                voiceSelect.appendChild(option);
-            });
-            
-            // Select the first female voice by default
-            if (femaleVoices.length > 0) {
-                selectedVoice = femaleVoices[0];
-                voiceSelect.value = femaleVoices[0].name;
-            }
-        }
-        
-        // Function to speak text with selected voice
-        function speakText(text, onStart, onEnd) {
-            // Stop any ongoing speech
-            if (currentUtterance) {
-                window.speechSynthesis.cancel();
-            }
-            
-            // Create speech synthesis utterance
-            currentUtterance = new SpeechSynthesisUtterance(text);
-            
-            // Configure voice
-            if (selectedVoice) {
-                currentUtterance.voice = selectedVoice;
-            }
-            
-            currentUtterance.rate = 0.95;
-            currentUtterance.pitch = 1.1;
-            currentUtterance.volume = 1;
-            
-            // Set up event handlers
-            if (onStart) currentUtterance.onstart = onStart;
-            if (onEnd) currentUtterance.onend = onEnd;
-            
-            currentUtterance.onerror = function() {
-                animateBars(false);
-                playIntroBtn.innerHTML = '<i class="fas fa-play"></i>';
-                currentUtterance = null;
-            };
-            
-            // Speak the text
-            window.speechSynthesis.speak(currentUtterance);
-        }
-        
-        // Function to speak the introduction
+        // Function to speak the introduction with female voice
         function speakIntroduction() {
+            // Stop any ongoing speech
+            window.speechSynthesis.cancel();
+            
+            // Create introduction text with phonetic spelling for name
             const introText = "Hello, I'm Yuktha Priya Masupalli. " +
                 "I'm a Master's student in Computer Science passionate about advancing the frontiers of AI, data engineering, and full-stack development. " +
                 "My research focuses on building sophisticated cross-domain information retrieval systems using transformer-based models and optimizing large-scale AI data pipelines. " +
                 "I'm currently exploring Agentic AI and LLMs, building systems where language models can autonomously plan and execute complex tasks. " +
                 "Feel free to explore my profiles to learn more about my work.";
             
-            speakText(
-                introText,
-                function() {
-                    animateBars(true);
-                    playIntroBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                },
-                function() {
-                    animateBars(false);
-                    playIntroBtn.innerHTML = '<i class="fas fa-play"></i>';
-                    currentUtterance = null;
-                }
+            // Create speech synthesis utterance
+            const utterance = new SpeechSynthesisUtterance(introText);
+            
+            // Configure for female voice
+            const voices = window.speechSynthesis.getVoices();
+            const femaleVoice = voices.find(voice => 
+                voice.name.includes('Female') || 
+                voice.name.includes('Woman') || 
+                voice.name.includes('Zira') || 
+                voice.name.toLowerCase().includes('samantha') ||
+                voice.name.toLowerCase().includes('tessa')
             );
+            
+            if (femaleVoice) {
+                utterance.voice = femaleVoice;
+            }
+            utterance.rate = 0.95;
+            utterance.pitch = 1.1;
+            utterance.volume = 1;
+            
+            // Start animation when speech begins
+            utterance.onstart = function() {
+                animateBars(true);
+                playIntroBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            };
+            
+            // Stop animation when speech ends
+            utterance.onend = function() {
+                animateBars(false);
+                playIntroBtn.innerHTML = '<i class="fas fa-play"></i>';
+            };
+            
+            // Handle speech errors
+            utterance.onerror = function() {
+                animateBars(false);
+                playIntroBtn.innerHTML = '<i class="fas fa-play"></i>';
+                alert('Speech synthesis failed. Please try again.');
+            };
+            
+            // Speak the text
+            window.speechSynthesis.speak(utterance);
         }
         
-        // Function to test the selected voice
-        function testSelectedVoice() {
-            const testText = "Hello, this is a test of the selected voice for Yuktha Priya.";
-            speakText(testText);
+        // Load available voices
+        function loadVoices() {
+            // Chrome needs time to load voices
+            if (speechSynthesis.getVoices().length === 0) {
+                speechSynthesis.addEventListener('voiceschanged', function() {
+                    const voices = speechSynthesis.getVoices();
+                    console.log('Available voices:', voices);
+                });
+            } else {
+                const voices = speechSynthesis.getVoices();
+                console.log('Available voices:', voices);
+            }
         }
         
-        // Event listeners
+        // Play/Pause introduction
         playIntroBtn.addEventListener('click', () => {
             if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
                 window.speechSynthesis.pause();
@@ -824,26 +856,21 @@
             }
         });
         
+        // Replay introduction
         replayIntroBtn.addEventListener('click', () => {
             window.speechSynthesis.cancel();
             speakIntroduction();
         });
         
-        voiceSelect.addEventListener('change', () => {
-            const selectedVoiceName = voiceSelect.value;
-            selectedVoice = voices.find(voice => voice.name === selectedVoiceName);
-        });
-        
-        testVoiceBtn.addEventListener('click', testSelectedVoice);
-        
-        // Initialize voices when page loads
+        // Load voices when page loads
         window.addEventListener('load', () => {
-            // Chrome needs time to load voices
-            if (speechSynthesis.getVoices().length === 0) {
-                speechSynthesis.addEventListener('voiceschanged', populateVoiceList);
-            } else {
-                populateVoiceList();
-            }
+            loadVoices();
+            
+            // Wait a moment before starting the introduction
+            setTimeout(() => {
+                // Uncomment the line below to enable auto-play
+                // speakIntroduction();
+            }, 1000);
         });
     </script>
 </body>
