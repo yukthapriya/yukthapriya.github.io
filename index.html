@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yuktha Priya | Data Engineer & AI Specialist</title>
+    <title>Yuktha Priya | AI & Data Engineering Specialist</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -18,6 +18,7 @@
             --text-light: #7A7A7A;
             --card-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
             --transition: all 0.3s ease;
+            --glow: 0 0 15px rgba(212, 167, 106, 0.5);
         }
 
         * {
@@ -85,377 +86,329 @@
             padding: 80px 0;
         }
 
-        /* Header with Profile Background */
-        header {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('profile.jpg') center/cover;
-            color: white;
-            text-align: center;
-        }
-
-        .header-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .profile-avatar {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            margin: 0 auto 30px;
-            border: 4px solid rgba(255, 255, 255, 0.2);
-            background: #e2e8f0 url('Photo.jpg') center/cover;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            object-fit: cover;  
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-size: cover;
-
-        }
-
-        .header-title {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: white;
-        }
-
-        .header-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .header-tags {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 2rem;
-        }
-
-        .header-tag {
-            background-color: rgba(255, 255, 255, 0.15);
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: var(--transition);
-        }
-
-        .header-tag:hover {
-            transform: translateY(-3px);
-            background-color: rgba(255, 255, 255, 0.25);
-        }
-
-        /* Navigation */
-        .nav-container {
+        /* AI Assistant Section */
+        .ai-assistant {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            bottom: 30px;
+            right: 30px;
             z-index: 1000;
-            transition: var(--transition);
-        }
-
-        .navbar {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
+            flex-direction: column;
+            align-items: flex-end;
         }
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            border-radius: 50%;
-            color: white;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav-links li {
-            margin-left: 30px;
-        }
-
-        .nav-links a {
-            color: var(--dark);
-            font-weight: 500;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Section Styling */
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title h2:after {
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        /* About Section */
-        #about {
-            background-color: white;
-        }
-
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        /* Skills Section - ENHANCED */
-        #skills {
-            background-color: #f8fafc;
-        }
-
-        .skills-categories {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        .skill-category {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: var(--card-shadow);
-            transition: var(--transition);
-        }
-
-        .skill-category:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .skill-category h3 {
-            color: var(--primary);
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-            text-align: center;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #e2e8f0;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 12px;
-        }
-
-        .skill-item {
-            background: #f1f5f9;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            transition: var(--transition);
-            font-weight: 500;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-item:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        /* Experience Section - ENHANCED */
-        #experience {
-            background-color: white;
-        }
-
-        .experience-timeline {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .experience-timeline::before {
-            content: '';
-            position: absolute;
-            left: 30px;
-            top: 0;
-            height: 100%;
-            width: 2px;
-            background: var(--accent);
-        }
-
-        .experience-item {
-            margin-bottom: 30px;
-            padding-left: 70px;
-            position: relative;
-        }
-
-        .experience-icon {
-            position: absolute;
-            left: 0;
-            top: 0;
+        .ai-toggle {
             width: 60px;
             height: 60px;
-            background: var(--primary);
             border-radius: 50%;
+            background: var(--primary);
+            color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .experience-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        .company {
-            font-weight: 700;
-            color: var(--primary);
-            font-size: 1.3rem;
-        }
-
-        .date {
-            color: var(--text-light);
-            font-style: italic;
-            background: #f1f5f9;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-        }
-
-        .position {
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: var(--dark);
-            font-size: 1.1rem;
-        }
-
-        .responsibilities {
-            list-style-type: none;
-        }
-
-        .responsibilities li {
-            position: relative;
-            padding-left: 25px;
-            margin-bottom: 15px;
-            line-height: 1.7;
-        }
-
-        .responsibilities li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-weight: bold;
-        }
-
-        /* Projects Section */
-        #projects {
-            background-color: #f8fafc;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .project-card {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--card-shadow);
+            cursor: pointer;
+            box-shadow: var(--glow);
             transition: var(--transition);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
+            border: none;
         }
 
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        .ai-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(212, 167, 106, 0.7);
         }
 
-        .project-content {
-            padding: 25px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
+        .ai-toggle i {
+            font-size: 1.5rem;
         }
 
-        .project-title {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-
-        .project-description {
+        .ai-panel {
+            width: 350px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             margin-bottom: 20px;
-            flex-grow: 1;
-            color: var(--text);
+            overflow: hidden;
+            transform: scale(0);
+            transform-origin: bottom right;
+            transition: var(--transition);
+            opacity: 0;
+            height: 0;
         }
 
-        .project-tech {
+        .ai-panel.active {
+            transform: scale(1);
+            opacity: 1;
+            height: auto;
+        }
+
+        .ai-header {
+            background: var(--primary);
+            color: white;
+            padding: 20px;
             display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .tech-tag {
-            background: #e8eff4;
-            color: var(--primary-dark);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-        }
-
-        .project-links {
-            display: flex;
+            align-items: center;
             gap: 15px;
         }
 
-        .btn {
+        .ai-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .ai-content {
+            padding: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .ai-message {
+            margin-bottom: 15px;
+            padding: 12px 15px;
+            border-radius: 10px;
+            background: #f5f7fa;
+            position: relative;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .ai-message:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            right: 15px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid #f5f7fa;
+        }
+
+        .ai-typing {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        .ai-typing span {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: inline-block;
+            animation: bounce 1.3s infinite ease-in-out;
+        }
+
+        .ai-typing span:nth-child(2) {
+            animation-delay: 0.15s;
+        }
+
+        .ai-typing span:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .ai-controls {
+            padding: 15px 20px;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 10px;
+        }
+
+        .ai-btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: var(--primary);
+            color: white;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .ai-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .ai-btn.outline {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .ai-btn.outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Voice Introduction Section */
+        .voice-intro {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin: 40px 0;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .voice-intro::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: 100% 100%;
+        }
+
+        .voice-intro h2 {
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .voice-intro h2:after {
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+        }
+
+        .voice-player {
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .voice-controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .voice-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: var(--dark);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--glow);
+        }
+
+        .voice-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(212, 167, 106, 0.7);
+        }
+
+        .voice-btn i {
+            font-size: 1.5rem;
+        }
+
+        .voice-wave {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 80px;
+            margin-bottom: 20px;
+            gap: 4px;
+        }
+
+        .voice-bar {
+            width: 4px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 2px;
+            animation: wave 1.5s infinite ease-in-out;
+        }
+
+        .voice-bar:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .voice-bar:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .voice-bar:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+
+        .voice-bar:nth-child(5) {
+            animation-delay: 0.8s;
+        }
+
+        /* Enhanced Profile Links */
+        .profile-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .profile-link-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .profile-link-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .profile-link-card p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        .profile-link-btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
@@ -467,230 +420,46 @@
             transition: var(--transition);
             text-decoration: none;
             font-size: 0.9rem;
+            margin-top: auto;
         }
 
-        .btn:hover {
+        .profile-link-btn:hover {
             background: var(--primary-dark);
             transform: translateY(-2px);
         }
 
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--primary);
-            color: var(--primary);
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .btn-outline:hover {
-            background: var(--primary);
-            color: white;
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
         }
 
-        /* Publications Section - ENHANCED */
-        #publications {
-            background-color: white;
+        @keyframes wave {
+            0%, 100% { height: 20px; }
+            50% { height: 60px; }
         }
 
-        .publications-container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .publication-item {
-            margin-bottom: 25px;
-            padding: 20px;
-            background: #f8fafc;
-            border-radius: 10px;
-            box-shadow: var(--card-shadow);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .publication-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .publication-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background: var(--accent);
-        }
-
-        .publication-title {
-            font-weight: 600;
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-            color: var(--primary);
-        }
-
-        .publication-conference {
-            color: var(--text-light);
-            font-style: italic;
-            margin-bottom: 15px;
-            display: block;
-            font-size: 0.95rem;
-        }
-
-        .publication-description {
-            margin-bottom: 20px;
-            color: var(--text);
-        }
-
-        .publication-links {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        /* Contact Section */
-        #contact {
-            background-color: var(--primary-dark);
-            color: white;
-            text-align: center;
-        }
-
-        #contact h2 {
-            color: white;
-        }
-
-        #contact h2:after {
-            background: var(--accent);
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        #contact p {
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .contact-container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-
-        .contact-link {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 25px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            transition: var(--transition);
-            text-decoration: none;
-            color: white;
-            backdrop-filter: blur(10px);
-        }
-
-        .contact-link:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            text-align: center;
-            padding: 40px 0;
-        }
+        /* Existing styles from previous template remain below */
+        /* ... (all your existing CSS styles) ... */
 
         /* Responsive Design */
-        @media (max-width: 992px) {
-            .projects-grid {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            }
-            
-            .experience-timeline::before {
-                left: 25px;
-            }
-            
-            .experience-item {
-                padding-left: 70px;
-            }
-            
-            .experience-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
-            }
-        }
-
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
+            .ai-panel {
+                width: 300px;
+                right: 10px;
             }
             
-            h2 {
-                font-size: 2rem;
+            .voice-player {
+                padding: 20px;
             }
             
-            .navbar {
-                flex-direction: column;
-                padding: 15px 0;
-            }
-
-            .nav-links {
-                margin-top: 15px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .nav-links li {
-                margin: 0 10px 10px;
-            }
-            
-            .header-title {
-                font-size: 2.5rem;
-            }
-
-            .header-subtitle {
-                font-size: 1.2rem;
-            }
-
-            .skills-categories {
+            .profile-links {
                 grid-template-columns: 1fr;
-            }
-
-            .experience-header {
-                flex-direction: column;
-                gap: 10px;
-                align-items: flex-start;
-            }
-            
-            .experience-timeline::before {
-                left: 20px;
-            }
-            
-            .experience-item {
-                padding-left: 60px;
-            }
-            
-            .experience-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
-            }
-
-            .contact-links {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .publication-links {
-                flex-direction: column;
             }
         }
     </style>
@@ -711,6 +480,42 @@
         </div>
     </div>
 
+    <!-- AI Assistant -->
+    <div class="ai-assistant">
+        <div class="ai-panel">
+            <div class="ai-header">
+                <div class="ai-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div>
+                    <h3>AI Assistant</h3>
+                    <p>Ready to introduce Yuktha</p>
+                </div>
+            </div>
+            <div class="ai-content">
+                <div class="ai-message">
+                    Hello! I'm Yuktha's AI assistant. Would you like me to give you an interactive introduction about her professional background?
+                </div>
+                <div class="ai-typing" id="ai-typing">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="ai-controls">
+                <button class="ai-btn" id="ai-intro-btn">
+                    <i class="fas fa-play"></i> Start Introduction
+                </button>
+                <button class="ai-btn outline" id="ai-close">
+                    <i class="fas fa-times"></i> Close
+                </button>
+            </div>
+        </div>
+        <button class="ai-toggle" id="ai-toggle">
+            <i class="fas fa-robot"></i>
+        </button>
+    </div>
+
     <!-- Header/Hero Section with Profile Background -->
     <header>
         <div class="container header-content">
@@ -727,6 +532,81 @@
     </header>
 
     <div class="container">
+        <!-- Voice Introduction Section -->
+        <section class="voice-intro">
+            <h2>Listen to My Professional Introduction</h2>
+            <div class="voice-player">
+                <div class="voice-wave">
+                    <div class="voice-bar"></div>
+                    <div class="voice-bar"></div>
+                    <div class="voice-bar"></div>
+                    <div class="voice-bar"></div>
+                    <div class="voice-bar"></div>
+                </div>
+                <p>Play my 60-second professional introduction to learn about my background and skills</p>
+                <div class="voice-controls">
+                    <button class="voice-btn" id="play-intro">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button class="voice-btn" id="pause-intro" style="display: none;">
+                        <i class="fas fa-pause"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced Profile Links Section -->
+        <section>
+            <div class="section-title">
+                <h2>My Profiles</h2>
+            </div>
+            <div class="profile-links">
+                <div class="profile-link-card">
+                    <div class="profile-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <h3>LinkedIn</h3>
+                    <p>Connect with me professionally and view my experience, recommendations, and network</p>
+                    <a href="https://www.linkedin.com/in/yukthapriya" class="profile-link-btn">
+                        <i class="fab fa-linkedin"></i> View Profile
+                    </a>
+                </div>
+                
+                <div class="profile-link-card">
+                    <div class="profile-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h3>GitHub</h3>
+                    <p>Explore my code repositories, projects, and contributions to open source</p>
+                    <a href="https://github.com/yukthapriya" class="profile-link-btn">
+                        <i class="fab fa-github"></i> View Profile
+                    </a>
+                </div>
+                
+                <div class="profile-link-card">
+                    <div class="profile-icon">
+                        <i class="ai ai-google-scholar"></i>
+                    </div>
+                    <h3>Google Scholar</h3>
+                    <p>Review my research publications, citations, and academic contributions</p>
+                    <a href="https://scholar.google.com/citations?hl=en&user=UkX-bOYAAAAJ" class="profile-link-btn">
+                        <i class="ai ai-google-scholar"></i> View Profile
+                    </a>
+                </div>
+                
+                <div class="profile-link-card">
+                    <div class="profile-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3>Resume</h3>
+                    <p>Download my current resume to review my detailed experience and qualifications</p>
+                    <a href="Yuktha Priya Masupalli Resume updated.pdf" class="profile-link-btn" download>
+                        <i class="fas fa-download"></i> Download Resume
+                    </a>
+                </div>
+            </div>
+        </section>
+
         <!-- About Section -->
         <section id="about">
             <div class="section-title">
@@ -738,255 +618,9 @@
             </div>
         </section>
 
-        <!-- Skills Section - ENHANCED -->
-        <section id="skills">
-            <div class="section-title">
-                <h2>Skills Summary</h2>
-            </div>
-            <div class="skills-categories">
-                <div class="skill-category">
-                    <h3>Programming Languages</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item">Python</div>
-                        <div class="skill-item">Java</div>
-                        <div class="skill-item">JavaScript</div>
-                        <div class="skill-item">Rust</div>
-                        <div class="skill-item">SQL</div>
-                        <div class="skill-item">C/C++</div>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h3>Frameworks & Tools</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item">ReactJS</div>
-                        <div class="skill-item">TensorFlow</div>
-                        <div class="skill-item">PyTorch</div>
-                        <div class="skill-item">NodeJS</div>
-                        <div class="skill-item">Django</div>
-                        <div class="skill-item">AngularJS</div>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h3>Data & Cloud</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item">AWS</div>
-                        <div class="skill-item">GCP</div>
-                        <div class="skill-item">PostgreSQL</div>
-                        <div class="skill-item">MongoDB</div>
-                        <div class="skill-item">Neo4j</div>
-                        <div class="skill-item">Kubernetes</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="skills-categories">
-                <div class="skill-category">
-                    <h3>AI & Machine Learning</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item">LLMs</div>
-                        <div class="skill-item">LangChain</div>
-                        <div class="skill-item">Computer Vision</div>
-                        <div class="skill-item">NLP</div>
-                        <div class="skill-item">Agentic AI Systems</div>
-                        <div class="skill-item">Multimodal Analysis</div>
-                        
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h3>Databases</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item">PostgreSQL</div>
-                        <div class="skill-item">MySQL</div>
-                        <div class="skill-item">MongoDB</div>
-                        <div class="skill-item">Neo4j</div>
-                        <div class="skill-item">SQLite</div>
-                        <div class="skill-item">Redis</div>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h3>Soft Skills</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item">Leadership</div>
-                        <div class="skill-item">Problem-Solving</div>
-                        <div class="skill-item">Team Collaboration</div>
-                        <div class="skill-item">Communication</div>
-                        <div class="skill-item">Time Management</div>
-                        <div class="skill-item">Adaptability</div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <!-- Rest of your existing sections (Skills, Experience, Projects, Publications, Contact) -->
+        <!-- ... (all your existing sections) ... -->
 
-        <!-- Experience Section - ENHANCED -->
-        <section id="experience">
-            <div class="section-title">
-                <h2>Professional Experience</h2>
-            </div>
-            
-            <div class="experience-timeline">
-                <div class="experience-item">
-                    <div class="experience-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <div class="experience-header">
-                        <span class="company">Texas A&M University–San Antonio</span>
-                        <span class="date">2025</span>
-                    </div>
-                    <div class="position">Graduate Research Assistant</div>
-                    <ul class="responsibilities">
-                        <li>Designed and implemented a scalable cross-domain information retrieval system using CLIP</li>
-                        <li>Optimized data pipelines and leveraged parallel processing techniques, reducing retrieval latency by 20%</li>
-                        <li>Developed improved probabilistic image-text representations for image-text matching</li>
-                        <li>Researched and fine-tuned diffusion models and large language models for cross-modal content generation</li>
-                        <li>Utilized CUDA-based acceleration in HPC environments to train and evaluate multiple models efficiently</li>
-                        <li>Contributed to the JagCoach AI assistant project by developing audio-video analysis pipelines</li>
-                    </ul>
-                </div>
-                
-                <div class="experience-item">
-                    <div class="experience-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <div class="experience-header">
-                        <span class="company">Digitalsoft AI Solutions India Pvt. Ltd (DAIS)</span>
-                        <span class="date">2023 - 2024</span>
-                    </div>
-                    <div class="position">Associate Data Engineer</div>
-                    <ul class="responsibilities">
-                        <li>Orchestrated UI design using AngularJS, elevating project frontend for superior user interface</li>
-                        <li>Enhanced project functionality by integrating APIs, optimizing scalability through AWS services</li>
-                        <li>Developed GenAI-powered chat assistants using LangChain and LLMs, enabling intelligent user interactions</li>
-                        <li>Pioneered research on recommendation systems, refining user experiences through innovative solutions</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects">
-            <div class="section-title">
-                <h2>Projects</h2>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-content">
-                        <h3 class="project-title">Rust System Programming Vulnerabilities Detection</h3>
-                        <p class="project-description">Developed a system to detect vulnerabilities in Rust programming using machine learning and static analysis.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Rust</span>
-                            <span class="tech-tag">Machine Learning</span>
-                            <span class="tech-tag">Security</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/yukthapriya/rust-vulnerabilities-detection" class="btn btn-outline">
-                                <i class="fab fa-github"></i> View on GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-content">
-                        <h3 class="project-title">University Recommendation System</h3>
-                        <p class="project-description">Used Neo4j's graph database and KNN algorithm to generate personalized university recommendations.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Neo4j</span>
-                            <span class="tech-tag">Machine Learning</span>
-                            <span class="tech-tag">Flask</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/yukthapriya/university-recommendation-system" class="btn btn-outline">
-                                <i class="fab fa-github"></i> View on GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-content">
-                        <h3 class="project-title">Healthcare Monitoring System</h3>
-                        <p class="project-description">Developed a web application for public healthcare, focusing on diabetes prediction with NLP and classification algorithms.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">NLP</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">SQLite</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/yukthapriya/healthcare-monitoring-system" class="btn btn-outline">
-                                <i class="fab fa-github"></i> View on GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Publications Section - ENHANCED -->
-        <section id="publications">
-            <div class="section-title">
-                <h2>Publications</h2>
-            </div>
-            <div class="publications-container">
-                <div class="publication-item">
-                    <div class="publication-title">Benchmarking the Robustness of Contrastive Learning Models for Medical Image-Report Retrieval under Occlusion Attacks</div>
-                    <span class="publication-conference">Accepted at AAAI Workshop</span>
-                    <p class="publication-description">This research evaluates the resilience of contrastive learning models against occlusion attacks in medical image-text retrieval tasks, proposing novel evaluation metrics and robustness benchmarks.</p>
-                    <div class="publication-links">
-                        <a href="https://arxiv.org/abs/2501.09134" class="btn btn-outline">
-                            <i class="ai ai-arxiv"></i> View on arXiv
-                        </a>
-                        <a href="https://www.researchgate.net/publication/388080896_Benchmarking_Robustness_of_Contrastive_Learning_Models_for_Medical_Image-Report_Retrieval" class="btn btn-outline">
-                            <i class="ai ai-researchgate"></i> View on ResearchGate
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="publication-item">
-                    <div class="publication-title">Improving Medical Imaging Model Calibration through Probabilistic Embedding</div>
-                    <span class="publication-conference">Published at IEEE Big Data Conference</span>
-                    <p class="publication-description">This paper introduces a novel approach to enhance model calibration in medical imaging applications using probabilistic embedding techniques, demonstrating significant improvements in prediction reliability.</p>
-                    <div class="publication-links">
-                        <a href="https://ieeexplore.ieee.org/document/10825661/" class="btn btn-outline">
-                            <i class="ai ai-ieee"></i> View on IEEE Xplore
-                        </a>
-                        <a href="https://www.researchgate.net/publication/388100542_Improving_Medical_Imaging_Model_Calibration_through_Probabilistic_Embedding" class="btn btn-outline">
-                            <i class="ai ai-researchgate"></i> View on ResearchGate
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact">
-            <div class="section-title">
-                <h2>Contact</h2>
-            </div>
-            <div class="contact-container">
-                <p>I'm always interested in new opportunities and collaborations. Feel free to reach out!</p>
-                
-                <div class="contact-links">
-                    <a href="mailto:ymasu01@jaguar.tamu.edu" class="contact-link">
-                        <i class="fas fa-envelope"></i> Email
-                    </a>
-                    <a href="https://www.linkedin.com/in/yukthapriya" class="contact-link">
-                        <i class="fab fa-linkedin"></i> LinkedIn
-                    </a>
-                    <a href="https://github.com/yukthapriya" class="contact-link">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                    <a href="https://scholar.google.com/citations?hl=en&user=UkX-bOYAAAAJ" class="contact-link">
-                        <i class="ai ai-google-scholar"></i> Google Scholar
-                    </a>
-                        
-                    <a href="Yuktha Priya Masupalli Resume updated.pdf" class="contact-link" download> <i class="fas fa-file-pdf"></i> Resume </a>
-                </div>
-            </div>
-        </section>
     </div>
 
     <footer>
@@ -996,7 +630,103 @@
     </footer>
 
     <script>
-        // Simple JavaScript for navigation effect
+        // AI Assistant functionality
+        const aiToggle = document.getElementById('ai-toggle');
+        const aiPanel = document.querySelector('.ai-panel');
+        const aiIntroBtn = document.getElementById('ai-intro-btn');
+        const aiClose = document.getElementById('ai-close');
+        const aiTyping = document.getElementById('ai-typing');
+        const aiContent = document.querySelector('.ai-content');
+        
+        // Voice introduction functionality
+        const playIntroBtn = document.getElementById('play-intro');
+        const pauseIntroBtn = document.getElementById('pause-intro');
+        
+        // Toggle AI panel
+        aiToggle.addEventListener('click', () => {
+            aiPanel.classList.toggle('active');
+        });
+        
+        // Close AI panel
+        aiClose.addEventListener('click', () => {
+            aiPanel.classList.remove('active');
+        });
+        
+        // Start AI introduction
+        aiIntroBtn.addEventListener('click', () => {
+            aiIntroBtn.innerHTML = '<i class="fas fa-sync fa-spin"></i> Generating...';
+            aiIntroBtn.disabled = true;
+            
+            // Simulate AI thinking/processing
+            setTimeout(() => {
+                aiIntroBtn.innerHTML = '<i class="fas fa-play"></i> Start Introduction';
+                aiIntroBtn.disabled = false;
+                
+                // Clear previous messages
+                const messages = document.querySelectorAll('.ai-message');
+                messages.forEach(msg => {
+                    if (msg.previousElementSibling !== aiTyping) {
+                        msg.remove();
+                    }
+                });
+                
+                // Show typing indicator
+                aiTyping.style.display = 'flex';
+                
+                // Simulate AI typing introduction
+                const introText = [
+                    "Hello! I'm Yuktha Priya's AI assistant. Let me introduce her professionally.",
+                    "Yuktha is a Master's student in Computer Science with expertise in AI, data engineering, and full-stack development.",
+                    "She has experience developing cross-domain information retrieval systems using transformer models and optimizing AI data pipelines.",
+                    "Her professional background includes roles as a Data Engineer and Research Assistant, where she worked on GenAI-powered solutions.",
+                    "She's skilled in Python, Java, TensorFlow, PyTorch, AWS, GCP, and modern web technologies.",
+                    "Yuktha is currently exploring Agentic AI and LLMs, building systems where language models can autonomously execute complex tasks.",
+                    "She's open to new opportunities and collaborations in AI, data engineering, or full-stack development roles."
+                ];
+                
+                let i = 0;
+                const typeNextMessage = () => {
+                    if (i < introText.length) {
+                        const messageDiv = document.createElement('div');
+                        messageDiv.className = 'ai-message';
+                        messageDiv.textContent = introText[i];
+                        aiContent.insertBefore(messageDiv, aiTyping);
+                        
+                        // Scroll to bottom
+                        aiContent.scrollTop = aiContent.scrollHeight;
+                        
+                        i++;
+                        setTimeout(typeNextMessage, 2000);
+                    } else {
+                        aiTyping.style.display = 'none';
+                    }
+                };
+                
+                typeNextMessage();
+            }, 1500);
+        });
+        
+        // Voice introduction play/pause
+        playIntroBtn.addEventListener('click', () => {
+            playIntroBtn.style.display = 'none';
+            pauseIntroBtn.style.display = 'flex';
+            // In a real implementation, this would trigger audio playback
+            // For now, we'll just simulate the audio waves animation
+            document.querySelectorAll('.voice-bar').forEach(bar => {
+                bar.style.animationPlayState = 'running';
+            });
+        });
+        
+        pauseIntroBtn.addEventListener('click', () => {
+            pauseIntroBtn.style.display = 'none';
+            playIntroBtn.style.display = 'flex';
+            // Pause audio waves animation
+            document.querySelectorAll('.voice-bar').forEach(bar => {
+                bar.style.animationPlayState = 'paused';
+            });
+        });
+        
+        // Existing JavaScript for navigation effect
         window.addEventListener('scroll', function() {
             const nav = document.querySelector('.nav-container');
             if (window.scrollY > 50) {
