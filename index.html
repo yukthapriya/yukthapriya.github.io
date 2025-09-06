@@ -227,15 +227,16 @@
             text-align: center;
         }
 
-        /* Skills Section - IMPROVED */
+        /* Skills Section - ENHANCED */
         #skills {
             background-color: #f8fafc;
         }
 
-        .skills-container {
+        .skills-categories {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
+            margin-bottom: 40px;
         }
 
         .skill-category {
@@ -248,6 +249,7 @@
 
         .skill-category:hover {
             transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
         .skill-category h3 {
@@ -272,6 +274,8 @@
             text-align: center;
             transition: var(--transition);
             font-weight: 500;
+            position: relative;
+            overflow: hidden;
         }
 
         .skill-item:hover {
@@ -280,7 +284,7 @@
             transform: translateY(-3px);
         }
 
-        /* Experience Section - IMPROVED */
+        /* Experience Section - ENHANCED */
         #experience {
             background-color: white;
         }
@@ -468,7 +472,7 @@
             color: white;
         }
 
-        /* Publications Section - IMPROVED */
+        /* Publications Section - ENHANCED */
         #publications {
             background-color: white;
         }
@@ -485,10 +489,23 @@
             border-radius: 10px;
             box-shadow: var(--card-shadow);
             transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
 
         .publication-item:hover {
             transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .publication-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--accent);
         }
 
         .publication-title {
@@ -503,12 +520,18 @@
             font-style: italic;
             margin-bottom: 15px;
             display: block;
+            font-size: 0.95rem;
+        }
+
+        .publication-description {
+            margin-bottom: 20px;
+            color: var(--text);
         }
 
         .publication-links {
             display: flex;
             gap: 15px;
-            margin-top: 20px;
+            flex-wrap: wrap;
         }
 
         /* Contact Section */
@@ -623,7 +646,7 @@
                 font-size: 1.2rem;
             }
 
-            .skills-container {
+            .skills-categories {
                 grid-template-columns: 1fr;
             }
 
@@ -701,12 +724,12 @@
             </div>
         </section>
 
-        <!-- Skills Section - IMPROVED -->
+        <!-- Skills Section - ENHANCED -->
         <section id="skills">
             <div class="section-title">
                 <h2>Skills Summary</h2>
             </div>
-            <div class="skills-container">
+            <div class="skills-categories">
                 <div class="skill-category">
                     <h3>Programming Languages</h3>
                     <div class="skills-grid">
@@ -743,9 +766,47 @@
                     </div>
                 </div>
             </div>
+            
+            <div class="skills-categories">
+                <div class="skill-category">
+                    <h3>AI & Machine Learning</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">LLMs</div>
+                        <div class="skill-item">LangChain</div>
+                        <div class="skill-item">Computer Vision</div>
+                        <div class="skill-item">NLP</div>
+                        <div class="skill-item">Data Pipelines</div>
+                        <div class="skill-item">Model Optimization</div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Databases</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">PostgreSQL</div>
+                        <div class="skill-item">MySQL</div>
+                        <div class="skill-item">MongoDB</div>
+                        <div class="skill-item">Neo4j</div>
+                        <div class="skill-item">SQLite</div>
+                        <div class="skill-item">Redis</div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Soft Skills</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">Leadership</div>
+                        <div class="skill-item">Problem-Solving</div>
+                        <div class="skill-item">Team Collaboration</div>
+                        <div class="skill-item">Communication</div>
+                        <div class="skill-item">Time Management</div>
+                        <div class="skill-item">Adaptability</div>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <!-- Experience Section - IMPROVED -->
+        <!-- Experience Section - ENHANCED -->
         <section id="experience">
             <div class="section-title">
                 <h2>Professional Experience</h2>
@@ -766,6 +827,8 @@
                         <li>Optimized data pipelines and leveraged parallel processing techniques, reducing retrieval latency by 20%</li>
                         <li>Developed improved probabilistic image-text representations for image-text matching</li>
                         <li>Researched and fine-tuned diffusion models and large language models for cross-modal content generation</li>
+                        <li>Utilized CUDA-based acceleration in HPC environments to train and evaluate multiple models efficiently</li>
+                        <li>Contributed to the JagCoach AI assistant project by developing audio-video analysis pipelines</li>
                     </ul>
                 </div>
                 
@@ -847,7 +910,7 @@
             </div>
         </section>
 
-        <!-- Publications Section - IMPROVED -->
+        <!-- Publications Section - ENHANCED -->
         <section id="publications">
             <div class="section-title">
                 <h2>Publications</h2>
@@ -856,7 +919,7 @@
                 <div class="publication-item">
                     <div class="publication-title">Benchmarking the Robustness of Contrastive Learning Models for Medical Image-Report Retrieval under Occlusion Attacks</div>
                     <span class="publication-conference">Accepted at AAAI Workshop</span>
-                    <p>This research evaluates the resilience of contrastive learning models against occlusion attacks in medical image-text retrieval tasks.</p>
+                    <p class="publication-description">This research evaluates the resilience of contrastive learning models against occlusion attacks in medical image-text retrieval tasks, proposing novel evaluation metrics and robustness benchmarks.</p>
                     <div class="publication-links">
                         <a href="https://arxiv.org/abs/2501.09134" class="btn btn-outline">
                             <i class="ai ai-arxiv"></i> View on arXiv
@@ -870,7 +933,7 @@
                 <div class="publication-item">
                     <div class="publication-title">Improving Medical Imaging Model Calibration through Probabilistic Embedding</div>
                     <span class="publication-conference">Published at IEEE Big Data Conference</span>
-                    <p>This paper introduces a novel approach to enhance model calibration in medical imaging applications using probabilistic embedding techniques.</p>
+                    <p class="publication-description">This paper introduces a novel approach to enhance model calibration in medical imaging applications using probabilistic embedding techniques, demonstrating significant improvements in prediction reliability.</p>
                     <div class="publication-links">
                         <a href="https://ieeexplore.ieee.org/document/10825661/" class="btn btn-outline">
                             <i class="ai ai-ieee"></i> View on IEEE Xplore
