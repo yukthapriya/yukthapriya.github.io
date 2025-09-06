@@ -110,8 +110,9 @@
             border-radius: 50%;
             margin: 0 auto 30px;
             border: 4px solid rgba(255, 255, 255, 0.2);
-            background: url('photo.jpg') center/cover;
+            background: #e2e8f0 url('photo.jpg') center/cover;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            object-fit: cover;
         }
 
         .header-title {
@@ -170,9 +171,17 @@
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 50%;
+            color: white;
         }
 
         .nav-links {
@@ -565,6 +574,7 @@
             justify-content: center;
             gap: 20px;
             margin-top: 30px;
+            flex-wrap: wrap;
         }
 
         .contact-link {
@@ -685,7 +695,7 @@
     <!-- Navigation -->
     <div class="nav-container">
         <div class="container navbar">
-            <div class="logo">Yuktha Priya</div>
+            <div class="logo">YP</div>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
