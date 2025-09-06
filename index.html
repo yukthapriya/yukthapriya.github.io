@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yuktha Priya | Data Engineer & AI Specialist</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #64748b;
-            --light: #f8fafc;
-            --dark: #0f172a;
-            --accent: #06b6d4;
-            --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            --primary: #2A4B6A;
+            --primary-dark: #1A3550;
+            --secondary: #7B9EB3;
+            --accent: #D4A76A;
+            --light: #F5F7FA;
+            --dark: #1E2A38;
+            --text: #3A3A3A;
+            --text-light: #7A7A7A;
+            --card-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
             --transition: all 0.3s ease;
         }
 
@@ -25,12 +27,52 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             line-height: 1.6;
-            color: var(--dark);
+            color: var(--text);
             background-color: var(--light);
             scroll-behavior: smooth;
             overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Source Serif Pro', serif;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        h1 {
+            font-size: 3.2rem;
+        }
+
+        h2 {
+            font-size: 2.4rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text);
         }
 
         .container {
@@ -41,40 +83,6 @@
 
         section {
             padding: 80px 0;
-        }
-
-        h1, h2, h3, h4 {
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        h1 {
-            font-size: 3rem;
-        }
-
-        h2 {
-            font-size: 2.2rem;
-            position: relative;
-            padding-bottom: 15px;
-            margin-bottom: 3rem;
-        }
-
-        h2:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: var(--primary);
-        }
-
-        p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: var(--secondary);
         }
 
         /* Header */
@@ -111,12 +119,14 @@
         .header-title {
             font-size: 3rem;
             margin-bottom: 1rem;
+            color: white;
         }
 
         .header-subtitle {
             font-size: 1.5rem;
             margin-bottom: 2rem;
             opacity: 0.9;
+            color: rgba(255, 255, 255, 0.9);
         }
 
         /* Navigation */
@@ -166,7 +176,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--primary);
+            background: var(--accent);
             transition: var(--transition);
         }
 
@@ -238,7 +248,7 @@
 
         .skills-list li:before {
             content: '•';
-            color: var(--primary);
+            color: var(--accent);
             font-weight: bold;
             margin-right: 10px;
         }
@@ -272,7 +282,7 @@
         }
 
         .date {
-            color: var(--secondary);
+            color: var(--text-light);
             font-style: italic;
         }
 
@@ -298,7 +308,7 @@
             content: '→';
             position: absolute;
             left: 0;
-            color: var(--primary);
+            color: var(--accent);
             font-weight: bold;
         }
 
@@ -345,6 +355,7 @@
         .project-description {
             margin-bottom: 20px;
             flex-grow: 1;
+            color: var(--text);
         }
 
         .project-tech {
@@ -355,7 +366,7 @@
         }
 
         .tech-tag {
-            background: #e0f2fe;
+            background: #e8eff4;
             color: var(--primary-dark);
             padding: 5px 12px;
             border-radius: 20px;
@@ -416,18 +427,34 @@
             font-weight: 600;
             margin-bottom: 10px;
             font-size: 1.1rem;
+            color: var(--primary);
         }
 
         .publication-conference {
-            color: var(--secondary);
+            color: var(--text-light);
             font-style: italic;
             margin-bottom: 15px;
         }
 
         /* Contact Section */
         #contact {
-            background-color: #f8fafc;
+            background-color: var(--primary-dark);
+            color: white;
             text-align: center;
+        }
+
+        #contact h2 {
+            color: white;
+        }
+
+        #contact h2:after {
+            background: var(--accent);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        #contact p {
+            color: rgba(255, 255, 255, 0.9);
         }
 
         .contact-container {
@@ -447,17 +474,17 @@
             align-items: center;
             gap: 10px;
             padding: 12px 25px;
-            background: white;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 8px;
-            box-shadow: var(--card-shadow);
             transition: var(--transition);
             text-decoration: none;
-            color: var(--dark);
+            color: white;
+            backdrop-filter: blur(10px);
         }
 
         .contact-link:hover {
             transform: translateY(-5px);
-            color: var(--primary);
+            background: rgba(255, 255, 255, 0.2);
         }
 
         /* Footer */
