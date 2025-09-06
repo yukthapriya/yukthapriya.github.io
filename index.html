@@ -120,6 +120,13 @@
             letter-spacing: 2px;
         }
 
+        .phonetic-name {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
         .subtitle {
             font-size: 1.5rem;
             color: var(--text-secondary);
@@ -501,6 +508,25 @@
             100% { transform: translate(0); }
         }
 
+        /* Voice selection panel */
+        .voice-selector {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(10, 10, 26, 0.7);
+            border-radius: 10px;
+            border: 1px solid var(--primary);
+        }
+
+        .voice-selector select {
+            background: var(--dark);
+            color: var(--text);
+            border: 1px solid var(--primary);
+            padding: 8px 15px;
+            border-radius: 5px;
+            width: 100%;
+            margin-top: 8px;
+        }
+
         /* Responsive design */
         @media (max-width: 768px) {
             .title {
@@ -538,6 +564,7 @@
             <div class="header-content">
                 <div class="hologram-avatar"></div>
                 <h1 class="title">Yuktha Priya</h1>
+                <p class="phonetic-name">(Pronunciation: Yook-tha Pree-ya)</p>
                 <p class="subtitle">AI Researcher & Data Engineer</p>
                 
                 <div class="cyber-tags">
@@ -561,6 +588,16 @@
                     <div class="voice-bar"></div>
                 </div>
                 <p>Play my professional introduction to learn about my work and research focus</p>
+                
+                <div class="voice-selector">
+                    <label for="voice-select">Select Voice:</label>
+                    <select id="voice-select">
+                        <option value="default">Default Voice</option>
+                        <option value="female">Female Voice (Recommended)</option>
+                        <option value="male">Male Voice</option>
+                    </select>
+                </div>
+                
                 <div class="voice-controls">
                     <button class="voice-btn" id="play-intro">
                         <i class="fas fa-play"></i>
@@ -661,6 +698,7 @@
         // Voice introduction functionality
         const playIntroBtn = document.getElementById('play-intro');
         const replayIntroBtn = document.getElementById('replay-intro');
+        const voiceSelect = document.getElementById('voice-select');
         const voiceBars = document.querySelectorAll('.voice-bar');
         
         // Function to animate voice bars
@@ -675,19 +713,54 @@
             });
         }
         
-        // Function to speak the introduction
+        // Function to speak the introduction with improved pronunciation
         function speakIntroduction() {
             // Stop any ongoing speech
             window.speechSynthesis.cancel();
             
-            // Create introduction text
-            const introText = "Hello, I'm Yuktha Priya. I'm a Master's student in Computer Science passionate about advancing the frontiers of AI, data engineering, and full-stack development. My research focuses on building sophisticated cross-domain information retrieval systems using transformer-based models and optimizing large-scale AI data pipelines. I'm currently exploring Agentic AI and LLMs, building systems where language models can autonomously plan and execute complex tasks. Feel free to explore my profiles to learn more about my work.";
+            // Create introduction text with phonetic hints for better pronunciation
+            const introText = "Hello, I'm Yuktha Priya. " +
+                "I'm a Master's student in Computer Science passionate about advancing the frontiers of AI, data engineering, and full-stack development. " +
+                "My research focuses on building sophisticated cross-domain information retrieval systems using transformer-based models and optimizing large-scale AI data pipelines. " +
+                "I'm currently exploring Agentic AI and LLMs, building systems where language models can autonomously plan and execute complex tasks. " +
+                "Feel free to explore my profiles to learn more about my work.";
             
             // Create speech synthesis utterance
             const utterance = new SpeechSynthesisUtterance(introText);
-            utterance.rate = 1.0;
-            utterance.pitch = 1.0;
+            
+            // Configure voice based on selection
+            const voiceType = voiceSelect.value;
+            
+            if (voiceType === 'female') {
+                // Try to find a female voice
+                const voices = window.speechSynthesis.getVoices();
+                const femaleVoice = voices.find(voice => voice.name.includes('Female') || voice.name.includes('Woman') || voice.name.includes('Zira'));
+                
+                if (femaleVoice) {
+                    utterance.voice = femaleVoice;
+                }
+                utterance.rate = 0.95;
+                utterance.pitch = 1.1;
+            } else if (voiceType === 'male') {
+                // Try to find a male voice
+                const voices = window.speechSynthesis.getVoices();
+                const maleVoice = voices.find(voice => voice.name.includes('Male') || voice.name.includes('Man') || voice.name.includes('David'));
+                
+                if (maleVoice) {
+                    utterance.voice = maleVoice;
+                }
+                utterance.rate = 0.9;
+                utterance.pitch = 0.9;
+            } else {
+                // Default settings
+                utterance.rate = 1.0;
+                utterance.pitch = 1.0;
+            }
+            
             utterance.volume = 1;
+            
+            // Add a small pause before the name for better pronunciation
+            utterance.text = "Hello, I'm  Yuktha Priya. " + introText.substring(16);
             
             // Start animation when speech begins
             utterance.onstart = function() {
@@ -701,8 +774,34 @@
                 playIntroBtn.innerHTML = '<i class="fas fa-play"></i>';
             };
             
+            // Handle speech errors
+            utterance.onerror = function() {
+                animateBars(false);
+                playIntroBtn.innerHTML = '<i class="fas fa-play"></i>';
+                alert('Speech synthesis failed. Please try again.');
+            };
+            
             // Speak the text
             window.speechSynthesis.speak(utterance);
+        }
+        
+        // Load available voices
+        function loadVoices() {
+            // Chrome needs time to load voices
+            if (speechSynthesis.getVoices().length === 0) {
+                speechSynthesis.addEventListener('voiceschanged', function() {
+                    const voices = speechSynthesis.getVoices();
+                    populateVoiceList(voices);
+                });
+            } else {
+                const voices = speechSynthesis.getVoices();
+                populateVoiceList(voices);
+            }
+        }
+        
+        // Populate voice list if needed (for future expansion)
+        function populateVoiceList(voices) {
+            console.log('Available voices:', voices);
         }
         
         // Play/Pause introduction
@@ -726,11 +825,14 @@
             speakIntroduction();
         });
         
-        // Automatically play introduction when page loads
+        // Load voices when page loads
         window.addEventListener('load', () => {
+            loadVoices();
+            
             // Wait a moment before starting the introduction
             setTimeout(() => {
-                // speakIntroduction(); // Uncomment this line to enable auto-play
+                // Uncomment the line below to enable auto-play
+                // speakIntroduction();
             }, 1000);
         });
     </script>
