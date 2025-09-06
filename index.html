@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yuktha Priya | AI Visionary 2040</title>
+    <title>Yuktha Priya | AI Visionary 2050</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Exo+2:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <style>
-        /* Your existing CSS remains unchanged */
         :root {
             --primary: #00f7ff;
             --secondary: #ff00d6;
             --accent: #00ff9d;
+            --accent2: #ffcc00;
             --dark: #0a0a1a;
             --darker: #050510;
             --text: #ffffff;
             --text-secondary: #a3a3c2;
+            --grid-color: rgba(0, 247, 255, 0.1);
         }
 
         * {
@@ -30,16 +31,87 @@
             color: var(--text);
             min-height: 100vh;
             overflow-x: hidden;
+            line-height: 1.6;
             background-image: 
-                radial-gradient(circle at 15% 50%, rgba(0, 247, 255, 0.05) 0%, transparent 20%),
-                radial-gradient(circle at 85% 30%, rgba(255, 0, 214, 0.05) 0%, transparent 20%),
-                radial-gradient(circle at 50% 80%, rgba(0, 255, 157, 0.05) 0%, transparent 20%);
+                linear-gradient(rgba(5, 5, 16, 0.9), rgba(5, 5, 16, 0.9)),
+                url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h100v100H0z' fill='none'/%3E%3Cpath d='M0 0v100M20 0v100M40 0v100M60 0v100M80 0v100M100 0v100M0 0h100M0 20h100M0 40h100M0 60h100M0 80h100M0 100h100' stroke='%2300f7ff' stroke-width='0.5' stroke-opacity='0.2' fill='none'/%3E%3C/svg%3E");
+        }
+
+        .cyber-border {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .cyber-border-top {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), var(--secondary), transparent);
+            box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
+            animation: borderPulse 3s infinite alternate;
+        }
+
+        .cyber-border-bottom {
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--secondary), var(--primary), transparent);
+            box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--primary);
+            animation: borderPulse 3s infinite alternate-reverse;
+        }
+
+        .cyber-border-left {
+            top: 0;
+            left: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(transparent, var(--primary), var(--accent), transparent);
+            box-shadow: 0 0 10px var(--primary), 0 0 20px var(--accent);
+            animation: borderPulseVertical 4s infinite alternate;
+        }
+
+        .cyber-border-right {
+            top: 0;
+            right: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(transparent, var(--accent), var(--primary), transparent);
+            box-shadow: 0 0 10px var(--accent), 0 0 20px var(--primary);
+            animation: borderPulseVertical 4s infinite alternate-reverse;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cyber-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 0;
+            perspective: 500px;
+            transform-style: preserve-3d;
+            pointer-events: none;
+        }
+
+        .cyber-line {
+            position: absolute;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
+            animation: lineAnimation 10s infinite linear;
         }
 
         .header {
@@ -50,15 +122,21 @@
             overflow: hidden;
         }
 
-        .header::before {
-            content: '';
+        .particles {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, var(--dark) 0%, transparent 100%);
             z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--primary);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: particleFloat 15s infinite linear;
         }
 
         .header-content {
@@ -69,83 +147,118 @@
         }
 
         .hologram-avatar {
-            width: 220px;
-            height: 220px;
+            width: 240px;
+            height: 240px;
             margin: 0 auto 30px;
             border-radius: 50%;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            animation: hologramFloat 6s ease-in-out infinite;
+            animation: hologramFloat 6s ease-in-out infinite, rotate 20s infinite linear;
             box-shadow: 
                 0 0 50px rgba(0, 247, 255, 0.5),
-                0 0 100px rgba(0, 247, 255, 0.3);
+                0 0 100px rgba(0, 247, 255, 0.3),
+                inset 0 0 50px rgba(0, 0, 0, 0.8);
+            transition: all 0.5s ease;
         }
 
         .hologram-avatar::before {
             content: '';
             position: absolute;
-            inset: 5px;
+            inset: 8px;
             border-radius: 50%;
-            background: var(--darker) url('Photo.jpg') center/cover;
+            background: var(--darker) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><defs><radialGradient id="grad" cx="50%" cy="50%" r="50%" fx="30%" fy="30%"><stop offset="0%" stop-color="%2300f7ff" stop-opacity="0.8" /><stop offset="100%" stop-color="%2300f7ff" stop-opacity="0.2" /></radialGradient></defs><circle cx="100" cy="100" r="90" fill="url(%23grad)" /><text x="50%" y="50%" font-family="Arial" font-size="20" fill="%23ffffff" text-anchor="middle" dominant-baseline="middle">Yuktha Priya</text></svg>') center/cover;
             background-blend-mode: screen;
             z-index: 1;
+            border: 1px solid var(--primary);
+            box-shadow: inset 0 0 20px rgba(0, 247, 255, 0.5);
         }
 
         .hologram-avatar::after {
             content: '';
             position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            background: linear-gradient(45deg, var(--primary), transparent, var(--secondary));
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+            background: linear-gradient(45deg, var(--primary), transparent, var(--secondary), transparent, var(--accent));
             border-radius: 50%;
             z-index: 0;
             animation: rotate 10s linear infinite;
             opacity: 0.7;
+            filter: blur(20px);
+        }
+
+        .hologram-avatar:hover {
+            transform: scale(1.05) rotate(5deg);
+            box-shadow: 
+                0 0 70px rgba(0, 247, 255, 0.7),
+                0 0 120px rgba(0, 247, 255, 0.4),
+                0 0 200px rgba(0, 247, 255, 0.2),
+                inset 0 0 60px rgba(0, 0, 0, 0.8);
         }
 
         .title {
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent2));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+            animation: titleGlow 3s infinite alternate;
         }
 
         .subtitle {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: var(--text-secondary);
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             font-family: 'Share Tech Mono', monospace;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .subtitle::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            animation: subtitleLine 3s infinite;
         }
 
         .cyber-tags {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 2rem;
+            gap: 20px;
+            margin-top: 3rem;
         }
 
         .cyber-tag {
-            padding: 10px 25px;
+            padding: 12px 30px;
             border: 1px solid var(--primary);
             border-radius: 30px;
-            font-size: 1rem;
+            font-size: 1.1rem;
             background: rgba(0, 247, 255, 0.1);
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
             cursor: pointer;
             position: relative;
             overflow: hidden;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 0 10px rgba(0, 247, 255, 0.3);
         }
 
         .cyber-tag::before {
@@ -164,17 +277,17 @@
         }
 
         .cyber-tag:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 247, 255, 0.3);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 5px 20px rgba(0, 247, 255, 0.5);
+            background: rgba(0, 247, 255, 0.15);
         }
 
-        .voice-intro {
-            text-align: center;
-            padding: 60px 0;
+        .section {
+            padding: 100px 0;
             position: relative;
         }
 
-        .voice-intro::before {
+        .section::before {
             content: '';
             position: absolute;
             top: 0;
@@ -184,27 +297,96 @@
             background: linear-gradient(90deg, transparent, var(--primary), transparent);
         }
 
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 60px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            position: relative;
+            display: inline-block;
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 0 0 15px rgba(0, 247, 255, 0.5);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transform-origin: left;
+            animation: sectionLine 3s infinite;
+        }
+
         .voice-player {
-            max-width: 500px;
+            max-width: 600px;
             margin: 40px auto;
             background: rgba(10, 10, 26, 0.7);
-            padding: 30px;
+            padding: 40px;
             border-radius: 20px;
             border: 1px solid var(--primary);
             backdrop-filter: blur(10px);
-            box-shadow: 0 10px 30px rgba(0, 247, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 247, 255, 0.2),
+                        inset 0 0 20px rgba(0, 247, 255, 0.1);
+            position: relative;
+            overflow: hidden;
         }
+
+        .voice-player::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent), var(--primary));
+            z-index: -1;
+            border-radius: 20px;
+            animation: borderRotate 3s linear infinite;
+        }
+
+        .voice-wave {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+            margin-bottom: 30px;
+            gap: 6px;
+        }
+
+        .voice-bar {
+            width: 8px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 4px;
+            animation: wave 1.5s infinite ease-in-out;
+            transform-origin: bottom;
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        .voice-bar:nth-child(2) { animation-delay: 0.2s; }
+        .voice-bar:nth-child(3) { animation-delay: 0.4s; }
+        .voice-bar:nth-child(4) { animation-delay: 0.6s; }
+        .voice-bar:nth-child(5) { animation-delay: 0.8s; }
+        .voice-bar:nth-child(6) { animation-delay: 1.0s; }
+        .voice-bar:nth-child(7) { animation-delay: 1.2s; }
 
         .voice-controls {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-top: 30px;
+            gap: 30px;
+            margin-top: 40px;
         }
 
         .voice-btn {
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             background: linear-gradient(45deg, var(--primary), var(--secondary));
             color: var(--dark);
@@ -216,7 +398,8 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
+            box-shadow: 0 0 20px rgba(0, 247, 255, 0.5);
         }
 
         .voice-btn::before {
@@ -243,49 +426,27 @@
 
         .voice-btn:hover {
             transform: scale(1.1);
-            box-shadow: 0 0 25px rgba(0, 247, 255, 0.7);
+            box-shadow: 0 0 30px rgba(0, 247, 255, 0.8);
         }
-
-        .voice-wave {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 80px;
-            margin-bottom: 20px;
-            gap: 4px;
-        }
-
-        .voice-bar {
-            width: 5px;
-            height: 30px;
-            background: var(--primary);
-            border-radius: 3px;
-            animation: wave 1.5s infinite ease-in-out;
-            transform-origin: bottom;
-        }
-
-        .voice-bar:nth-child(2) { animation-delay: 0.2s; }
-        .voice-bar:nth-child(3) { animation-delay: 0.4s; }
-        .voice-bar:nth-child(4) { animation-delay: 0.6s; }
-        .voice-bar:nth-child(5) { animation-delay: 0.8s; }
 
         .profile-links {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin: 60px 0;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin: 80px 0;
         }
 
         .profile-link-card {
             background: rgba(10, 10, 26, 0.6);
-            padding: 30px;
-            border-radius: 15px;
+            padding: 40px 30px;
+            border-radius: 20px;
             text-align: center;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(0, 247, 255, 0.2);
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
 
         .profile-link-card::before {
@@ -306,22 +467,23 @@
         }
 
         .profile-link-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 247, 255, 0.2);
+            transform: translateY(-15px) rotate(2deg);
+            box-shadow: 0 20px 40px rgba(0, 247, 255, 0.3);
             border-color: var(--primary);
         }
 
         .profile-icon {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             background: linear-gradient(45deg, var(--primary), var(--secondary));
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 2rem;
+            margin: 0 auto 25px;
+            font-size: 2.5rem;
             position: relative;
+            transition: all 0.4s ease;
         }
 
         .profile-icon::after {
@@ -340,91 +502,75 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            transition: all 0.4s ease;
+        }
+
+        .profile-link-card:hover .profile-icon {
+            transform: rotate(15deg) scale(1.1);
+            box-shadow: 0 0 30px rgba(0, 247, 255, 0.5);
         }
 
         .profile-link-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
             color: var(--primary);
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
         }
 
         .profile-link-card p {
             color: var(--text-secondary);
-            margin-bottom: 20px;
-            font-size: 1rem;
-            line-height: 1.6;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            line-height: 1.7;
         }
 
         .profile-link-btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 12px 25px;
+            gap: 12px;
+            padding: 15px 30px;
             background: linear-gradient(45deg, var(--primary), var(--secondary));
             color: var(--dark);
             border-radius: 30px;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
-            font-size: 0.9rem;
+            font-size: 1rem;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .profile-link-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 247, 255, 0.4);
-        }
-
-        .work-highlights {
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            background: linear-gradient(45deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-transform: uppercase;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 247, 255, 0.5);
             letter-spacing: 2px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
         }
 
         .highlights-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
         }
 
         .highlight-card {
             background: rgba(10, 10, 26, 0.6);
-            padding: 30px;
-            border-radius: 15px;
+            padding: 40px 30px;
+            border-radius: 20px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(0, 247, 255, 0.2);
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             text-align: left;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
 
         .highlight-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 247, 255, 0.2);
+            transform: translateY(-10px) rotate(-1deg);
+            box-shadow: 0 15px 35px rgba(0, 247, 255, 0.3);
             border-color: var(--primary);
         }
 
@@ -439,43 +585,101 @@
         }
 
         .highlight-icon {
-            font-size: 2rem;
-            margin-bottom: 20px;
+            font-size: 2.5rem;
+            margin-bottom: 25px;
             color: var(--primary);
+            text-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+            transition: all 0.4s ease;
+        }
+
+        .highlight-card:hover .highlight-icon {
+            transform: scale(1.2) rotate(10deg);
         }
 
         .highlight-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
             color: var(--text);
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
         }
 
         .highlight-card p {
             color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 20px;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
         }
 
         .highlight-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 12px;
         }
 
         .highlight-tag {
-            padding: 5px 15px;
+            padding: 8px 18px;
             background: rgba(0, 247, 255, 0.1);
             border: 1px solid var(--primary);
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             color: var(--primary);
+            font-family: 'Share Tech Mono', monospace;
+            transition: all 0.3s ease;
         }
 
+        .highlight-tag:hover {
+            background: rgba(0, 247, 255, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 247, 255, 0.2);
+        }
+
+        .publication-conference {
+            color: var(--accent);
+            font-style: italic;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .publication-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .publication-link {
+            padding: 10px 20px;
+            background: rgba(0, 247, 255, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .publication-link:hover {
+            background: rgba(0, 247, 255, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 247, 255, 0.2);
+        }
+
+        .pronunciation-guide {
+            margin-top: 20px;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        /* Animations */
         @keyframes hologramFloat {
             0%, 100% { transform: translateY(0) rotate(0deg); }
-            25% { transform: translateY(-10px) rotate(1deg); }
-            50% { transform: translateY(-5px) rotate(-1deg); }
-            75% { transform: translateY(-10px) rotate(1deg); }
+            25% { transform: translateY(-15px) rotate(2deg); }
+            50% { transform: translateY(-8px) rotate(-2deg); }
+            75% { transform: translateY(-15px) rotate(2deg); }
         }
 
         @keyframes rotate {
@@ -485,25 +689,95 @@
 
         @keyframes wave {
             0%, 100% { transform: scaleY(1); }
-            50% { transform: scaleY(2.5); }
+            50% { transform: scaleY(3); }
         }
 
-        @keyframes glitch {
-            0% { transform: translate(0); }
-            20% { transform: translate(-5px, 5px); }
-            40% { transform: translate(-5px, -5px); }
-            60% { transform: translate(5px, 5px); }
-            80% { transform: translate(5px, -5px); }
-            100% { transform: translate(0); }
+        @keyframes titleGlow {
+            0% { text-shadow: 0 0 10px rgba(0, 247, 255, 0.5); }
+            100% { text-shadow: 0 0 20px rgba(0, 247, 255, 0.8), 0 0 30px rgba(0, 247, 255, 0.6), 0 0 40px rgba(0, 247, 255, 0.4); }
+        }
+
+        @keyframes subtitleLine {
+            0%, 100% { opacity: 0.5; width: 0; }
+            50% { opacity: 1; width: 100%; }
+        }
+
+        @keyframes sectionLine {
+            0% { transform: scaleX(0); transform-origin: left; }
+            50% { transform: scaleX(1); transform-origin: left; }
+            51% { transform-origin: right; }
+            100% { transform: scaleX(0); transform-origin: right; }
+        }
+
+        @keyframes borderPulse {
+            0% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes borderPulseVertical {
+            0% { opacity: 0.2; }
+            <html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Your content here -->
+</body>
+</html>100% { opacity: 0.7; }
+        }
+
+        @keyframes borderRotate {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        @keyframes particleFloat {
+            0% { transform: translateY(0) translateX(0) rotate(0deg); }
+            100% { transform: translateY(-100vh) translateX(100vw) rotate(360deg); }
+        }
+
+        @keyframes lineAnimation {
+            0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) translateX(100vw) scale(2); opacity: 0; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .title {
+                font-size: 3.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.5rem;
+            }
+            
+            .profile-links {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
             .title {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
             
             .subtitle {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
             }
             
             .cyber-tags {
@@ -511,22 +785,59 @@
                 align-items: center;
             }
             
-            .profile-links {
-                grid-template-columns: 1fr;
-            }
-            
-            .highlights-grid {
-                grid-template-columns: 1fr;
+            .cyber-tag {
+                width: 100%;
+                text-align: center;
             }
             
             .voice-btn {
-                width: 60px;
-                height: 60px;
+                width: 70px;
+                height: 70px;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .publication-links {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .hologram-avatar {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .voice-player {
+                padding: 30px 20px;
             }
         }
     </style>
 </head>
 <body>
+    <div class="cyber-border cyber-border-top"></div>
+    <div class="cyber-border cyber-border-bottom"></div>
+    <div class="cyber-border cyber-border-left"></div>
+    <div class="cyber-border cyber-border-right"></div>
+    
+    <div class="cyber-grid"></div>
+    
+    <div class="particles" id="particles"></div>
+    
     <div class="container">
         <header class="header">
             <div class="header-content">
@@ -543,7 +854,7 @@
             </div>
         </header>
 
-        <section class="voice-intro">
+        <section class="section">
             <h2 class="section-title">Voice Introduction</h2>
             <div class="voice-player">
                 <div class="voice-wave">
@@ -552,8 +863,11 @@
                     <div class="voice-bar"></div>
                     <div class="voice-bar"></div>
                     <div class="voice-bar"></div>
+                    <div class="voice-bar"></div>
+                    <div class="voice-bar"></div>
                 </div>
                 <p>Play my professional introduction to learn about my work and research focus</p>
+                <p class="pronunciation-guide">Pronunciation: Yook-tha Pree-ya Ma-su-pa-li</p>
                 
                 <div class="voice-controls">
                     <button class="voice-btn" id="play-intro">
@@ -566,7 +880,7 @@
             </div>
         </section>
 
-        <section>
+        <section class="section">
             <h2 class="section-title">Digital Presence</h2>
             <div class="profile-links">
                 <div class="profile-link-card">
@@ -593,18 +907,18 @@
                 
                 <div class="profile-link-card">
                     <div class="profile-icon">
-                        <i class="ai ai-google-scholar"></i>
+                        <i class="fas fa-graduation-cap"></i>
                     </div>
                     <h3>Google Scholar</h3>
                     <p>Review my research publications, citations, and academic contributions</p>
                     <a href="https://scholar.google.com/citations?hl=en&user=UkX-bOYAAAAJ" class="profile-link-btn">
-                        <i class="ai ai-google-scholar"></i> View Profile
+                        <i class="fas fa-graduation-cap"></i> View Profile
                     </a>
                 </div>
             </div>
         </section>
 
-        <section class="work-highlights">
+        <section class="section">
             <h2 class="section-title">Research Focus</h2>
             <div class="highlights-grid">
                 <div class="highlight-card">
@@ -647,6 +961,80 @@
                 </div>
             </div>
         </section>
+
+        <section class="section">
+            <h2 class="section-title">Publications</h2>
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <div class="highlight-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Benchmarking the Robustness of Contrastive Learning Models for Medical Image-Report Retrieval under Occlusion Attacks</h3>
+                    <p class="publication-conference">Accepted at AAAI Workshop</p>
+                    <p>This research evaluates the resilience of contrastive learning models against occlusion attacks in medical image-text retrieval tasks, proposing novel evaluation metrics and robustness benchmarks.</p>
+                    <div class="publication-links">
+                        <a href="#" class="publication-link">View on arXiv</a>
+                        <a href="#" class="publication-link">View on ResearchGate</a>
+                    </div>
+                </div>
+                
+                <div class="highlight-card">
+                    <div class="highlight-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Improving Medical Imaging Model Calibration through Probabilistic Embedding</h3>
+                    <p class="publication-conference">Published at IEEE Big Data Conference</p>
+                    <p>This paper introduces a novel approach to enhance model calibration in medical imaging applications using probabilistic embedding techniques, demonstrating significant improvements in prediction reliability.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Projects</h2>
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <div class="highlight-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Rust System Programming Vulnerabilities Detection</h3>
+                    <p>Developed a system to detect vulnerabilities in Rust programming using machine learning and static analysis.</p>
+                    <div class="highlight-tags">
+                        <span class="highlight-tag">Rust</span>
+                        <span class="highlight-tag">Machine Learning</span>
+                        <span class="highlight-tag">Security</span>
+                    </div>
+                    <a href="#" class="publication-link">View on GitHub</a>
+                </div>
+                
+                <div class="highlight-card">
+                    <div class="highlight-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>University Recommendation System</h3>
+                    <p>Used Neo4j's graph database and KNN algorithm to generate personalized university recommendations.</p>
+                    <div class="highlight-tags">
+                        <span class="highlight-tag">Neo4j</span>
+                        <span class="highlight-tag">Machine Learning</span>
+                        <span class="highlight-tag">Flask</span>
+                    </div>
+                    <a href="#" class="publication-link">View on GitHub</a>
+                </div>
+                
+                <div class="highlight-card">
+                    <div class="highlight-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Healthcare Monitoring System</h3>
+                    <p>Developed a web application for public healthcare, focusing on diabetes prediction with NLP and classification algorithms.</p>
+                    <div class="highlight-tags">
+                        <span class="highlight-tag">NLP</span>
+                        <span class="highlight-tag">JavaScript</span>
+                        <span class="highlight-tag">SQLite</span>
+                    </div>
+                    <a href="#" class="publication-link">View on GitHub</a>
+                </div>
+            </div>
+        </section>
     </div>
 
     <script>
@@ -667,6 +1055,46 @@
             });
         }
         
+        // Function to find the best available female voice
+        function findFemaleVoice() {
+            const voices = speechSynthesis.getVoices();
+            
+            // Try to find the most natural-sounding female voice
+            const preferredVoices = [
+                'Samantha', // macOS
+                'Karen', // macOS Australian
+                'Tessa', // macOS South African
+                'Veena', // Indian English
+                'Fiona', // Scottish English
+                'Moira', // Irish English
+                'Microsoft Zira Desktop', // Windows
+                'Google UK English Female', // Chrome OS
+                'Microsoft Hazel Desktop' // Windows UK
+            ];
+            
+            // First try to find preferred voices
+            for (const voiceName of preferredVoices) {
+                const voice = voices.find(v => v.name.includes(voiceName));
+                if (voice) return voice;
+            }
+            
+            // Then try to find any female voice
+            const femaleVoice = voices.find(voice => 
+                voice.name.includes('Female') || 
+                voice.name.includes('Woman') || 
+                voice.name.includes('Zira') || 
+                voice.name.includes('Samantha') ||
+                voice.name.includes('Karen') ||
+                voice.name.includes('Tessa') ||
+                voice.name.includes('Veena') ||
+                voice.name.includes('Fiona') ||
+                voice.name.includes('Moira') ||
+                voice.name.includes('Hazel')
+            );
+            
+            return femaleVoice || null;
+        }
+        
         // Function to speak the introduction with female voice
         function speakIntroduction() {
             // Stop any ongoing speech
@@ -674,7 +1102,7 @@
             
             // Create introduction text with phonetic spelling for name
             const introText = "Hello, I'm Yuktha Priya Masupalli. " +
-                "That's pronounced Yuuk-tha Priya Ma-su-pa-li. " +
+                "That's pronounced Yook-tha Pree-ya Ma-su-pa-li. " +
                 "I'm a Master's student in Computer Science passionate about advancing the frontiers of AI, data engineering, and full-stack development. " +
                 "My research focuses on building sophisticated cross-domain information retrieval systems using transformer-based models and optimizing large-scale AI data pipelines. " +
                 "I'm currently exploring Agentic AI and LLMs, building systems where language models can autonomously plan and execute complex tasks. " +
@@ -684,18 +1112,16 @@
             const utterance = new SpeechSynthesisUtterance(introText);
             
             // Configure for female voice
-            const voices = window.speechSynthesis.getVoices();
-            const femaleVoice = voices.find(voice => 
-                voice.name.includes('Female') || 
-                voice.name.includes('Woman') || 
-                voice.name.includes('Zira') || 
-                voice.name.toLowerCase().includes('samantha') ||
-                voice.name.toLowerCase().includes('tessa')
-            );
+            const femaleVoice = findFemaleVoice();
             
             if (femaleVoice) {
                 utterance.voice = femaleVoice;
+                console.log("Using voice: ", femaleVoice.name);
+            } else {
+                console.log("No specific female voice found, using default");
             }
+            
+            // Configure for more natural speech
             utterance.rate = 0.95;
             utterance.pitch = 1.1;
             utterance.volume = 1;
@@ -758,9 +1184,69 @@
             speakIntroduction();
         });
         
+        // Create particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random properties
+                const size = Math.random() * 5 + 2;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const delay = Math.random() * 15;
+                const duration = Math.random() * 20 + 10;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}vw`;
+                particle.style.top = `${posY}vh`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                
+                // Random color from theme
+                const colors = ['#00f7ff', '#ff00d6', '#00ff9d', '#ffcc00'];
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.background = randomColor;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Create cyber lines
+        function createCyberLines() {
+            const grid = document.querySelector('.cyber-grid');
+            const lineCount = 5;
+            
+            for (let i = 0; i < lineCount; i++) {
+                const line = document.createElement('div');
+                line.classList.add('cyber-line');
+                
+                // Random properties
+                const width = Math.random() * 3 + 1;
+                const height = Math.random() * 100 + 50;
+                const posX = Math.random() * 100;
+                const delay = Math.random() * 5;
+                const duration = Math.random() * 15 + 10;
+                
+                line.style.width = `${width}px`;
+                line.style.height = `${height}px`;
+                line.style.left = `${posX}%`;
+                line.style.animationDelay = `${delay}s`;
+                line.style.animationDuration = `${duration}s`;
+                
+                grid.appendChild(line);
+            }
+        }
+        
         // Load voices when page loads
         window.addEventListener('load', () => {
             loadVoices();
+            createParticles();
+            createCyberLines();
             
             // Wait a moment before starting the introduction
             setTimeout(() => {
