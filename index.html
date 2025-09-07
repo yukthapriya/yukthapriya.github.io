@@ -521,38 +521,6 @@
             color: var(--text-secondary);
             font-style: italic;
         }
-
-        .voice-selector {
-            margin-top: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        select {
-            background: rgba(10, 10, 26, 0.7);
-            color: var(--text);
-            border: 1px solid var(--primary);
-            padding: 10px 15px;
-            border-radius: 20px;
-            width: 100%;
-            max-width: 300px;
-        }
-
-        .voice-sample {
-            margin-top: 10px;
-            padding: 8px 15px;
-            background: rgba(0, 247, 255, 0.1);
-            border: 1px solid var(--primary);
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .voice-sample:hover {
-            background: rgba(0, 247, 255, 0.2);
-        }
     </style>
 </head>
 <body>
@@ -592,12 +560,6 @@
                     <button class="voice-btn" id="replay-intro">
                         <i class="fas fa-redo"></i>
                     </button>
-                </div>
-
-                <div class="voice-selector">
-                    <label for="voice-select">Select Voice:</label>
-                    <select id="voice-select"></select>
-                    <div class="voice-sample" id="test-voice">Test Selected Voice</div>
                 </div>
             </div>
         </section>
@@ -690,11 +652,6 @@
         const playIntroBtn = document.getElementById('play-intro');
         const replayIntroBtn = document.getElementById('replay-intro');
         const voiceBars = document.querySelectorAll('.voice-bar');
-        const voiceSelect = document.getElementById('voice-select');
-        const testVoiceBtn = document.getElementById('test-voice');
-        
-        let voices = [];
-        let selectedVoice = null;
         let currentUtterance = null;
         
         // Function to animate voice bars
@@ -709,15 +666,30 @@
             });
         }
         
-        // Function to populate voice options
-        function populateVoiceList() {
-            voices = speechSynthesis.getVoices();
+        // Function to find the best female voice
+        function findFemaleVoice() {
+            const voices = speechSynthesis.getVoices();
+            // Prefer these voices in order of preference
+            const preferredVoices = [
+                'Google UK English Female',
+                'Microsoft Hazel Desktop',
+                'Samantha',
+                'Karen',
+                'Tessa',
+                'Veena',
+                'Fiona',
+                'Moira',
+                'Microsoft Zira Desktop'
+            ];
             
-            // Clear existing options
-            voiceSelect.innerHTML = '';
+            // First try to find preferred voices
+            for (const voiceName of preferredVoices) {
+                const voice = voices.find(v => v.name === voiceName);
+                if (voice) return voice;
+            }
             
-            // Filter for female voices and add them to the dropdown
-            const femaleVoices = voices.filter(voice => 
+            // If no preferred voices found, look for any female voice
+            const femaleVoice = voices.find(voice => 
                 voice.name.includes('Female') || 
                 voice.name.includes('Woman') || 
                 voice.name.includes('Zira') || 
@@ -727,53 +699,59 @@
                 voice.name.includes('Veena') ||
                 voice.name.includes('Fiona') ||
                 voice.name.includes('Moira') ||
-                voice.name.includes('Hazel') ||
-                voice.name.includes('Alice') ||
-                voice.name.includes('Laura') ||
-                voice.name.includes('Emily')
+                voice.name.includes('Hazel')
             );
             
-            // Add female voices to the dropdown
-            femaleVoices.forEach(voice => {
-                const option = document.createElement('option');
-                option.value = voice.name;
-                option.textContent = `${voice.name} (${voice.lang})`;
-                voiceSelect.appendChild(option);
-            });
-            
-            // Select the first female voice by default
-            if (femaleVoices.length > 0) {
-                selectedVoice = femaleVoices[0];
-                voiceSelect.value = femaleVoices[0].name;
-            }
+            return femaleVoice || voices[0]; // Return first available voice if no female found
         }
         
-        // Function to speak text with selected voice
-        function speakText(text, onStart, onEnd) {
+        // Function to speak the introduction with female voice
+        function speakIntroduction() {
             // Stop any ongoing speech
             if (currentUtterance) {
                 window.speechSynthesis.cancel();
             }
             
-            // Create speech synthesis utterance
-            currentUtterance = new SpeechSynthesisUtterance(text);
+            // Create introduction text with phonetic spelling for name
+            const introText = "Hello, I'm Yuktha Priya Masupalli. " +
+                "I'm a Master's student in Computer Science passionate about advancing the frontiers of AI, data engineering, and full-stack development. " +
+                "My research focuses on building sophisticated cross-domain information retrieval systems using transformer-based models and optimizing large-scale AI data pipelines. " +
+                "I'm currently exploring Agentic AI and LLMs, building systems where language models can autonomously plan and execute complex tasks. " +
+                "Feel free to explore my profiles to learn more about my work.";
             
-            // Configure voice
-            if (selectedVoice) {
-                currentUtterance.voice = selectedVoice;
+            // Create speech synthesis utterance
+            currentUtterance = new SpeechSynthesisUtterance(introText);
+            
+            // Configure for female voice
+            const femaleVoice = findFemaleVoice();
+            
+            if (femaleVoice) {
+                currentUtterance.voice = femaleVoice;
+                console.log("Using voice: ", femaleVoice.name);
             }
             
             currentUtterance.rate = 0.95;
             currentUtterance.pitch = 1.1;
             currentUtterance.volume = 1;
             
-            // Set up event handlers
-            if (onStart) currentUtterance.onstart = onStart;
-            if (onEnd) currentUtterance.onend = onEnd;
+            // Start animation when speech begins
+            currentUtterance.onstart = function() {
+                animateBars(true);
+                playIntroBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            };
             
+            // Stop animation when speech ends
+            currentUtterance.onend = function() {
+                animateBars(false);
+                playIntroBtn.innerHTML = '<i class="fas fa-play"></i>';
+                currentUtterance = null;
+            };
+            
+            // Handle speech errors
             currentUtterance.onerror = function() {
                 animateBars(false);
                 playIntroBtn.innerHTML = '<i class="fas fa-play"></i>';
+                alert('Speech synthesis failed. Please try again.');
                 currentUtterance = null;
             };
             
@@ -781,35 +759,21 @@
             window.speechSynthesis.speak(currentUtterance);
         }
         
-        // Function to speak the introduction
-        function speakIntroduction() {
-            const introText = "Hello, I'm Yuktha Priya Masupalli. " +
-                "I'm a Master's student in Computer Science passionate about advancing the frontiers of AI, data engineering, and full-stack development. " +
-                "My research focuses on building sophisticated cross-domain information retrieval systems using transformer-based models and optimizing large-scale AI data pipelines. " +
-                "I'm currently exploring Agentic AI and LLMs, building systems where language models can autonomously plan and execute complex tasks. " +
-                "Feel free to explore my profiles to learn more about my work.";
-            
-            speakText(
-                introText,
-                function() {
-                    animateBars(true);
-                    playIntroBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                },
-                function() {
-                    animateBars(false);
-                    playIntroBtn.innerHTML = '<i class="fas fa-play"></i>';
-                    currentUtterance = null;
-                }
-            );
+        // Load available voices
+        function loadVoices() {
+            // Chrome needs time to load voices
+            if (speechSynthesis.getVoices().length === 0) {
+                speechSynthesis.addEventListener('voiceschanged', function() {
+                    const voices = speechSynthesis.getVoices();
+                    console.log('Available voices:', voices);
+                });
+            } else {
+                const voices = speechSynthesis.getVoices();
+                console.log('Available voices:', voices);
+            }
         }
         
-        // Function to test the selected voice
-        function testSelectedVoice() {
-            const testText = "Hello, this is a test of the selected voice for Yuktha Priya.";
-            speakText(testText);
-        }
-        
-        // Event listeners
+        // Play/Pause introduction
         playIntroBtn.addEventListener('click', () => {
             if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
                 window.speechSynthesis.pause();
@@ -824,26 +788,21 @@
             }
         });
         
+        // Replay introduction
         replayIntroBtn.addEventListener('click', () => {
             window.speechSynthesis.cancel();
             speakIntroduction();
         });
         
-        voiceSelect.addEventListener('change', () => {
-            const selectedVoiceName = voiceSelect.value;
-            selectedVoice = voices.find(voice => voice.name === selectedVoiceName);
-        });
-        
-        testVoiceBtn.addEventListener('click', testSelectedVoice);
-        
-        // Initialize voices when page loads
+        // Load voices when page loads
         window.addEventListener('load', () => {
-            // Chrome needs time to load voices
-            if (speechSynthesis.getVoices().length === 0) {
-                speechSynthesis.addEventListener('voiceschanged', populateVoiceList);
-            } else {
-                populateVoiceList();
-            }
+            loadVoices();
+            
+            // Wait a moment before starting the introduction
+            setTimeout(() => {
+                // Uncomment the line below to enable auto-play
+                // speakIntroduction();
+            }, 1000);
         });
     </script>
 </body>
