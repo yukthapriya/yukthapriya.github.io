@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <style>
+        /* Your existing CSS remains unchanged */
         :root {
             --primary: #00f7ff;
             --secondary: #ff00d6;
@@ -88,7 +89,7 @@
             position: absolute;
             inset: 5px;
             border-radius: 50%;
-            background: var(--darker) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><rect width="200" height="200" fill="%2300f7ff" opacity="0.2"/><text x="50%" y="50%" font-family="Arial" font-size="20" fill="%23ffffff" text-anchor="middle" dominant-baseline="middle">Yuktha Priya</text></svg>') center/cover;
+            background: var(--darker) url('Photo.jpg') center/cover;
             background-blend-mode: screen;
             z-index: 1;
         }
@@ -487,6 +488,15 @@
             50% { transform: scaleY(2.5); }
         }
 
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-5px, 5px); }
+            40% { transform: translate(-5px, -5px); }
+            60% { transform: translate(5px, 5px); }
+            80% { transform: translate(5px, -5px); }
+            100% { transform: translate(0); }
+        }
+
         @media (max-width: 768px) {
             .title {
                 font-size: 2.5rem;
@@ -513,13 +523,6 @@
                 width: 60px;
                 height: 60px;
             }
-        }
-
-        .pronunciation-guide {
-            margin-top: 15px;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            font-style: italic;
         }
     </style>
 </head>
@@ -551,7 +554,6 @@
                     <div class="voice-bar"></div>
                 </div>
                 <p>Play my professional introduction to learn about my work and research focus</p>
-                <p class="pronunciation-guide">Pronunciation: Yook-tha Pree-ya Ma-su-pa-li</p>
                 
                 <div class="voice-controls">
                     <button class="voice-btn" id="play-intro">
@@ -591,12 +593,12 @@
                 
                 <div class="profile-link-card">
                     <div class="profile-icon">
-                        <i class="fas fa-graduation-cap"></i>
+                        <i class="ai ai-google-scholar"></i>
                     </div>
                     <h3>Google Scholar</h3>
                     <p>Review my research publications, citations, and academic contributions</p>
                     <a href="https://scholar.google.com/citations?hl=en&user=UkX-bOYAAAAJ" class="profile-link-btn">
-                        <i class="fas fa-graduation-cap"></i> View Profile
+                        <i class="ai ai-google-scholar"></i> View Profile
                     </a>
                 </div>
             </div>
@@ -652,7 +654,6 @@
         const playIntroBtn = document.getElementById('play-intro');
         const replayIntroBtn = document.getElementById('replay-intro');
         const voiceBars = document.querySelectorAll('.voice-bar');
-        let currentUtterance = null;
         
         // Function to animate voice bars
         function animateBars(playing) {
@@ -666,97 +667,60 @@
             });
         }
         
-        // Function to find the best female voice
-        function findFemaleVoice() {
-            const voices = speechSynthesis.getVoices();
-            // Prefer these voices in order of preference
-            const preferredVoices = [
-                'Google UK English Female',
-                'Microsoft Hazel Desktop',
-                'Samantha',
-                'Karen',
-                'Tessa',
-                'Veena',
-                'Fiona',
-                'Moira',
-                'Microsoft Zira Desktop'
-            ];
-            
-            // First try to find preferred voices
-            for (const voiceName of preferredVoices) {
-                const voice = voices.find(v => v.name === voiceName);
-                if (voice) return voice;
-            }
-            
-            // If no preferred voices found, look for any female voice
-            const femaleVoice = voices.find(voice => 
-                voice.name.includes('Female') || 
-                voice.name.includes('Woman') || 
-                voice.name.includes('Zira') || 
-                voice.name.includes('Samantha') ||
-                voice.name.includes('Karen') ||
-                voice.name.includes('Tessa') ||
-                voice.name.includes('Veena') ||
-                voice.name.includes('Fiona') ||
-                voice.name.includes('Moira') ||
-                voice.name.includes('Hazel')
-            );
-            
-            return femaleVoice || voices[0]; // Return first available voice if no female found
-        }
-        
         // Function to speak the introduction with female voice
         function speakIntroduction() {
             // Stop any ongoing speech
-            if (currentUtterance) {
-                window.speechSynthesis.cancel();
-            }
+            window.speechSynthesis.cancel();
             
             // Create introduction text with phonetic spelling for name
             const introText = "Hello, I'm Yuktha Priya Masupalli. " +
+                "That's pronounced Yook-tha Pree-ya Ma-su-pa-li. " +
                 "I'm a Master's student in Computer Science passionate about advancing the frontiers of AI, data engineering, and full-stack development. " +
                 "My research focuses on building sophisticated cross-domain information retrieval systems using transformer-based models and optimizing large-scale AI data pipelines. " +
                 "I'm currently exploring Agentic AI and LLMs, building systems where language models can autonomously plan and execute complex tasks. " +
                 "Feel free to explore my profiles to learn more about my work.";
             
             // Create speech synthesis utterance
-            currentUtterance = new SpeechSynthesisUtterance(introText);
+            const utterance = new SpeechSynthesisUtterance(introText);
             
             // Configure for female voice
-            const femaleVoice = findFemaleVoice();
+            const voices = window.speechSynthesis.getVoices();
+            const femaleVoice = voices.find(voice => 
+                voice.name.includes('Female') || 
+                voice.name.includes('Woman') || 
+                voice.name.includes('Zira') || 
+                voice.name.toLowerCase().includes('samantha') ||
+                voice.name.toLowerCase().includes('tessa')
+            );
             
             if (femaleVoice) {
-                currentUtterance.voice = femaleVoice;
-                console.log("Using voice: ", femaleVoice.name);
+                utterance.voice = femaleVoice;
             }
-            
-            currentUtterance.rate = 0.95;
-            currentUtterance.pitch = 1.1;
-            currentUtterance.volume = 1;
+            utterance.rate = 0.95;
+            utterance.pitch = 1.1;
+            utterance.volume = 1;
             
             // Start animation when speech begins
-            currentUtterance.onstart = function() {
+            utterance.onstart = function() {
                 animateBars(true);
                 playIntroBtn.innerHTML = '<i class="fas fa-pause"></i>';
             };
             
             // Stop animation when speech ends
-            currentUtterance.onend = function() {
+            utterance.onend = function() {
                 animateBars(false);
                 playIntroBtn.innerHTML = '<i class="fas fa-play"></i>';
-                currentUtterance = null;
             };
             
             // Handle speech errors
-            currentUtterance.onerror = function() {
+            utterance.onerror = function() {
                 animateBars(false);
                 playIntroBtn.innerHTML = '<i class="fas fa-play"></i>';
                 alert('Speech synthesis failed. Please try again.');
-                currentUtterance = null;
             };
             
             // Speak the text
-            window.speechSynthesis.speak(currentUtterance);
+            window.speechSynthesis.speak(utterance);
         }
         
         // Load available voices
