@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yuktha Priya Masupalli | AI Autonomy Architect</title>
+    <title>Yuktha Priya Masupalli | Architect of Autonomous Intelligence</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/examples/js/controls/OrbitControls.js"></script>
     <style>
         :root {
-            --primary: #1E90FF;
-            --secondary: #6A0DAD;
-            --accent: #00FF7F;
-            --dark: #1A1A2E;
-            --darker: #0F0F1A;
-            --text: #FFFFFF;
-            --text-secondary: #B0B0D6;
+            --primary: #00C4FF;
+            --secondary: #4A2C7A;
+            --accent: #00E676;
+            --dark: #1E1E2F;
+            --darker: #141423;
+            --text: #F0F4FF;
+            --text-secondary: #A3BFFA;
         }
 
         * {
@@ -31,8 +31,8 @@
             color: var(--text);
             min-height: 100vh;
             overflow-x: hidden;
-            background: radial-gradient(circle at 20% 40%, rgba(30, 144, 255, 0.05) 0%, transparent 20%), 
-                       radial-gradient(circle at 80% 60%, rgba(106, 13, 173, 0.05) 0%, transparent 20%);
+            background: radial-gradient(circle at 20% 40%, rgba(0, 196, 255, 0.05) 0%, transparent 20%), 
+                       radial-gradient(circle at 80% 60%, rgba(74, 44, 122, 0.05) 0%, transparent 20%);
         }
 
         .container {
@@ -94,7 +94,7 @@
             left: 50px;
             z-index: 1;
             overflow: hidden;
-            box-shadow: 0 0 20px rgba(30, 144, 255, 0.6);
+            box-shadow: 0 0 20px rgba(0, 196, 255, 0.6);
             animation: hologramGlow 2s ease-in-out infinite alternate;
         }
 
@@ -103,6 +103,22 @@
             height: 100%;
             object-fit: cover;
             filter: brightness(1.1) contrast(1.1);
+        }
+
+        .robotic-chat {
+            position: absolute;
+            top: 70px;
+            left: 70px;
+            width: 160px;
+            height: 160px;
+            z-index: 2;
+            animation: chatBounce 2s ease-in-out infinite;
+        }
+
+        .robotic-chat img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
 
         .title {
@@ -137,7 +153,7 @@
             border: 1px solid var(--primary);
             border-radius: 20px;
             font-size: 1rem;
-            background: rgba(30, 144, 255, 0.08);
+            background: rgba(0, 196, 255, 0.08);
             transition: all 0.3s ease;
             cursor: pointer;
         }
@@ -198,11 +214,11 @@
         .voice-player {
             max-width: 500px;
             margin: 30px auto;
-            background: rgba(15, 15, 26, 0.6);
+            background: rgba(20, 20, 35, 0.6);
             padding: 25px;
             border-radius: 10px;
             border: 1px solid var(--primary);
-            box-shadow: 0 5px 15px rgba(30, 144, 255, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 196, 255, 0.1);
         }
 
         .voice-wave {
@@ -273,17 +289,6 @@
             transform: translateY(-3px);
         }
 
-        .hud-overlay {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            color: var(--text);
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 1rem;
-            opacity: 0.9;
-            z-index: 10;
-        }
-
         @keyframes hologramFloat {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
@@ -304,12 +309,18 @@
             100% { filter: brightness(1.2); }
         }
 
+        @keyframes chatBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
         @media (max-width: 768px) {
             .title { font-size: 2.5rem; }
             .subtitle { font-size: 1.2rem; }
             .cyber-tags { flex-direction: column; align-items: center; }
             .hologram-container { width: 250px; height: 250px; }
             .hologram-avatar { width: 180px; height: 180px; left: 35px; top: 35px; }
+            .robotic-chat { width: 140px; height: 140px; top: 55px; left: 55px; }
             .voice-btn { width: 50px; height: 50px; }
         }
     </style>
@@ -322,6 +333,9 @@
                     <canvas id="hologram-canvas"></canvas>
                     <div class="hologram-avatar">
                         <img src="Photo.jpg" alt="Yuktha Priya Masupalli">
+                    </div>
+                    <div class="robotic-chat">
+                        <img src="https://i.imgur.com/5zGfO1l.gif" alt="Talking Robot" />
                     </div>
                 </div>
                 <h1 class="title">Yuktha Priya Masupalli</h1>
@@ -340,7 +354,7 @@
                         <div class="voice-bar"></div>
                         <div class="voice-bar"></div>
                     </div>
-                    <p>Activate my AI assistant, JARVIS-style, to explore my realm. Live at 03:44 AM CDT, October 01, 2025.</p>
+                    <p>Engage my AI companion, JARVIS-style, to explore my realm. Live at 03:50 AM CDT, October 01, 2025.</p>
                     <div class="voice-controls">
                         <button class="voice-btn" id="play-intro">
                             <i class="fas fa-play"></i>
@@ -349,9 +363,6 @@
                             <i class="fas fa-redo"></i>
                         </button>
                     </div>
-                </div>
-                <div class="hud-overlay">
-                    <p>STATUS: ONLINE | AI CORE ACTIVE | MULTIMODAL SCAN COMPLETE</p>
                 </div>
             </div>
         </header>
@@ -408,19 +419,19 @@
 
         // Robot head (dodecahedron) and body (cylinder)
         const headGeometry = new THREE.DodecahedronGeometry(1.2, 1);
-        const headMaterial = new THREE.MeshBasicMaterial({ color: 0x1E90FF, wireframe: true, transparent: true, opacity: 0.7 });
+        const headMaterial = new THREE.MeshBasicMaterial({ color: 0x00C4FF, wireframe: true, transparent: true, opacity: 0.7 });
         const robotHead = new THREE.Mesh(headGeometry, headMaterial);
         scene.add(robotHead);
 
         const bodyGeometry = new THREE.CylinderGeometry(0.6, 0.6, 2, 32);
-        const bodyMaterial = new THREE.MeshBasicMaterial({ color: 0x6A0DAD, wireframe: true, transparent: true, opacity: 0.5 });
+        const bodyMaterial = new THREE.MeshBasicMaterial({ color: 0x4A2C7A, wireframe: true, transparent: true, opacity: 0.5 });
         const robotBody = new THREE.Mesh(bodyGeometry, bodyMaterial);
         robotBody.position.y = -1.8;
         scene.add(robotBody);
 
-        // Add arms (simple boxes for animation)
+        // Add animated arms
         const armGeometry = new THREE.BoxGeometry(0.3, 1.5, 0.3);
-        const armMaterial = new THREE.MeshBasicMaterial({ color: 0x00FF7F, wireframe: true, transparent: true, opacity: 0.5 });
+        const armMaterial = new THREE.MeshBasicMaterial({ color: 0x00E676, wireframe: true, transparent: true, opacity: 0.5 });
         const leftArm = new THREE.Mesh(armGeometry, armMaterial);
         leftArm.position.set(-1, -0.5, 0);
         const rightArm = new THREE.Mesh(armGeometry, armMaterial);
@@ -532,7 +543,7 @@
             const introText = "Greetings, I am Yuktha Priya Masupalli, your AI Autonomy Architect. " +
                 "At Texas A&M University-San Antonio, I forge systems that learn and adapt across multimodal data. " +
                 "My innovations in medical imaging and secure frameworks, showcased at IEEE and AAAI, define the robotic future. " +
-                "Interact with me at 03:44 AM CDT, October 01, 2025.";
+                "Interact with me at 03:50 AM CDT, October 01, 2025.";
             const utterance = new SpeechSynthesisUtterance(introText);
             const voices = window.speechSynthesis.getVoices();
             const femaleVoice = voices.find(voice => voice.name.toLowerCase().includes('samantha'));
