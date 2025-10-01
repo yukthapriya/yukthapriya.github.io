@@ -10,13 +10,13 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/examples/js/controls/OrbitControls.js"></script>
     <style>
         :root {
-            --primary: #00C4FF;
-            --secondary: #4A2C7A;
-            --accent: #00E676;
-            --dark: #1E1E2F;
-            --darker: #141423;
-            --text: #F0F4FF;
-            --text-secondary: #A3BFFA;
+            --primary: #00B7EB;
+            --secondary: #2E1A46;
+            --accent: #27D187;
+            --dark: #1C252E;
+            --darker: #151A20;
+            --text: #E8F0F2;
+            --text-secondary: #A9C9D4;
         }
 
         * {
@@ -31,8 +31,8 @@
             color: var(--text);
             min-height: 100vh;
             overflow-x: hidden;
-            background: radial-gradient(circle at 20% 40%, rgba(0, 196, 255, 0.05) 0%, transparent 20%), 
-                       radial-gradient(circle at 80% 60%, rgba(74, 44, 122, 0.05) 0%, transparent 20%);
+            background: radial-gradient(circle at 20% 40%, rgba(0, 183, 235, 0.05) 0%, transparent 20%), 
+                       radial-gradient(circle at 80% 60%, rgba(46, 26, 70, 0.05) 0%, transparent 20%);
         }
 
         .container {
@@ -94,7 +94,7 @@
             left: 50px;
             z-index: 1;
             overflow: hidden;
-            box-shadow: 0 0 20px rgba(0, 196, 255, 0.6);
+            box-shadow: 0 0 20px rgba(0, 183, 235, 0.6);
             animation: hologramGlow 2s ease-in-out infinite alternate;
         }
 
@@ -102,7 +102,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(1.1) contrast(1.1);
+            filter: brightness(1.2) contrast(1.2);
         }
 
         .robotic-chat {
@@ -122,9 +122,9 @@
         }
 
         .title {
-            font-size: 4rem;
+            font-size: 4.5rem;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             background: linear-gradient(45deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             background-clip: text;
@@ -134,10 +134,11 @@
         }
 
         .subtitle {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             color: var(--text-secondary);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             font-family: 'Share Tech Mono', monospace;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
         }
 
         .cyber-tags {
@@ -149,11 +150,11 @@
         }
 
         .cyber-tag {
-            padding: 8px 18px;
+            padding: 10px 20px;
             border: 1px solid var(--primary);
-            border-radius: 20px;
-            font-size: 1rem;
-            background: rgba(0, 196, 255, 0.08);
+            border-radius: 25px;
+            font-size: 1.1rem;
+            background: rgba(0, 183, 235, 0.1);
             transition: all 0.3s ease;
             cursor: pointer;
         }
@@ -194,31 +195,35 @@
         .content {
             max-width: 800px;
             margin: 0 auto;
-            line-height: 1.6;
+            line-height: 1.8;
+            text-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
         }
 
         .content p {
             color: var(--text-secondary);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
         }
 
         .content a {
             color: var(--accent);
             text-decoration: none;
+            font-weight: 600;
         }
 
         .content a:hover {
             text-decoration: underline;
+            color: var(--primary);
         }
 
         .voice-player {
             max-width: 500px;
             margin: 30px auto;
-            background: rgba(20, 20, 35, 0.6);
+            background: rgba(21, 26, 32, 0.7);
             padding: 25px;
             border-radius: 10px;
             border: 1px solid var(--primary);
-            box-shadow: 0 5px 15px rgba(0, 196, 255, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 183, 235, 0.1);
         }
 
         .voice-wave {
@@ -272,8 +277,8 @@
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
+            gap: 25px;
+            margin-top: 25px;
         }
 
         .social-link {
@@ -282,10 +287,14 @@
             font-weight: 600;
             transition: all 0.3s ease;
             font-size: 1.2rem;
+            padding: 8px 15px;
+            border-radius: 15px;
+            background: rgba(39, 209, 135, 0.1);
         }
 
         .social-link:hover {
             color: var(--primary);
+            background: rgba(0, 183, 235, 0.2);
             transform: translateY(-3px);
         }
 
@@ -322,6 +331,7 @@
             .hologram-avatar { width: 180px; height: 180px; left: 35px; top: 35px; }
             .robotic-chat { width: 140px; height: 140px; top: 55px; left: 55px; }
             .voice-btn { width: 50px; height: 50px; }
+            .social-link { font-size: 1rem; padding: 6px 12px; }
         }
     </style>
 </head>
@@ -332,10 +342,10 @@
                 <div class="hologram-container">
                     <canvas id="hologram-canvas"></canvas>
                     <div class="hologram-avatar">
-                        <img src="Photo.jpg" alt="Yuktha Priya Masupalli">
+                        <img src="https://via.placeholder.com/200" alt="Yuktha Priya Masupalli">
                     </div>
                     <div class="robotic-chat">
-                        <img src="https://i.imgur.com/5zGfO1l.gif" alt="Talking Robot" />
+                        <img src="https://media.giphy.com/media/l0HlRN7zP5uWEnnc0/giphy.gif" alt="Talking Robot">
                     </div>
                 </div>
                 <h1 class="title">Yuktha Priya Masupalli</h1>
@@ -354,7 +364,7 @@
                         <div class="voice-bar"></div>
                         <div class="voice-bar"></div>
                     </div>
-                    <p>Engage my AI companion, JARVIS-style, to explore my realm. Live at 03:50 AM CDT, October 01, 2025.</p>
+                    <p>Activate my AI companion, JARVIS-style, to explore my realm. Live at 03:54 AM CDT, October 01, 2025.</p>
                     <div class="voice-controls">
                         <button class="voice-btn" id="play-intro">
                             <i class="fas fa-play"></i>
@@ -370,28 +380,28 @@
         <section class="section">
             <h2 class="section-title">Evolution in the Digital Age</h2>
             <div class="content">
-                <p>My odyssey began in Tirupati, India, where I forged my skills with a Diploma at S.V Govt. Polytechnic, igniting a journey to JNTUA College of Engineering for a B.Tech, and now to Texas A&M University-San Antonio for my Master’s, where I hold a 3.87/4.0 GPA. At Digitalsoft AI Solutions, I breathed life into GenAI assistants with LangChain, and at Texas A&M, I architect CLIP-based systems that redefine autonomy. My medical imaging research, honored at IEEE and AAAI, pulses with the rhythm of this robotic era.</p>
+                <p>My journey sparked in Tirupati, India, with a Diploma at S.V Govt. Polytechnic, igniting my path to a B.Tech at JNTUA College of Engineering, and now to Texas A&M University-San Antonio for my Master’s with a 3.87/4.0 GPA. At Digitalsoft AI Solutions, I shaped GenAI assistants with LangChain, and at Texas A&M, I craft CLIP-based systems that redefine autonomy. My medical imaging research, celebrated at IEEE and AAAI, echoes the pulse of this robotic era.</p>
             </div>
         </section>
 
         <section class="section">
             <h2 class="section-title">Agentic Manifestations</h2>
             <div class="content">
-                <p>In this robotic dawn, my creations awaken. I orchestrate multimodal intelligence with CLIP, slashing retrieval latency by 20% across vast datasets, and enhance the JagCoach AI assistant with audio-video analysis on GCP. Diffusion models deepen my systems’ understanding, while Rust-crafted frameworks, infused with machine learning, guard against vulnerabilities. I’m venturing into real-time ML, cloud mastery with AWS and Kubernetes, and Neo4j for adaptive insights.</p>
+                <p>In this robotic dawn, my creations thrive. I orchestrate multimodal intelligence with CLIP, cutting retrieval latency by 20% across vast datasets, and enhance the JagCoach AI assistant with audio-video analysis on GCP. Diffusion models deepen understanding, while Rust-crafted frameworks, powered by machine learning, shield against vulnerabilities. I’m exploring real-time ML, cloud expertise with AWS and Kubernetes, and Neo4j for adaptive insights.</p>
             </div>
         </section>
 
         <section class="section">
             <h2 class="section-title">Collaborative Synergy</h2>
             <div class="content">
-                <p>I extend my reach for allies. I envision co-crafting open-source AI and cybersecurity tools, exploring vision-language models and secure networks. Guidance in serverless architectures and scaling AI across platforms fuels my autonomous ambitions.</p>
+                <p>I seek partners in this digital frontier. I envision co-creating open-source AI and cybersecurity tools, delving into vision-language models and secure networks. Guidance in serverless architectures and scaling AI fuels my autonomous visions.</p>
             </div>
         </section>
 
         <section class="section">
             <h2 class="section-title">Published Insights</h2>
             <div class="content">
-                <p>My research illuminates the future. ‘Improving Medical Imaging Model Calibration through Probabilistic Embedding’ at IEEE Big Data refines multimodal precision, while ‘Benchmarking the Robustness of Contrastive Learning Models’ at AAAI tests resilience in occluded realms.</p>
+                <p>My research lights the way. ‘Improving Medical Imaging Model Calibration through Probabilistic Embedding’ at IEEE Big Data refines multimodal precision, while ‘Benchmarking the Robustness of Contrastive Learning Models’ at AAAI tests resilience in occluded realms.</p>
                 <p><a href="https://ieeexplore.ieee.org/document/10825661/" target="_blank">IEEE Vision</a> | <a href="https://arxiv.org/abs/2501.09134" target="_blank">AAAI Insight</a></p>
             </div>
         </section>
@@ -399,7 +409,7 @@
         <section class="section">
             <h2 class="section-title">Digital Nexus</h2>
             <div class="content">
-                <p>Link with me across the digital expanse.</p>
+                <p>Connect with me across the digital expanse.</p>
                 <div class="social-links">
                     <a href="https://www.linkedin.com/in/yukthapriya" class="social-link">LinkedIn</a>
                     <a href="https://github.com/yukthapriya" class="social-link">GitHub</a>
@@ -419,19 +429,19 @@
 
         // Robot head (dodecahedron) and body (cylinder)
         const headGeometry = new THREE.DodecahedronGeometry(1.2, 1);
-        const headMaterial = new THREE.MeshBasicMaterial({ color: 0x00C4FF, wireframe: true, transparent: true, opacity: 0.7 });
+        const headMaterial = new THREE.MeshBasicMaterial({ color: 0x00B7EB, wireframe: true, transparent: true, opacity: 0.7 });
         const robotHead = new THREE.Mesh(headGeometry, headMaterial);
         scene.add(robotHead);
 
         const bodyGeometry = new THREE.CylinderGeometry(0.6, 0.6, 2, 32);
-        const bodyMaterial = new THREE.MeshBasicMaterial({ color: 0x4A2C7A, wireframe: true, transparent: true, opacity: 0.5 });
+        const bodyMaterial = new THREE.MeshBasicMaterial({ color: 0x2E1A46, wireframe: true, transparent: true, opacity: 0.5 });
         const robotBody = new THREE.Mesh(bodyGeometry, bodyMaterial);
         robotBody.position.y = -1.8;
         scene.add(robotBody);
 
         // Add animated arms
         const armGeometry = new THREE.BoxGeometry(0.3, 1.5, 0.3);
-        const armMaterial = new THREE.MeshBasicMaterial({ color: 0x00E676, wireframe: true, transparent: true, opacity: 0.5 });
+        const armMaterial = new THREE.MeshBasicMaterial({ color: 0x27D187, wireframe: true, transparent: true, opacity: 0.5 });
         const leftArm = new THREE.Mesh(armGeometry, armMaterial);
         leftArm.position.set(-1, -0.5, 0);
         const rightArm = new THREE.Mesh(armGeometry, armMaterial);
@@ -543,7 +553,7 @@
             const introText = "Greetings, I am Yuktha Priya Masupalli, your AI Autonomy Architect. " +
                 "At Texas A&M University-San Antonio, I forge systems that learn and adapt across multimodal data. " +
                 "My innovations in medical imaging and secure frameworks, showcased at IEEE and AAAI, define the robotic future. " +
-                "Interact with me at 03:50 AM CDT, October 01, 2025.";
+                "Interact with me at 03:54 AM CDT, October 01, 2025.";
             const utterance = new SpeechSynthesisUtterance(introText);
             const voices = window.speechSynthesis.getVoices();
             const femaleVoice = voices.find(voice => voice.name.toLowerCase().includes('samantha'));
