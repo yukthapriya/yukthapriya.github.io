@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yuktha Priya Masupalli | Architect of Autonomous Intelligence</title>
+    <title>Yuktha Priya Masupalli | AI Autonomy Architect</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
@@ -31,9 +31,8 @@
             color: var(--text);
             min-height: 100vh;
             overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 20% 40%, rgba(30, 144, 255, 0.04) 0%, transparent 20%),
-                radial-gradient(circle at 80% 60%, rgba(106, 13, 173, 0.04) 0%, transparent 20%);
+            background: radial-gradient(circle at 20% 40%, rgba(30, 144, 255, 0.05) 0%, transparent 20%), 
+                       radial-gradient(circle at 80% 60%, rgba(106, 13, 173, 0.05) 0%, transparent 20%);
         }
 
         .container {
@@ -274,6 +273,17 @@
             transform: translateY(-3px);
         }
 
+        .hud-overlay {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            color: var(--text);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1rem;
+            opacity: 0.9;
+            z-index: 10;
+        }
+
         @keyframes hologramFloat {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
@@ -330,7 +340,7 @@
                         <div class="voice-bar"></div>
                         <div class="voice-bar"></div>
                     </div>
-                    <p>Interact with my AI companion to explore my world, live at 03:39 AM CDT, October 01, 2025.</p>
+                    <p>Activate my AI assistant, JARVIS-style, to explore my realm. Live at 03:44 AM CDT, October 01, 2025.</p>
                     <div class="voice-controls">
                         <button class="voice-btn" id="play-intro">
                             <i class="fas fa-play"></i>
@@ -340,43 +350,45 @@
                         </button>
                     </div>
                 </div>
+                <div class="hud-overlay">
+                    <p>STATUS: ONLINE | AI CORE ACTIVE | MULTIMODAL SCAN COMPLETE</p>
+                </div>
             </div>
         </header>
 
         <section class="section">
-            <h2 class="section-title">My Evolution in the Digital Realm</h2>
+            <h2 class="section-title">Evolution in the Digital Age</h2>
             <div class="content">
-                <p>My journey ignited in Tirupati, India, with a Diploma in Computer Engineering at S.V Govt. Polytechnic, fueling my ascent to a B.Tech at JNTUA College of Engineering. Now, as a Master’s student at Texas A&M University-San Antonio, I shape autonomous intelligence with a 3.87/4.0 GPA. From crafting GenAI assistants with LangChain at Digitalsoft AI Solutions to architecting CLIP-based systems at Texas A&M, my path merges innovation with impact, echoed in my IEEE and AAAI-recognized medical imaging research.</p>
+                <p>My odyssey began in Tirupati, India, where I forged my skills with a Diploma at S.V Govt. Polytechnic, igniting a journey to JNTUA College of Engineering for a B.Tech, and now to Texas A&M University-San Antonio for my Master’s, where I hold a 3.87/4.0 GPA. At Digitalsoft AI Solutions, I breathed life into GenAI assistants with LangChain, and at Texas A&M, I architect CLIP-based systems that redefine autonomy. My medical imaging research, honored at IEEE and AAAI, pulses with the rhythm of this robotic era.</p>
             </div>
         </section>
 
         <section class="section">
-            <h2 class="section-title">Agentic Creations</h2>
+            <h2 class="section-title">Agentic Manifestations</h2>
             <div class="content">
-                <p>In this robotic era, my creations pulse with life. I orchestrate multimodal systems that fuse vision and language with CLIP, slicing retrieval latency by 20% across vast datasets. My audio-video analysis for the JagCoach AI assistant, deployed on GCP, breathes intelligence into feedback, while diffusion models deepen semantic layers. With Rust, I forge secure frameworks, weaving machine learning to detect vulnerabilities with precision, embodying the autonomous soul of our time.</p>
-                <p>I’m venturing further, mastering real-time ML, cloud mastery with AWS and Kubernetes, and graph databases like Neo4j for adaptive intelligence.</p>
+                <p>In this robotic dawn, my creations awaken. I orchestrate multimodal intelligence with CLIP, slashing retrieval latency by 20% across vast datasets, and enhance the JagCoach AI assistant with audio-video analysis on GCP. Diffusion models deepen my systems’ understanding, while Rust-crafted frameworks, infused with machine learning, guard against vulnerabilities. I’m venturing into real-time ML, cloud mastery with AWS and Kubernetes, and Neo4j for adaptive insights.</p>
             </div>
         </section>
 
         <section class="section">
-            <h2 class="section-title">Collaborative Frontiers</h2>
+            <h2 class="section-title">Collaborative Synergy</h2>
             <div class="content">
-                <p>I seek comrades in this digital frontier. I envision co-creating open-source ML and AI marvels, bridging intelligence with cybersecurity. My explorations in vision-language models and secure networks invite synergy, while I draw on wisdom for serverless architectures and scaling AI to amplify my autonomous visions.</p>
+                <p>I extend my reach for allies. I envision co-crafting open-source AI and cybersecurity tools, exploring vision-language models and secure networks. Guidance in serverless architectures and scaling AI across platforms fuels my autonomous ambitions.</p>
             </div>
         </section>
 
         <section class="section">
-            <h2 class="section-title">Published Visions</h2>
+            <h2 class="section-title">Published Insights</h2>
             <div class="content">
-                <p>My research ignites new horizons. ‘Improving Medical Imaging Model Calibration through Probabilistic Embedding,’ unveiled at IEEE Big Data, sharpens multimodal precision. ‘Benchmarking the Robustness of Contrastive Learning Models,’ embraced by AAAI, probes resilience in occluded realms.</p>
+                <p>My research illuminates the future. ‘Improving Medical Imaging Model Calibration through Probabilistic Embedding’ at IEEE Big Data refines multimodal precision, while ‘Benchmarking the Robustness of Contrastive Learning Models’ at AAAI tests resilience in occluded realms.</p>
                 <p><a href="https://ieeexplore.ieee.org/document/10825661/" target="_blank">IEEE Vision</a> | <a href="https://arxiv.org/abs/2501.09134" target="_blank">AAAI Insight</a></p>
             </div>
         </section>
 
         <section class="section">
-            <h2 class="section-title">Connect in the Digital Realm</h2>
+            <h2 class="section-title">Digital Nexus</h2>
             <div class="content">
-                <p>Join my network across the digital expanse.</p>
+                <p>Link with me across the digital expanse.</p>
                 <div class="social-links">
                     <a href="https://www.linkedin.com/in/yukthapriya" class="social-link">LinkedIn</a>
                     <a href="https://github.com/yukthapriya" class="social-link">GitHub</a>
@@ -387,25 +399,33 @@
     </div>
 
     <script>
-        // Hologram robot animation with interaction
+        // Hologram robot animation with JARVIS-style interaction
         const canvas = document.getElementById('hologram-canvas');
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
         renderer.setSize(canvas.clientWidth, canvas.clientHeight);
 
-        // Robot-like geometry with a humanoid hint
-        const geometry = new THREE.DodecahedronGeometry(1.5, 1); // Dodecahedron for a robotic head
-        const material = new THREE.MeshBasicMaterial({ color: 0x1E90FF, wireframe: true, transparent: true, opacity: 0.7 });
-        const robotHologram = new THREE.Mesh(geometry, material);
-        scene.add(robotHologram);
+        // Robot head (dodecahedron) and body (cylinder)
+        const headGeometry = new THREE.DodecahedronGeometry(1.2, 1);
+        const headMaterial = new THREE.MeshBasicMaterial({ color: 0x1E90FF, wireframe: true, transparent: true, opacity: 0.7 });
+        const robotHead = new THREE.Mesh(headGeometry, headMaterial);
+        scene.add(robotHead);
 
-        // Add a simple body (cylinder) for humanoid effect
-        const bodyGeometry = new THREE.CylinderGeometry(0.5, 0.5, 2, 32);
+        const bodyGeometry = new THREE.CylinderGeometry(0.6, 0.6, 2, 32);
         const bodyMaterial = new THREE.MeshBasicMaterial({ color: 0x6A0DAD, wireframe: true, transparent: true, opacity: 0.5 });
         const robotBody = new THREE.Mesh(bodyGeometry, bodyMaterial);
-        robotBody.position.y = -1.5;
+        robotBody.position.y = -1.8;
         scene.add(robotBody);
+
+        // Add arms (simple boxes for animation)
+        const armGeometry = new THREE.BoxGeometry(0.3, 1.5, 0.3);
+        const armMaterial = new THREE.MeshBasicMaterial({ color: 0x00FF7F, wireframe: true, transparent: true, opacity: 0.5 });
+        const leftArm = new THREE.Mesh(armGeometry, armMaterial);
+        leftArm.position.set(-1, -0.5, 0);
+        const rightArm = new THREE.Mesh(armGeometry, armMaterial);
+        rightArm.position.set(1, -0.5, 0);
+        scene.add(leftArm, rightArm);
 
         camera.position.z = 5;
 
@@ -416,10 +436,17 @@
         controls.maxDistance = 7;
         controls.enablePan = false;
 
+        let isDragging = false;
+        let previousX = 0;
+        let armAngle = 0;
+
         function animate() {
             requestAnimationFrame(animate);
-            robotHologram.rotation.y += 0.002;
+            robotHead.rotation.y += 0.002;
             robotBody.rotation.y += 0.002;
+            leftArm.rotation.z = Math.sin(armAngle) * 0.5;
+            rightArm.rotation.z = -Math.sin(armAngle) * 0.5;
+            armAngle += 0.02;
             controls.update();
             renderer.render(scene, camera);
         }
@@ -431,37 +458,64 @@
             renderer.setSize(canvas.clientWidth, canvas.clientHeight);
         });
 
-        // Mouse/touch interaction for JARVIS-like control
-        let isDragging = false;
-        let previousX = 0;
+        // JARVIS-like gesture interaction
         canvas.addEventListener('mousedown', (e) => {
             isDragging = true;
             previousX = e.clientX;
+            robotHead.material.opacity = 0.9;
+            robotBody.material.opacity = 0.7;
+            leftArm.material.opacity = 0.7;
+            rightArm.material.opacity = 0.7;
         });
-        canvas.addEventListener('mouseup', () => { isDragging = false; });
+
+        canvas.addEventListener('mouseup', () => {
+            isDragging = false;
+            robotHead.material.opacity = 0.7;
+            robotBody.material.opacity = 0.5;
+            leftArm.material.opacity = 0.5;
+            rightArm.material.opacity = 0.5;
+        });
+
         canvas.addEventListener('mousemove', (e) => {
             if (isDragging) {
                 const deltaX = e.clientX - previousX;
-                robotHologram.rotation.y += deltaX * 0.005;
+                robotHead.rotation.y += deltaX * 0.005;
                 robotBody.rotation.y += deltaX * 0.005;
+                leftArm.rotation.y += deltaX * 0.01;
+                rightArm.rotation.y -= deltaX * 0.01;
                 previousX = e.clientX;
             }
         });
+
         canvas.addEventListener('touchstart', (e) => {
             isDragging = true;
             previousX = e.touches[0].clientX;
+            robotHead.material.opacity = 0.9;
+            robotBody.material.opacity = 0.7;
+            leftArm.material.opacity = 0.7;
+            rightArm.material.opacity = 0.7;
         });
-        canvas.addEventListener('touchend', () => { isDragging = false; });
+
+        canvas.addEventListener('touchend', () => {
+            isDragging = false;
+            robotHead.material.opacity = 0.7;
+            robotBody.material.opacity = 0.5;
+            leftArm.material.opacity = 0.5;
+            rightArm.material.opacity = 0.5;
+        });
+
         canvas.addEventListener('touchmove', (e) => {
             if (isDragging) {
                 const deltaX = e.touches[0].clientX - previousX;
-                robotHologram.rotation.y += deltaX * 0.005;
+                robotHead.rotation.y += deltaX * 0.005;
                 robotBody.rotation.y += deltaX * 0.005;
+                leftArm.rotation.y += deltaX * 0.01;
+                rightArm.rotation.y -= deltaX * 0.01;
                 previousX = e.touches[0].clientX;
             }
         });
 
-        // Voice introduction functionality
+        // Voice interaction
         const playIntroBtn = document.getElementById('play-intro');
         const replayIntroBtn = document.getElementById('replay-intro');
         const voiceBars = document.querySelectorAll('.voice-bar');
@@ -475,10 +529,10 @@
 
         function speakIntroduction() {
             window.speechSynthesis.cancel();
-            const introText = "Greetings, I am Yuktha Priya Masupalli, pronounced Yook-tha Pree-ya Ma-su-pa-li. " +
-                "As a Master’s student at Texas A&M University-San Antonio, I architect autonomous AI systems that learn and adapt across multimodal data. " +
-                "My innovations in medical imaging and data pipelines, showcased at IEEE and AAAI, propel us into the robotic future. " +
-                "Interact with me at 03:39 AM CDT, October 01, 2025.";
+            const introText = "Greetings, I am Yuktha Priya Masupalli, your AI Autonomy Architect. " +
+                "At Texas A&M University-San Antonio, I forge systems that learn and adapt across multimodal data. " +
+                "My innovations in medical imaging and secure frameworks, showcased at IEEE and AAAI, define the robotic future. " +
+                "Interact with me at 03:44 AM CDT, October 01, 2025.";
             const utterance = new SpeechSynthesisUtterance(introText);
             const voices = window.speechSynthesis.getVoices();
             const femaleVoice = voices.find(voice => voice.name.toLowerCase().includes('samantha'));
