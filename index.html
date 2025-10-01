@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yuktha Priya Masupalli | AI Autonomy Architect</title>
+    <title>Yuktha Priya Masupalli | Architect of Autonomous Intelligence</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <style>
@@ -30,8 +30,8 @@
             min-height: 100vh;
             overflow-x: hidden;
             background-image: 
-                radial-gradient(circle at 20% 40%, rgba(30, 144, 255, 0.05) 0%, transparent 20%),
-                radial-gradient(circle at 80% 60%, rgba(106, 13, 173, 0.05) 0%, transparent 20%);
+                radial-gradient(circle at 20% 40%, rgba(30, 144, 255, 0.04) 0%, transparent 20%),
+                radial-gradient(circle at 80% 60%, rgba(106, 13, 173, 0.04) 0%, transparent 20%);
         }
 
         .container {
@@ -41,7 +41,7 @@
         }
 
         .header {
-            min-height: 100vh;
+            min-height: 80vh;
             display: flex;
             align-items: center;
             position: relative;
@@ -67,9 +67,9 @@
         }
 
         .hologram-avatar {
-            width: 250px;
-            height: 250px;
-            margin: 0 auto 40px;
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 30px;
             border-radius: 50%;
             background: linear-gradient(45deg, var(--primary), var(--secondary));
             position: relative;
@@ -77,13 +77,13 @@
             align-items: center;
             justify-content: center;
             animation: hologramFloat 6s ease-in-out infinite;
-            box-shadow: 0 0 40px rgba(30, 144, 255, 0.4);
+            box-shadow: 0 0 30px rgba(30, 144, 255, 0.3);
         }
 
         .hologram-avatar::before {
             content: '';
             position: absolute;
-            inset: 8px;
+            inset: 6px;
             border-radius: 50%;
             background: var(--darker) url('Photo.jpg') center/cover;
             background-blend-mode: overlay;
@@ -93,10 +93,10 @@
         .hologram-avatar::after {
             content: '';
             position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
             background: linear-gradient(45deg, var(--primary), transparent, var(--secondary));
             border-radius: 50%;
             z-index: 0;
@@ -105,9 +105,9 @@
         }
 
         .title {
-            font-size: 4.5rem;
+            font-size: 4rem;
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             background: linear-gradient(45deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             background-clip: text;
@@ -117,9 +117,9 @@
         }
 
         .subtitle {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             color: var(--text-secondary);
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             font-family: 'Share Tech Mono', monospace;
         }
 
@@ -128,33 +128,31 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 15px;
-            margin-top: 2.5rem;
+            margin-top: 2rem;
         }
 
         .cyber-tag {
-            padding: 10px 20px;
+            padding: 8px 18px;
             border: 1px solid var(--primary);
-            border-radius: 25px;
-            font-size: 1.1rem;
-            background: rgba(30, 144, 255, 0.1);
+            border-radius: 20px;
+            font-size: 1rem;
+            background: rgba(30, 144, 255, 0.08);
             transition: all 0.3s ease;
             cursor: pointer;
-            position: relative;
         }
 
         .cyber-tag:hover {
             background: var(--primary);
             color: var(--dark);
-            transform: translateY(-4px);
+            transform: translateY(-3px);
         }
 
-        .voice-intro {
-            padding: 70px 0;
+        .section {
+            padding: 60px 0;
             position: relative;
-            background: linear-gradient(to bottom, transparent, rgba(26, 26, 46, 0.9));
         }
 
-        .voice-intro::before {
+        .section::before {
             content: '';
             position: absolute;
             top: 0;
@@ -164,30 +162,67 @@
             background: linear-gradient(90deg, transparent, var(--primary), transparent);
         }
 
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .content p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .content a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .content a:hover {
+            text-decoration: underline;
+        }
+
+        .voice-intro {
+            padding: 60px 0;
+            background: linear-gradient(to bottom, transparent, rgba(26, 26, 46, 0.8));
+        }
+
         .voice-player {
-            max-width: 550px;
-            margin: 40px auto;
-            background: rgba(15, 15, 26, 0.7);
-            padding: 30px;
-            border-radius: 15px;
+            max-width: 500px;
+            margin: 30px auto;
+            background: rgba(15, 15, 26, 0.6);
+            padding: 25px;
+            border-radius: 10px;
             border: 1px solid var(--primary);
-            box-shadow: 0 10px 20px rgba(30, 144, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(30, 144, 255, 0.1);
         }
 
         .voice-wave {
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 80px;
-            margin-bottom: 20px;
-            gap: 5px;
+            height: 70px;
+            margin-bottom: 15px;
+            gap: 4px;
         }
 
         .voice-bar {
-            width: 6px;
-            height: 35px;
+            width: 5px;
+            height: 30px;
             background: var(--primary);
-            border-radius: 3px;
+            border-radius: 2px;
             animation: wave 1.5s infinite ease-in-out;
         }
 
@@ -199,13 +234,13 @@
         .voice-controls {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-top: 25px;
+            gap: 15px;
+            margin-top: 20px;
         }
 
         .voice-btn {
-            width: 70px;
-            height: 70px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             background: var(--primary);
             color: var(--dark);
@@ -218,41 +253,41 @@
         }
 
         .voice-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 15px var(--primary);
+            transform: scale(1.05);
+            box-shadow: 0 0 10px var(--primary);
         }
 
         .profile-links {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin: 60px 0;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 50px 0;
         }
 
         .profile-link-card {
-            background: rgba(15, 15, 26, 0.6);
-            padding: 30px;
-            border-radius: 15px;
+            background: rgba(15, 15, 26, 0.5);
+            padding: 25px;
+            border-radius: 10px;
             text-align: center;
-            border: 1px solid rgba(30, 144, 255, 0.2);
+            border: 1px solid rgba(30, 144, 255, 0.15);
             transition: all 0.3s ease;
         }
 
         .profile-link-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(30, 144, 255, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(30, 144, 255, 0.1);
         }
 
         .profile-icon {
-            width: 90px;
-            height: 90px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             background: var(--primary);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 2.2rem;
+            margin: 0 auto 15px;
+            font-size: 2rem;
         }
 
         .profile-icon i {
@@ -263,21 +298,21 @@
         }
 
         .profile-link-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
             color: var(--primary);
         }
 
         .profile-link-card p {
             color: var(--text-secondary);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .profile-link-btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 10px 20px;
+            gap: 8px;
+            padding: 8px 16px;
             background: var(--primary);
             color: var(--dark);
             border-radius: 20px;
@@ -287,101 +322,13 @@
         }
 
         .profile-link-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(30, 144, 255, 0.3);
-        }
-
-        .work-highlights {
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .section-title {
-            font-size: 2.8rem;
-            margin-bottom: 50px;
-            background: linear-gradient(45deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .highlights-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .highlight-card {
-            background: rgba(15, 15, 26, 0.6);
-            padding: 30px;
-            border-radius: 15px;
-            border: 1px solid rgba(30, 144, 255, 0.2);
-            transition: all 0.3s ease;
-            text-align: left;
-        }
-
-        .highlight-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(30, 144, 255, 0.2);
-        }
-
-        .highlight-icon {
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-
-        .highlight-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            color: var(--text);
-        }
-
-        .highlight-card p {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .highlight-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .highlight-tag {
-            padding: 5px 12px;
-            background: rgba(30, 144, 255, 0.1);
-            border: 1px solid var(--primary);
-            border-radius: 15px;
-            font-size: 0.9rem;
-            color: var(--primary);
-        }
-
-        .agentic-narrative {
-            padding: 80px 0;
-            background: linear-gradient(to bottom, rgba(26, 26, 46, 0.9), var(--dark));
-        }
-
-        .agentic-code {
-            max-width: 900px;
-            margin: 30px auto;
-            background: rgba(15, 15, 26, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-            border: 1px solid var(--primary);
-            font-family: 'Share Tech Mono', monospace;
-            color: var(--text);
-            white-space: pre-wrap;
-            overflow-x: auto;
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(30, 144, 255, 0.2);
         }
 
         @keyframes hologramFloat {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-8px); }
         }
 
         @keyframes rotate {
@@ -391,7 +338,7 @@
 
         @keyframes wave {
             0%, 100% { transform: scaleY(1); }
-            50% { transform: scaleY(2.5); }
+            50% { transform: scaleY(2); }
         }
 
         @media (max-width: 768px) {
@@ -399,8 +346,7 @@
             .subtitle { font-size: 1.2rem; }
             .cyber-tags { flex-direction: column; align-items: center; }
             .profile-links { grid-template-columns: 1fr; }
-            .highlights-grid { grid-template-columns: 1fr; }
-            .voice-btn { width: 60px; height: 60px; }
+            .voice-btn { width: 50px; height: 50px; }
         }
     </style>
 </head>
@@ -414,14 +360,14 @@
                 <div class="cyber-tags">
                     <div class="cyber-tag">Agentic AI</div>
                     <div class="cyber-tag">Multimodal Learning</div>
-                    <div class="cyber-tag">Data Pipelines</div>
-                    <div class="cyber-tag">Medical Innovation</div>
+                    <div class="cyber-tag">Data Engineering</div>
+                    <div class="cyber-tag">Medical Research</div>
                 </div>
             </div>
         </header>
 
         <section class="voice-intro">
-            <h2 class="section-title">Voice Introduction</h2>
+            <h2 class="section-title">My Journey</h2>
             <div class="voice-player">
                 <div class="voice-wave">
                     <div class="voice-bar"></div>
@@ -430,7 +376,7 @@
                     <div class="voice-bar"></div>
                     <div class="voice-bar"></div>
                 </div>
-                <p>Listen to my vision for autonomous AI systems and my journey in research.</p>
+                <p>Hear my story as an AI innovator, recorded at 03:07 AM CDT, October 01, 2025.</p>
                 <div class="voice-controls">
                     <button class="voice-btn" id="play-intro">
                         <i class="fas fa-play"></i>
@@ -440,15 +386,34 @@
                     </button>
                 </div>
             </div>
+            <div class="content">
+                <p>My journey began in Tirupati, India, where I earned a Diploma in Computer Engineering with a remarkable 93.6% at S.V Govt. Polytechnic. This foundation led me to JNTUA College of Engineering, where I pursued a B.Tech in Computer Science, graduating with an 8.1/10. Today, I’m a Master’s student at Texas A&M University-San Antonio, achieving a 3.87/4.0, diving deep into the world of autonomous AI systems.</p>
+                <p>From Chennai to San Antonio, I’ve shaped intelligent solutions. At Digitalsoft AI Solutions, I engineered GenAI chat assistants with LangChain, optimizing scalability with AWS. Now, as a Graduate Research Assistant at Texas A&M, I’m crafting cross-domain retrieval systems with CLIP, cutting latency by 20% on massive datasets, and enhancing medical imaging with probabilistic embeddings—work recognized at IEEE and AAAI.</p>
+            </div>
         </section>
 
-        <section>
-            <h2 class="section-title">Digital Presence</h2>
+        <section class="section">
+            <h2 class="section-title">Vision in Action</h2>
+            <div class="content">
+                <p>My passion drives me to build systems that think and adapt. I’m currently weaving together React, AngularJS, Node.js, and MongoDB to create scalable full-stack applications, while exploring multimodal AI with CLIP, diffusion models, and LLMs. At Texas A&M, I’ve developed audio-video analysis pipelines for the JagCoach AI assistant, deployed on GCP, and I’m pioneering Rust-based vulnerability detection using machine learning and static analysis.</p>
+                <p>I’m also expanding my horizons, delving into advanced ML algorithms for real-time use, mastering cloud infrastructure with AWS, GCP, Azure, and Kubernetes, and unlocking the potential of graph databases like Neo4j for recommendation systems and security.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Collaborative Horizons</h2>
+            <div class="content">
+                <p>I thrive on collaboration. I’m eager to join open-source initiatives in ML, AI, and software engineering, and I’m excited to bridge AI with cybersecurity through innovative tools. My research into vision-language models and secure networking protocols is just beginning, and I’d love to connect with others to push these boundaries. I’m also seeking insights into serverless architectures and scaling AI across diverse platforms to refine my craft.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Digital Connections</h2>
             <div class="profile-links">
                 <div class="profile-link-card">
                     <div class="profile-icon"><i class="fab fa-linkedin"></i></div>
                     <h3>LinkedIn</h3>
-                    <p>Connect for insights into my professional achievements.</p>
+                    <p>Discover my professional network and achievements.</p>
                     <a href="https://www.linkedin.com/in/yukthapriya" class="profile-link-btn">
                         <i class="fab fa-linkedin"></i> Connect
                     </a>
@@ -456,7 +421,7 @@
                 <div class="profile-link-card">
                     <div class="profile-icon"><i class="fab fa-github"></i></div>
                     <h3>GitHub</h3>
-                    <p>Explore my code, including agentic AI projects.</p>
+                    <p>Explore my projects, from full-stack apps to secure systems.</p>
                     <a href="https://github.com/yukthapriya" class="profile-link-btn">
                         <i class="fab fa-github"></i> Explore
                     </a>
@@ -464,7 +429,7 @@
                 <div class="profile-link-card">
                     <div class="profile-icon"><i class="ai ai-google-scholar"></i></div>
                     <h3>Google Scholar</h3>
-                    <p>Access my research on medical AI and learning models.</p>
+                    <p>Read my publications on medical AI and learning models.</p>
                     <a href="https://scholar.google.com/citations?hl=en&user=UkX-bOYAAAAJ" class="profile-link-btn">
                         <i class="ai ai-google-scholar"></i> View
                     </a>
@@ -472,40 +437,14 @@
             </div>
         </section>
 
-        <section class="work-highlights">
-            <h2 class="section-title">Autonomous Innovations</h2>
-            <div class="highlights-grid">
-                <div class="highlight-card">
-                    <div class="highlight-icon"><i class="fas fa-brain"></i></div>
-                    <h3>Cross-Domain Retrieval</h3>
-                    <p>Designed a CLIP-based system reducing retrieval latency by 20% on 100K+ datasets.</p>
-                    <div class="highlight-tags">
-                        <span class="highlight-tag">CLIP</span>
-                        <span class="highlight-tag">Parallel Processing</span>
-                    </div>
-                </div>
-                <div class="highlight-card">
-                    <div class="highlight-icon"><i class="fas fa-chart-line"></i></div>
-                    <h3>Medical Imaging Calibration</h3>
-                    <p>Improved model accuracy with probabilistic embeddings, published at IEEE Big Data.</p>
-                    <div class="highlight-tags">
-                        <span class="highlight-tag">Medical AI</span>
-                        <span class="highlight-tag">Probabilistic Models</span>
-                    </div>
-                </div>
-                <div class="highlight-card">
-                    <div class="highlight-icon"><i class="fas fa-robot"></i></div>
-                    <h3>Agentic Systems</h3>
-                    <p>Built autonomous agents with LangGraph for task planning and execution.</p>
-                    <div class="highlight-tags">
-                        <span class="highlight-tag">LangGraph</span>
-                        <span class="highlight-tag">LLMs</span>
-                    </div>
-                </div>
+        <section class="section">
+            <h2 class="section-title">Published Insights</h2>
+            <div class="content">
+                <p>My research has taken flight with two notable works. ‘Improving Medical Imaging Model Calibration through Probabilistic Embedding,’ published at the IEEE Big Data Conference, refines AI accuracy in healthcare. ‘Benchmarking the Robustness of Contrastive Learning Models for Medical Image-Report Retrieval under Occlusion Attacks,’ accepted at the AAAI Workshop, explores resilience in challenging scenarios. Both are available for deeper exploration.</p>
+                <p><a href="https://ieeexplore.ieee.org/document/10825661/" target="_blank">IEEE Publication</a> | <a href="https://arxiv.org/abs/2501.09134" target="_blank">AAAI Workshop</a></p>
             </div>
         </section>
-
-       
+    </div>
 
     <script>
         // Voice introduction functionality
@@ -523,10 +462,9 @@
         function speakIntroduction() {
             window.speechSynthesis.cancel();
             const introText = "Hello, I'm Yuktha Priya Masupalli, pronounced Yook-tha Pree-ya Ma-su-pa-li. " +
-                "A Master's student at Texas A&M University-San Antonio, I specialize in agentic AI, " +
-                "designing systems that autonomously process multimodal data and optimize performance. " +
-                "My research, including IEEE publications, drives innovations in medical imaging and data pipelines. " +
-                "Explore my work to see the future of intelligent automation.";
+                "My journey as a Graduate Research Assistant at Texas A&M University-San Antonio blends a year of software engineering at Digitalsoft AI with a passion for autonomous systems. " +
+                "I craft AI that learns, adapts, and secures, from multimodal data pipelines to medical imaging innovations, published at IEEE and AAAI. " +
+                "This message comes to you at 03:07 AM CDT, October 01, 2025.";
             const utterance = new SpeechSynthesisUtterance(introText);
             const voices = window.speechSynthesis.getVoices();
             const femaleVoice = voices.find(voice => voice.name.toLowerCase().includes('samantha'));
