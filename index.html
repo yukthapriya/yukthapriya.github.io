@@ -623,684 +623,478 @@
 </body>
 </html> -->
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yuktha Priya Masupalli | Architect of Autonomous Intelligence</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yuktha Priya Masupalli | Architect of Autonomous Intelligence</title>
 
-    <!-- NEW: SEO & Social meta -->
-    <meta name="description" content="Yuktha Priya — Full‑stack engineer building high‑performance web apps, resilient backends, and cost‑efficient cloud systems. Explore projects and case studies.">
-    <meta property="og:title" content="Yuktha Priya — Full‑stack Engineer — Frontend · Backend · Cloud">
-    <meta property="og:description" content="I build high‑performance web apps, resilient APIs, and scalable cloud infrastructure. See my project case studies.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yukthapriya.github.io/">
-    <meta name="twitter:card" content="summary_large_image">
-    <!-- END meta -->
+  <!-- SEO & Social meta -->
+  <meta name="description" content="Yuktha Priya — Full‑stack engineer building high‑performance web apps, resilient backends, and cost‑efficient cloud systems. Explore projects and case studies.">
+  <meta property="og:title" content="Yuktha Priya — Full‑stack Engineer — Frontend · Backend · Cloud">
+  <meta property="og:description" content="I build high‑performance web apps, resilient APIs, and scalable cloud infrastructure. See my project case studies.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yukthapriya.github.io/">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- End meta -->
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/examples/js/controls/OrbitControls.js"></script>
-    <style>
-        :root {
-            --primary: #00B7EB;
-            --secondary: #2E1A46;
-            --accent: #27D187;
-            --dark: #1C252E;
-            --darker: #151A20;
-            --text: #E8F0F2;
-            --text-secondary: #A9C9D4;
-        }
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/examples/js/controls/OrbitControls.js"></script>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <style>
+    :root{
+      --primary:#00B7EB;
+      --secondary:#2E1A46;
+      --accent:#27D187;
+      --dark:#1C252E;
+      --darker:#151A20;
+      --text:#E8F0F2;
+      --text-secondary:#A9C9D4;
+    }
 
-        body {
-            font-family: 'Exo 2', sans-serif;
-            background-color: var(--dark);
-            color: var(--text);
-            min-height: 100vh;
-            overflow-x: hidden;
-            background: radial-gradient(circle at 20% 40%, rgba(0, 183, 235, 0.05) 0%, transparent 20%), 
-                       radial-gradient(circle at 80% 60%, rgba(46, 26, 70, 0.05) 0%, transparent 20%);
-        }
+    /* Font-smoothing + text-rendering for crisper text */
+    html, body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      -webkit-text-size-adjust: 100%;
+    }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+    *{margin:0;padding:0;box-sizing:border-box;}
 
-        .header {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
+    body{
+      font-family:'Exo 2', sans-serif;
+      background-color:var(--dark);
+      color:var(--text);
+      min-height:100vh;
+      overflow-x:hidden;
+      background:
+        radial-gradient(circle at 20% 40%, rgba(0,183,235,0.05) 0%, transparent 20%),
+        radial-gradient(circle at 80% 60%, rgba(46,26,70,0.05) 0%, transparent 20%);
+    }
 
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, var(--darker) 0%, transparent 70%);
-            z-index: -1;
-        }
+    .container{max-width:1400px;margin:0 auto;padding:0 20px;}
 
-        .header-content {
-            text-align: center;
-            width: 100%;
-            z-index: 2;
-            padding: 40px 0;
-        }
+    .header{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;}
+    .header::before{
+      content:'';
+      position:absolute;top:0;left:0;width:100%;height:100%;
+      background:linear-gradient(45deg,var(--darker) 0%, transparent 70%);
+      z-index:-1;
+    }
 
-        .hologram-container {
-            position: relative;
-            width: 300px;
-            height: 300px;
-            margin: 0 auto 30px;
-            perspective: 1000px;
-        }
+    .header-content{ text-align:center; width:100%; z-index:2; padding:40px 0; }
 
-        #hologram-canvas {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 0;
-        }
+    .hologram-container{
+      position:relative; width:300px; height:300px; margin:0 auto 30px; perspective:1000px;
+    }
 
-        .hologram-avatar {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            position: absolute;
-            top: 50px;
-            left: 50px;
-            z-index: 1;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(0, 183, 235, 0.6);
-            animation: hologramGlow 2s ease-in-out infinite alternate;
-        }
+    /* Ensure canvas uses full pixel density */
+    #hologram-canvas{ width:100%; height:100%; border-radius:50%; display:block; }
 
-        .hologram-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(1.2) contrast(1.2);
-        }
+    .hologram-avatar{
+      width:200px; height:200px; border-radius:50%;
+      position:absolute; top:50px; left:50px; z-index:1; overflow:hidden;
+      box-shadow: 0 0 18px rgba(0,183,235,0.55);
+      animation: hologramGlow 2s ease-in-out infinite alternate;
+    }
 
-        .robotic-chat {
-            position: absolute;
-            top: 70px;
-            left: 70px;
-            width: 160px;
-            height: 160px;
-            z-index: 2;
-        }
+    .hologram-avatar img{
+      width:100%; height:100%; object-fit:cover;
+      filter: none; /* avoid blur from filters */
+      image-rendering:auto;
+    }
 
-        .robotic-chat svg {
-            width: 100%;
-            height: 100%;
-        }
+    .robotic-chat{ position:absolute; top:70px; left:70px; width:160px; height:160px; z-index:2; }
 
-        .robotic-chat .robot-body {
-            fill: var(--secondary);
-            transition: transform 0.5s ease;
-        }
+    .robotic-chat svg{ width:100%; height:100%; }
+    .robotic-chat .robot-body{ fill:var(--secondary); transition:transform .5s ease;}
+    .robotic-chat .robot-head{ fill:var(--primary); animation:headBob 2s infinite ease-in-out; }
+    .robotic-chat .robot-arm-left, .robotic-chat .robot-arm-right{ fill:var(--accent); transform-origin:center; animation:armWave 2s infinite ease-in-out; }
+    .robotic-chat .robot-arm-right { animation-delay: 0.5s; }
 
-        .robotic-chat .robot-head {
-            fill: var(--primary);
-            animation: headBob 2s infinite ease-in-out;
-        }
+    /* Title: slightly heavier and remove soft shadows for crisper glyphs */
+    .title{
+      font-size:4.5rem; font-weight:800; margin-bottom:15px;
+      background: linear-gradient(45deg,var(--primary),var(--secondary));
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+      text-transform:uppercase; letter-spacing:2px;
+      -webkit-font-smoothing:antialiased;
+    }
 
-        .robotic-chat .robot-arm-left, .robotic-chat .robot-arm-right {
-            fill: var(--accent);
-            transform-origin: center;
-            animation: armWave 2s infinite ease-in-out;
-        }
+    .subtitle{
+      font-size:1.5rem; color:var(--text-secondary); margin-bottom:16px;
+      font-family:'Share Tech Mono', monospace; text-shadow:none;
+    }
 
-        .robotic-chat .robot-arm-right {
-            animation-delay: 0.5s;
-        }
+    .intro-line{
+      color:var(--text-secondary); margin:0 auto 20px auto; max-width:70ch; font-size:1.05rem; line-height:1.6;
+    }
 
-        .title {
-            font-size: 4.5rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
+    .cta-row{ display:flex; gap:12px; justify-content:center; margin-bottom:18px; }
+    .cta{ padding:10px 16px; border-radius:8px; font-weight:600; text-decoration:none; display:inline-block; }
+    .cta-primary{ background:var(--primary); color:var(--darker); }
+    .cta-ghost{ border:1px solid rgba(233,233,233,0.08); color:var(--text); background:transparent; }
 
-        .subtitle {
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            margin-bottom: 25px;
-            font-family: 'Share Tech Mono', monospace;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-        }
+    .cyber-tags{ display:flex; justify-content:center; flex-wrap:wrap; gap:15px; margin-top:2rem; }
+    .cyber-tag{ padding:10px 20px; border:1px solid var(--primary); border-radius:25px; font-size:1.05rem; background:rgba(0,183,235,0.08); transition:all .25s ease; cursor:pointer; }
+    .cyber-tag:hover{ background:var(--primary); color:var(--dark); transform:translateY(-4px); }
 
-        .intro-line {
-            color: var(--text-secondary);
-            margin: 0 auto 20px auto;
-            max-width: 70ch;
-            font-size: 1.05rem;
-            line-height: 1.6;
-        }
+    .section{ padding:70px 0; position:relative; }
+    .section::before{ content:''; position:absolute; top:0; left:0; width:100%; height:2px; background:linear-gradient(90deg, transparent, var(--primary), transparent); }
+    .section-title{ font-size:2.8rem; margin-bottom:50px; background:linear-gradient(45deg,var(--primary),var(--accent)); -webkit-background-clip:text; background-clip:text; color:transparent; text-align:center; text-transform:uppercase; letter-spacing:2px; }
 
-        .cta-row {
-            display:flex;
-            gap:12px;
-            justify-content:center;
-            margin-bottom: 18px;
-        }
+    .content{ max-width:900px; margin:0 auto; line-height:1.8; font-size:1.12rem; }
+    .content p{ color:var(--text-secondary); margin-bottom:20px; }
+    .content a{ color:var(--accent); text-decoration:none; font-weight:600; }
+    .content a:hover{ text-decoration:underline; color:var(--primary); }
 
-        .cta {
-            padding:10px 16px;
-            border-radius:8px;
-            font-weight:600;
-            text-decoration:none;
-            display:inline-block;
-        }
+    .voice-player{ max-width:520px; margin:36px auto; background:rgba(21,26,32,0.7); padding:24px; border-radius:12px; border:1px solid var(--primary); box-shadow:0 8px 18px rgba(0,183,235,0.12); }
+    .voice-wave{ display:flex; align-items:center; justify-content:center; height:70px; margin-bottom:18px; gap:6px; }
+    .voice-bar{ width:6px; height:34px; background:var(--primary); border-radius:3px; animation:wave 1.5s infinite ease-in-out; }
+    .voice-bar:nth-child(2){ animation-delay:0.2s; } .voice-bar:nth-child(3){ animation-delay:0.4s; } .voice-bar:nth-child(4){ animation-delay:0.6s; } .voice-bar:nth-child(5){ animation-delay:0.8s; }
 
-        .cta-primary {
-            background: var(--primary);
-            color: var(--dark);
-        }
+    .voice-controls{ display:flex; justify-content:center; gap:18px; margin-top:18px; }
+    .voice-btn{ width:66px; height:66px; border-radius:50%; background:var(--primary); color:var(--dark); border:none; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:transform .18s ease; box-shadow:0 6px 14px rgba(0,183,235,0.18); }
+    .voice-btn:hover{ transform:scale(1.06); }
 
-        .cta-ghost {
-            border:1px solid rgba(233,233,233,0.08);
-            color: var(--text);
-            background: transparent;
-        }
+    .social-links{ display:flex; justify-content:center; gap:20px; margin-top:20px; }
+    .social-link{ color:var(--accent); text-decoration:none; font-weight:600; transition:all .25s ease; font-size:1.1rem; padding:8px 14px; border-radius:12px; background:rgba(39,209,135,0.06); }
+    .social-link:hover{ color:var(--primary); background:rgba(0,183,235,0.08); transform:translateY(-3px); }
 
-        .cyber-tags {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 2rem;
-        }
+    @keyframes hologramGlow{ 0%{ filter:brightness(1); } 100%{ filter:brightness(1.12); } }
+    @keyframes headBob{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-5px); } }
+    @keyframes armWave{ 0%,100%{ transform:rotate(0deg);} 50%{ transform:rotate(30deg);} }
+    @keyframes wave{ 0%,100%{ transform:scaleY(1);} 50%{ transform:scaleY(2.5);} }
 
-        .cyber-tag {
-            padding: 10px 20px;
-            border: 1px solid var(--primary);
-            border-radius: 25px;
-            font-size: 1.1rem;
-            background: rgba(0, 183, 235, 0.1);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .cyber-tag:hover {
-            background: var(--primary);
-            color: var(--dark);
-            transform: translateY(-4px);
-        }
-
-        .section {
-            padding: 70px 0;
-            position: relative;
-        }
-
-        .section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--primary), transparent);
-        }
-
-        .section-title {
-            font-size: 2.8rem;
-            margin-bottom: 50px;
-            background: linear-gradient(45deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .content {
-            max-width: 900px;
-            margin: 0 auto;
-            line-height: 1.8;
-            font-size: 1.2rem;
-            text-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
-        }
-
-        .content p {
-            color: var(--text-secondary);
-            margin-bottom: 25px;
-        }
-
-        .content a {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .content a:hover {
-            text-decoration: underline;
-            color: var(--primary);
-        }
-
-        .voice-player {
-            max-width: 550px;
-            margin: 40px auto;
-            background: rgba(21, 26, 32, 0.7);
-            padding: 30px;
-            border-radius: 15px;
-            border: 1px solid var(--primary);
-            box-shadow: 0 10px 20px rgba(0, 183, 235, 0.2);
-        }
-
-        .voice-wave {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 80px;
-            margin-bottom: 20px;
-            gap: 5px;
-        }
-
-        .voice-bar {
-            width: 6px;
-            height: 35px;
-            background: var(--primary);
-            border-radius: 3px;
-            animation: wave 1.5s infinite ease-in-out;
-        }
-
-        .voice-bar:nth-child(2) { animation-delay: 0.2s; }
-        .voice-bar:nth-child(3) { animation-delay: 0.4s; }
-        .voice-bar:nth-child(4) { animation-delay: 0.6s; }
-        .voice-bar:nth-child(5) { animation-delay: 0.8s; }
-
-        .voice-controls {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 25px;
-        }
-
-        .voice-btn {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: var(--primary);
-            color: var(--dark);
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 183, 235, 0.3);
-        }
-
-        .voice-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 20px var(--primary);
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin-top: 25px;
-        }
-
-        .social-link {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            font-size: 1.3rem;
-            padding: 10px 20px;
-            border-radius: 20px;
-            background: rgba(39, 209, 135, 0.1);
-        }
-
-        .social-link:hover {
-            color: var(--primary);
-            background: rgba(0, 183, 235, 0.2);
-            transform: translateY(-3px);
-        }
-
-        @keyframes hologramFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @keyframes wave {
-            0%, 100% { transform: scaleY(1); }
-            50% { transform: scaleY(2.5); }
-        }
-
-        @keyframes hologramGlow {
-            0% { filter: brightness(1); }
-            100% { filter: brightness(1.2); }
-        }
-
-        @keyframes headBob {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-
-        @keyframes armWave {
-            0%, 100% { transform: rotate(0deg); }
-            50% { transform: rotate(30deg); }
-        }
-
-        @media (max-width: 768px) {
-            .title { font-size: 2.5rem; }
-            .subtitle { font-size: 1.2rem; }
-            .cyber-tags { flex-direction: column; align-items: center; }
-            .hologram-container { width: 250px; height: 250px; }
-            .hologram-avatar { width: 180px; height: 180px; left: 35px; top: 35px; }
-            .robotic-chat { width: 140px; height: 140px; top: 55px; left: 55px; }
-            .voice-btn { width: 50px; height: 50px; }
-            .social-link { font-size: 1rem; padding: 6px 12px; }
-        }
-    </style>
+    @media (max-width:768px){
+      .title{ font-size:2.5rem; }
+      .subtitle{ font-size:1.2rem; }
+      .cyber-tags{ flex-direction:column; align-items:center; }
+      .hologram-container{ width:250px; height:250px; }
+      .hologram-avatar{ width:180px; height:180px; left:35px; top:35px; }
+      .voice-btn{ width:50px; height:50px; }
+      .social-link{ font-size:1rem; padding:6px 12px; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <div class="header-content">
-                <div class="hologram-container">
-                    <canvas id="hologram-canvas"></canvas>
-                    <div class="hologram-avatar">
-                        <img src="Photo.jpg" alt="Yuktha Priya Masupalli">
-                    </div>
-                    <div class="robotic-chat">
-                        <svg class="robot-svg" viewBox="0 0 100 100">
-                            <g class="robot-body">
-                                <rect x="40" y="50" width="20" height="30" rx="5" class="robot-body"/>
-                                <circle cx="50" cy="40" r="15" class="robot-head"/>
-                                <rect x="35" y="50" width="10" height="20" class="robot-arm-left" transform="translate(35, 50) rotate(0 5 10)"/>
-                                <rect x="55" y="50" width="10" height="20" class="robot-arm-right" transform="translate(55, 50) rotate(0 5 10)"/>
-                            </g>
-                        </svg>
-                    </div>
-                </div>
-                <h1 class="title">Yuktha Priya Masupalli</h1>
-                <p class="subtitle">Architect of Autonomous Intelligence</p>
+  <div class="container">
+    <header class="header">
+      <div class="header-content">
+        <div class="hologram-container" aria-hidden="true">
+          <canvas id="hologram-canvas" aria-hidden="true"></canvas>
 
-                <!-- NEW: supporting intro + CTAs -->
-                <p class="intro-line">
-                  I build high‑performance web applications and cloud systems. I combine front‑end craftsmanship with robust backends
-                  and automated cloud deployment to ship production‑grade systems that scale and are easy to maintain.
-                </p>
-                <div class="cta-row">
-                  <a class="cta cta-primary" href="/projects">View projects</a>
-                  <a class="cta cta-ghost" href="/resume.pdf" download>Download resume</a>
-                </div>
-                <!-- END new -->
+          <div class="hologram-avatar" aria-hidden="true">
+            <img src="Photo.jpg" alt="Yuktha Priya Masupalli">
+          </div>
 
-                <div class="cyber-tags">
-                    <div class="cyber-tag">Agentic AI</div>
-                    <div class="cyber-tag">Multimodal Learning</div>
-                    <div class="cyber-tag">Data Engineering</div>
-                    <div class="cyber-tag">Medical Innovation</div>
-                </div>
-                <div class="voice-player">
-                    <div class="voice-wave">
-                        <div class="voice-bar"></div>
-                        <div class="voice-bar"></div>
-                        <div class="voice-bar"></div>
-                        <div class="voice-bar"></div>
-                        <div class="voice-bar"></div>
-                    </div>
-                    <!-- UPDATED microcopy -->
-                    <p>Tap play to hear a short introduction — I describe who I am and what I build in ~30 seconds.</p>
-                    <div class="voice-controls">
-                        <button class="voice-btn" id="play-intro">
-                            <i class="fas fa-play"></i>
-                        </button>
-                        <button class="voice-btn" id="replay-intro">
-                            <i class="fas fa-redo"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </header>
+          <div class="robotic-chat" aria-hidden="true">
+            <svg class="robot-svg" viewBox="0 0 100 100" role="img" aria-label="robot">
+              <g class="robot-body">
+                <rect x="40" y="50" width="20" height="30" rx="5" class="robot-body"/>
+                <circle cx="50" cy="40" r="15" class="robot-head"/>
+                <rect x="35" y="50" width="10" height="20" class="robot-arm-left"/>
+                <rect x="55" y="50" width="10" height="20" class="robot-arm-right"/>
+              </g>
+            </svg>
+          </div>
+        </div>
 
-        <section class="section">
-            <h2 class="section-title">Evolution in the Digital Age</h2>
-            <div class="content">
-                <p>My journey sparked in Tirupati, India, with a Diploma at S.V Govt. Polytechnic, igniting my path to a B.Tech at JNTUA College of Engineering, and now to Texas A&M University-San Antonio for my Master’s with a 3.87/4.0 GPA. At Digitalsoft AI Solutions, I shaped GenAI assistants with LangChain, and at Texas A&M, I craft CLIP-based systems that redefine autonomy. My medical imaging research, honored at IEEE and AAAI, echoes the pulse of this robotic era.</p>
-            </div>
-        </section>
+        <h1 class="title">Yuktha Priya Masupalli</h1>
+        <p class="subtitle">Architect of Autonomous Intelligence</p>
 
-        <section class="section">
-            <h2 class="section-title">Agentic Manifestations</h2>
-            <div class="content">
-                <p>In this robotic dawn, my creations thrive. I orchestrate multimodal intelligence with CLIP, cutting retrieval latency by 20% across vast datasets, and enhance the JagCoach AI assistant with audio-video analysis on GCP. Diffusion models deepen understanding, while Rust-crafted frameworks, powered by machine learning, shield against vulnerabilities. I’m exploring real-time ML, cloud expertise with AWS and Kubernetes, and Neo4j for adaptive insights.</p>
-            </div>
-        </section>
+        <!-- Supporting intro + CTAs -->
+        <p class="intro-line">
+          I build high‑performance web applications and cloud systems. I combine front‑end craftsmanship with robust backends
+          and automated cloud deployment to ship production‑grade systems that scale and are easy to maintain.
+        </p>
 
-        <section class="section">
-            <h2 class="section-title">Collaborative Synergy</h2>
-            <div class="content">
-                <p>I seek partners in this digital frontier. I envision co-creating open-source AI and cybersecurity tools, delving into vision-language models and secure networks. Guidance in serverless architectures and scaling AI fuels my autonomous visions.</p>
-            </div>
-        </section>
+        <div class="cta-row" role="navigation" aria-label="primary actions">
+          <a class="cta cta-primary" href="/projects">View projects</a>
+          <a class="cta cta-ghost" href="/resume.pdf" download>Download resume</a>
+        </div>
+        <!-- End CTAs -->
 
-        <section class="section">
-            <h2 class="section-title">Published Insights</h2>
-            <div class="content">
-                <p>My research lights the way. ‘Improving Medical Imaging Model Calibration through Probabilistic Embedding’ at IEEE Big Data refines multimodal precision, while ‘Benchmarking the Robustness of Contrastive Learning Models’ at AAAI tests resilience in occluded realms.</p>
-                <p><a href="https://ieeexplore.ieee.org/document/10825661/" target="_blank">IEEE Vision</a> | <a href="https://arxiv.org/abs/2501.09134" target="_blank">AAAI Insight</a></p>
-            </div>
-        </section>
+        <div class="cyber-tags" role="list" aria-label="skills">
+          <div class="cyber-tag" role="listitem">Agentic AI</div>
+          <div class="cyber-tag" role="listitem">Multimodal Learning</div>
+          <div class="cyber-tag" role="listitem">Data Engineering</div>
+          <div class="cyber-tag" role="listitem">Medical Innovation</div>
+        </div>
 
-        <section class="section">
-            <h2 class="section-title">Digital Nexus</h2>
-            <div class="content">
-                <p>Connect with me across the digital expanse.</p>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/yukthapriya" class="social-link">LinkedIn</a>
-                    <a href="https://github.com/yukthapriya" class="social-link">GitHub</a>
-                    <a href="https://scholar.google.com/citations?hl=en&user=UkX-bOYAAAAJ" class="social-link">Google Scholar</a>
-                </div>
-            </div>
-        </section>
-    </div>
+        <div class="voice-player" aria-live="polite">
+          <div class="voice-wave" aria-hidden="true">
+            <div class="voice-bar"></div>
+            <div class="voice-bar"></div>
+            <div class="voice-bar"></div>
+            <div class="voice-bar"></div>
+            <div class="voice-bar"></div>
+          </div>
 
-    <script>
-        // Hologram robot animation with JARVIS-style interaction
-        const canvas = document.getElementById('hologram-canvas');
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
-        renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+          <p>Tap play to hear a short introduction — I describe who I am and what I build in about 30 seconds.</p>
 
-        // Robot head (dodecahedron) and body (cylinder)
-        const headGeometry = new THREE.DodecahedronGeometry(1.2, 1);
-        const headMaterial = new THREE.MeshBasicMaterial({ color: 0x00B7EB, wireframe: true, transparent: true, opacity: 0.7 });
-        const robotHead = new THREE.Mesh(headGeometry, headMaterial);
-        scene.add(robotHead);
+          <div class="voice-controls" role="toolbar" aria-label="voice controls">
+            <button class="voice-btn" id="play-intro" aria-pressed="false" title="Play / Pause introduction">
+              <i class="fas fa-play" aria-hidden="true"></i>
+            </button>
+            <button class="voice-btn" id="replay-intro" title="Replay introduction">
+              <i class="fas fa-redo" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
 
-        const bodyGeometry = new THREE.CylinderGeometry(0.6, 0.6, 2, 32);
-        const bodyMaterial = new THREE.MeshBasicMaterial({ color: 0x2E1A46, wireframe: true, transparent: true, opacity: 0.5 });
-        const robotBody = new THREE.Mesh(bodyGeometry, bodyMaterial);
-        robotBody.position.y = -1.8;
-        scene.add(robotBody);
+    <section class="section">
+      <h2 class="section-title">Evolution in the Digital Age</h2>
+      <div class="content">
+        <p>My journey sparked in Tirupati, India, with a Diploma at S.V Govt. Polytechnic, igniting my path to a B.Tech at JNTUA College of Engineering, and now to Texas A&amp;M University-San Antonio for my Master’s with a 3.87/4.0 GPA. At Digitalsoft AI Solutions, I shaped GenAI assistants with LangChain, and at Texas A&amp;M, I craft CLIP-based systems that redefine autonomy. My medical imaging research, honored at IEEE and AAAI, echoes the pulse of this robotic era.</p>
+      </div>
+    </section>
 
-        // Add animated arms
-        const armGeometry = new THREE.BoxGeometry(0.3, 1.5, 0.3);
-        const armMaterial = new THREE.MeshBasicMaterial({ color: 0x27D187, wireframe: true, transparent: true, opacity: 0.5 });
-        const leftArm = new THREE.Mesh(armGeometry, armMaterial);
-        leftArm.position.set(-1, -0.5, 0);
-        const rightArm = new THREE.Mesh(armGeometry, armMaterial);
-        rightArm.position.set(1, -0.5, 0);
-        scene.add(leftArm, rightArm);
+    <section class="section">
+      <h2 class="section-title">Agentic Manifestations</h2>
+      <div class="content">
+        <p>In this robotic dawn, my creations thrive. I orchestrate multimodal intelligence with CLIP, cutting retrieval latency by 20% across vast datasets, and enhance the JagCoach AI assistant with audio-video analysis on GCP. Diffusion models deepen understanding, while Rust-crafted frameworks, powered by machine learning, shield against vulnerabilities. I’m exploring real-time ML, cloud expertise with AWS and Kubernetes, and Neo4j for adaptive insights.</p>
+      </div>
+    </section>
 
-        camera.position.z = 5;
+    <section class="section">
+      <h2 class="section-title">Collaborative Synergy</h2>
+      <div class="content">
+        <p>I seek partners in this digital frontier. I envision co-creating open-source AI and cybersecurity tools, delving into vision-language models and secure networks. Guidance in serverless architectures and scaling AI fuels my autonomous visions.</p>
+      </div>
+    </section>
 
-        const controls = new THREE.OrbitControls(camera, canvas);
-        controls.enableDamping = true;
-        controls.dampingFactor = 0.05;
-        controls.minDistance = 3;
-        controls.maxDistance = 7;
-        controls.enablePan = false;
+    <section class="section">
+      <h2 class="section-title">Published Insights</h2>
+      <div class="content">
+        <p>My research lights the way. ‘Improving Medical Imaging Model Calibration through Probabilistic Embedding’ at IEEE Big Data refines multimodal precision, while ‘Benchmarking the Robustness of Contrastive Learning Models’ at AAAI tests resilience in occluded realms.</p>
+        <p><a href="https://ieeexplore.ieee.org/document/10825661/" target="_blank" rel="noopener noreferrer">IEEE Vision</a> | <a href="https://arxiv.org/abs/2501.09134" target="_blank" rel="noopener noreferrer">AAAI Insight</a></p>
+      </div>
+    </section>
 
-        let isDragging = false;
-        let previousX = 0;
-        let armAngle = 0;
+    <section class="section">
+      <h2 class="section-title">Digital Nexus</h2>
+      <div class="content">
+        <p>Connect with me across the digital expanse.</p>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/yukthapriya" class="social-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://github.com/yukthapriya" class="social-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://scholar.google.com/citations?hl=en&user=UkX-bOYAAAAJ" class="social-link" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+        </div>
+      </div>
+    </section>
+  </div>
 
-        function animate() {
-            requestAnimationFrame(animate);
-            robotHead.rotation.y += 0.002;
-            robotBody.rotation.y += 0.002;
-            leftArm.rotation.z = Math.sin(armAngle) * 0.5;
-            rightArm.rotation.z = -Math.sin(armAngle) * 0.5;
-            armAngle += 0.02;
-            controls.update();
-            renderer.render(scene, camera);
+  <script>
+    // --- THREE.JS HOLOGRAM (crisp on high-DPI) ---
+    const canvas = document.getElementById('hologram-canvas');
+    // guard: bail if canvas not found
+    if (canvas && typeof THREE !== 'undefined') {
+      const scene = new THREE.Scene();
+      // Use client size to compute aspect
+      const updateCameraAspect = (camera) => {
+        const w = canvas.clientWidth || 300;
+        const h = canvas.clientHeight || 300;
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+      };
+      const camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight || 1, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+      // set logical size then pixel ratio for crispness
+      const setRendererSize = () => {
+        const w = canvas.clientWidth || 300;
+        const h = canvas.clientHeight || 300;
+        renderer.setSize(w, h, false);
+        renderer.setPixelRatio(window.devicePixelRatio ? window.devicePixelRatio : 1);
+      };
+      setRendererSize();
+
+      // Robot head and body
+      const headGeometry = new THREE.DodecahedronGeometry(1.2, 1);
+      const headMaterial = new THREE.MeshBasicMaterial({ color: 0x00B7EB, wireframe: true, transparent: true, opacity: 0.75 });
+      const robotHead = new THREE.Mesh(headGeometry, headMaterial);
+      scene.add(robotHead);
+
+      const bodyGeometry = new THREE.CylinderGeometry(0.6, 0.6, 2, 32);
+      const bodyMaterial = new THREE.MeshBasicMaterial({ color: 0x2E1A46, wireframe: true, transparent: true, opacity: 0.55 });
+      const robotBody = new THREE.Mesh(bodyGeometry, bodyMaterial);
+      robotBody.position.y = -1.8;
+      scene.add(robotBody);
+
+      const armGeometry = new THREE.BoxGeometry(0.3, 1.5, 0.3);
+      const armMaterial = new THREE.MeshBasicMaterial({ color: 0x27D187, wireframe: true, transparent: true, opacity: 0.55 });
+      const leftArm = new THREE.Mesh(armGeometry, armMaterial);
+      leftArm.position.set(-1, -0.5, 0);
+      const rightArm = new THREE.Mesh(armGeometry, armMaterial);
+      rightArm.position.set(1, -0.5, 0);
+      scene.add(leftArm, rightArm);
+
+      camera.position.z = 5;
+
+      const controls = new THREE.OrbitControls(camera, canvas);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.05;
+      controls.minDistance = 3;
+      controls.maxDistance = 7;
+      controls.enablePan = false;
+
+      let isDragging = false;
+      let previousX = 0;
+      let armAngle = 0;
+
+      function animate() {
+        requestAnimationFrame(animate);
+        robotHead.rotation.y += 0.002;
+        robotBody.rotation.y += 0.002;
+        leftArm.rotation.z = Math.sin(armAngle) * 0.5;
+        rightArm.rotation.z = -Math.sin(armAngle) * 0.5;
+        armAngle += 0.02;
+        controls.update();
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      window.addEventListener('resize', () => {
+        updateCameraAspect(camera);
+        setRendererSize();
+      });
+
+      // Pointer interactions (drag to rotate)
+      canvas.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        previousX = e.clientX;
+        robotHead.material.opacity = 0.95;
+        robotBody.material.opacity = 0.7;
+        leftArm.material.opacity = 0.7;
+        rightArm.material.opacity = 0.7;
+      });
+      canvas.addEventListener('mouseup', () => {
+        isDragging = false;
+        robotHead.material.opacity = 0.75;
+        robotBody.material.opacity = 0.55;
+        leftArm.material.opacity = 0.55;
+        rightArm.material.opacity = 0.55;
+      });
+      canvas.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const deltaX = e.clientX - previousX;
+        robotHead.rotation.y += deltaX * 0.005;
+        robotBody.rotation.y += deltaX * 0.005;
+        leftArm.rotation.y += deltaX * 0.01;
+        rightArm.rotation.y -= deltaX * 0.01;
+        previousX = e.clientX;
+      });
+
+      // Touch gestures
+      canvas.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        previousX = e.touches[0].clientX;
+        robotHead.material.opacity = 0.95;
+        robotBody.material.opacity = 0.7;
+        leftArm.material.opacity = 0.7;
+        rightArm.material.opacity = 0.7;
+      });
+      canvas.addEventListener('touchend', () => {
+        isDragging = false;
+        robotHead.material.opacity = 0.75;
+        robotBody.material.opacity = 0.55;
+        leftArm.material.opacity = 0.55;
+        rightArm.material.opacity = 0.55;
+      });
+      canvas.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        const deltaX = e.touches[0].clientX - previousX;
+        robotHead.rotation.y += deltaX * 0.005;
+        robotBody.rotation.y += deltaX * 0.005;
+        leftArm.rotation.y += deltaX * 0.01;
+        rightArm.rotation.y -= deltaX * 0.01;
+        previousX = e.touches[0].clientX;
+      });
+    } // end canvas guard
+
+    // --- Speech Synthesis (browser only) ---
+    const playIntroBtn = document.getElementById('play-intro');
+    const replayIntroBtn = document.getElementById('replay-intro');
+    const voiceBars = document.querySelectorAll('.voice-bar');
+
+    function animateBars(playing){
+      voiceBars.forEach(bar => {
+        if (!bar) return;
+        bar.style.animationPlayState = playing ? 'running' : 'paused';
+        bar.style.transform = playing ? '' : 'scaleY(1)';
+      });
+    }
+
+    function getPreferredVoice() {
+      const voices = window.speechSynthesis.getVoices();
+      // Prefer a clear neutral voice; fallback to first available
+      const preferred = voices.find(v => /female|samantha|zira|karen|victoria/i.test(v.name));
+      return preferred || voices[0];
+    }
+
+    // 30-second spoken script chosen by you
+    const spokenIntroText = "Hello — I’m Yuktha Priya, a full‑stack software engineer. I design and build high‑performance web applications and cloud systems. On the front end I focus on UX, performance, and accessibility; on the backend I build resilient APIs, data pipelines, and cost‑efficient deployments. I enjoy turning complex requirements into simple, maintainable solutions. Check out my case studies to see the results and technical details.";
+
+    let currentUtterance = null;
+
+    function speakIntroduction() {
+      // cancel any ongoing
+      window.speechSynthesis.cancel();
+      currentUtterance = new SpeechSynthesisUtterance(spokenIntroText);
+
+      // assign voice when available (voices might be loaded asynchronously)
+      const voice = getPreferredVoice();
+      if (voice) currentUtterance.voice = voice;
+
+      currentUtterance.rate = 0.95;
+      currentUtterance.pitch = 1.05;
+
+      currentUtterance.onstart = () => { animateBars(true); if (playIntroBtn) playIntroBtn.setAttribute('aria-pressed', 'true'); };
+      currentUtterance.onend = () => { animateBars(false); if (playIntroBtn) playIntroBtn.setAttribute('aria-pressed', 'false'); };
+      currentUtterance.onerror = () => { animateBars(false); if (playIntroBtn) playIntroBtn.setAttribute('aria-pressed', 'false'); alert('Speech synthesis failed.'); };
+
+      window.speechSynthesis.speak(currentUtterance);
+    }
+
+    // Buttons: play/pause/resume and replay
+    if (playIntroBtn){
+      playIntroBtn.addEventListener('click', () => {
+        if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
+          window.speechSynthesis.pause();
+          animateBars(false);
+          playIntroBtn.setAttribute('aria-pressed', 'false');
+        } else if (window.speechSynthesis.paused) {
+          window.speechSynthesis.resume();
+          animateBars(true);
+          playIntroBtn.setAttribute('aria-pressed', 'true');
+        } else {
+          speakIntroduction();
         }
-        animate();
+      });
+    }
 
-        window.addEventListener('resize', () => {
-            camera.aspect = canvas.clientWidth / canvas.clientHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+    if (replayIntroBtn){
+      replayIntroBtn.addEventListener('click', () => {
+        window.speechSynthesis.cancel();
+        speakIntroduction();
+      });
+    }
+
+    // Ensure voices are loaded (some browsers load asynchronously)
+    if (typeof window.speechSynthesis !== 'undefined') {
+      if (window.speechSynthesis.getVoices().length === 0) {
+        window.speechSynthesis.addEventListener('voiceschanged', () => {
+          // noop; voices will be picked inside speakIntroduction via getPreferredVoice
+          console.log('Speech voices loaded');
         });
-
-        // JARVIS-like gesture interaction
-        canvas.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            previousX = e.clientX;
-            robotHead.material.opacity = 0.9;
-            robotBody.material.opacity = 0.7;
-            leftArm.material.opacity = 0.7;
-            rightArm.material.opacity = 0.7;
-        });
-
-        canvas.addEventListener('mouseup', () => {
-            isDragging = false;
-            robotHead.material.opacity = 0.7;
-            robotBody.material.opacity = 0.5;
-            leftArm.material.opacity = 0.5;
-            rightArm.material.opacity = 0.5;
-        });
-
-        canvas.addEventListener('mousemove', (e) => {
-            if (isDragging) {
-                const deltaX = e.clientX - previousX;
-                robotHead.rotation.y += deltaX * 0.005;
-                robotBody.rotation.y += deltaX * 0.005;
-                leftArm.rotation.y += deltaX * 0.01;
-                rightArm.rotation.y -= deltaX * 0.01;
-                previousX = e.clientX;
-            }
-        });
-
-        canvas.addEventListener('touchstart', (e) => {
-            isDragging = true;
-            previousX = e.touches[0].clientX;
-            robotHead.material.opacity = 0.9;
-            robotBody.material.opacity = 0.7;
-            leftArm.material.opacity = 0.7;
-            rightArm.material.opacity = 0.7;
-        });
-
-        canvas.addEventListener('touchend', () => {
-            isDragging = false;
-            robotHead.material.opacity = 0.7;
-            robotBody.material.opacity = 0.5;
-            leftArm.material.opacity = 0.5;
-            rightArm.material.opacity = 0.5;
-        });
-
-        canvas.addEventListener('touchmove', (e) => {
-            if (isDragging) {
-                const deltaX = e.touches[0].clientX - previousX;
-                robotHead.rotation.y += deltaX * 0.005;
-                robotBody.rotation.y += deltaX * 0.005;
-                leftArm.rotation.y += deltaX * 0.01;
-                rightArm.rotation.y -= deltaX * 0.01;
-                previousX = e.touches[0].clientX;
-            }
-        });
-
-        // Voice interaction
-        const playIntroBtn = document.getElementById('play-intro');
-        const replayIntroBtn = document.getElementById('replay-intro');
-        const voiceBars = document.querySelectorAll('.voice-bar');
-
-        function animateBars(playing) {
-            voiceBars.forEach(bar => {
-                bar.style.animationPlayState = playing ? 'running' : 'paused';
-                bar.style.transform = playing ? '' : 'scaleY(1)';
-            });
-        }
-
-        function speakIntroduction() {
-            window.speechSynthesis.cancel();
-            // REPLACED: 30-second script
-            const introText = "Hello — I’m Yuktha Priya, a full‑stack software engineer. I design and build high‑performance web applications and cloud systems. On the front end I focus on UX, performance, and accessibility; on the backend I build resilient APIs, data pipelines, and cost‑efficient deployments. I enjoy turning complex requirements into simple, maintainable solutions. Check out my case studies to see the results and technical details.";
-            const utterance = new SpeechSynthesisUtterance(introText);
-            const voices = window.speechSynthesis.getVoices();
-            const femaleVoice = voices.find(voice => voice.name.toLowerCase().includes('samantha'));
-            if (femaleVoice) utterance.voice = femaleVoice;
-            utterance.rate = 0.95;
-            utterance.pitch = 1.1;
-            utterance.onstart = () => animateBars(true);
-            utterance.onend = () => animateBars(false);
-            utterance.onerror = () => { animateBars(false); alert('Speech synthesis failed.'); };
-            window.speechSynthesis.speak(utterance);
-        }
-
-        playIntroBtn.addEventListener('click', () => {
-            if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
-                window.speechSynthesis.pause();
-                animateBars(false);
-            } else if (window.speechSynthesis.speaking) {
-                window.speechSynthesis.resume();
-                animateBars(true);
-            } else {
-                speakIntroduction();
-            }
-        });
-
-        replayIntroBtn.addEventListener('click', () => {
-            window.speechSynthesis.cancel();
-            speakIntroduction();
-        });
-
-        window.addEventListener('load', () => {
-            if (speechSynthesis.getVoices().length === 0) {
-                speechSynthesis.addEventListener('voiceschanged', () => console.log('Voices loaded'));
-            }
-        });
-    </script>
+      }
+    }
+  </script>
 </body>
 </html>
