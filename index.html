@@ -1,333 +1,235 @@
-```jsx
-// src/App.js
-import React, { useEffect, useRef, useState } from 'react';
-import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import './App.css';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Yuktha Priya Masupalli | Software & AI Engineer</title>
 
-const App = () => {
-  const hologramRef = useRef(null);
-  const voiceBarsRef = useRef([]);
-  const [isPlaying, setIsPlaying] = useState(false);
+  <meta name="description" content="Software Engineer with experience in full-stack development, AI/ML, frontend engineering, data science, and data engineering. MS @ Texas A&M | IEEE & AAAI publications."/>
 
-  // Three.js Hologram Setup
-  useEffect(() => {
-    if (!hologramRef.current) return;
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.168.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.168.0/examples/js/controls/OrbitControls.min.js"></script>
+
+  <link rel="stylesheet" href="App.css"/>
+
+  <base href="/"/>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="container">
+      <div id="hologram" class="hologram"></div>
+
+      <h1>Yuktha Priya Masupalli</h1>
+      <h2>Software Engineer • AI/ML • Full-Stack • Data</h2>
+
+      <div class="skills">
+        <span>Full-Stack Development</span>
+        <span>Frontend Engineering</span>
+        <span>AI / Machine Learning</span>
+        <span>Data Science & Analytics</span>
+        <span>Data Engineering & Pipelines</span>
+        <span>Cloud (AWS • GCP)</span>
+      </div>
+
+      <div class="voice-section">
+        <div class="voice-wave">
+          <div class="voice-bar"></div>
+          <div class="voice-bar"></div>
+          <div class="voice-bar"></div>
+          <div class="voice-bar"></div>
+          <div class="voice-bar"></div>
+        </div>
+        <p>Play a short voice introduction</p>
+        <div class="voice-buttons">
+          <button id="play-btn" class="btn voice-btn">
+            <i class="fas fa-play"></i> Play
+          </button>
+          <button id="replay-btn" class="btn voice-btn">
+            <i class="fas fa-redo"></i> Replay
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <section class="section">
+      <div class="container">
+        <h2>Background & Experience</h2>
+        <p>
+          MS in Computer Science (GPA 3.87/4.0) at Texas A&M University-San Antonio. 
+          B.Tech from JNTUA College of Engineering. Diploma from S.V Govt. Polytechnic.
+        </p>
+        <p>
+          Graduate Research Assistant focused on machine learning models, data pipelines, 
+          and scalable software systems. Previously at Digitalsoft AI Solutions, 
+          developed full-stack AI applications using modern frameworks and cloud services.
+        </p>
+      </div>
+    </section>
+
+    <section class="section projects-section">
+      <div class="container">
+        <h2>Selected Projects</h2>
+        <div class="projects">
+          <div class="project">
+            <h3>JagCoach – Multimodal AI Application</h3>
+            <p>Full-stack platform with React frontend, backend services, audio/video processing, 
+            ML models for analysis, and deployment on GCP. Focused on performance, UX, and data efficiency.</p>
+            <div class="tags">
+              <span>React</span><span>Node.js</span><span>ML</span><span>GCP</span>
+            </div>
+          </div>
+
+          <div class="project">
+            <h3>University Recommendation Engine</h3>
+            <p>Graph-based recommendation system using Neo4j, machine learning algorithms, 
+            Python backend, and interactive frontend dashboard.</p>
+            <div class="tags">
+              <span>Neo4j</span><span>Python</span><span>Frontend</span><span>ML</span>
+            </div>
+          </div>
+
+          <div class="project">
+            <h3>Public Health Monitoring System</h3>
+            <p>Data pipeline and analytics tool with NLP components, AWS infrastructure, 
+            Kubernetes orchestration, and responsive visualization interface.</p>
+            <div class="tags">
+              <span>AWS</span><span>Kubernetes</span><span>NLP</span><span>Data Eng</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Research Publications</h2>
+        <div class="pubs">
+          <div class="pub">
+            <h3>Improving Medical Imaging Model Calibration through Probabilistic Embedding</h3>
+            <div class="venue">IEEE Big Data Conference</div>
+            <a href="https://ieeexplore.ieee.org/document/10825661/" target="_blank" class="link">Read paper</a>
+          </div>
+          <div class="pub">
+            <h3>Benchmarking the Robustness of Contrastive Learning Models</h3>
+            <div class="venue">AAAI Conference</div>
+            <a href="https://arxiv.org/abs/2501.09134" target="_blank" class="link">Read paper</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section">
+      <div class="container">
+        <h2>Let's Connect</h2>
+        <div class="social">
+          <a href="https://www.linkedin.com/in/yukthapriya" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+          <a href="https://github.com/yukthapriya" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+          <a href="https://scholar.google.com/citations?hl=en&user=UkX-bOYAAAAJ" target="_blank"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Yuktha Priya Masupalli</p>
+    </div>
+  </footer>
+
+  <script>
+    // ─── Three.js Hologram ────────────────────────────────────────
+    const hologramContainer = document.getElementById('hologram');
 
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(
-      75,
-      hologramRef.current.clientWidth / hologramRef.current.clientHeight,
-      0.1,
-      1000
-    );
-
+    const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-    renderer.setSize(hologramRef.current.clientWidth, hologramRef.current.clientHeight);
-    hologramRef.current.appendChild(renderer.domElement);
+    renderer.setSize(280, 280);
+    hologramContainer.appendChild(renderer.domElement);
 
-    // Torus Knot Geometry (futuristic hologram look)
-    const geometry = new THREE.TorusKnotGeometry(1, 0.3, 120, 16, 2, 3);
+    const geometry = new THREE.TorusKnotGeometry(1, 0.28, 120, 16, 2, 3);
     const material = new THREE.MeshBasicMaterial({
-      color: 0x00d4ff,
+      color: 0x00c4ff,
       wireframe: true,
       transparent: true,
-      opacity: 0.7,
+      opacity: 0.65
     });
-    const hologram = new THREE.Mesh(geometry, material);
-    scene.add(hologram);
+    const mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
 
-    camera.position.z = 5;
+    camera.position.z = 4.5;
 
-    const controls = new OrbitControls(camera, renderer.domElement);
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
-    controls.dampingFactor = 0.05;
+    controls.dampingFactor = 0.06;
     controls.enableZoom = false;
     controls.enablePan = false;
 
-    let animationFrameId;
-    const animate = () => {
-      animationFrameId = requestAnimationFrame(animate);
-      hologram.rotation.x += 0.001;
-      hologram.rotation.y += 0.003;
+    function animate() {
+      requestAnimationFrame(animate);
+      mesh.rotation.x += 0.002;
+      mesh.rotation.y += 0.004;
       controls.update();
       renderer.render(scene, camera);
-    };
+    }
     animate();
 
-    // Handle resize
-    const handleResize = () => {
-      if (!hologramRef.current) return;
-      camera.aspect = hologramRef.current.clientWidth / hologramRef.current.clientHeight;
+    // Resize handler
+    window.addEventListener('resize', () => {
+      const w = hologramContainer.clientWidth;
+      const h = hologramContainer.clientHeight;
+      camera.aspect = w / h;
       camera.updateProjectionMatrix();
-      renderer.setSize(hologramRef.current.clientWidth, hologramRef.current.clientHeight);
-    };
-    window.addEventListener('resize', handleResize);
-
-    // Cleanup
-    return () => {
-      cancelAnimationFrame(animationFrameId);
-      window.removeEventListener('resize', handleResize);
-      if (hologramRef.current && renderer.domElement) {
-        hologramRef.current.removeChild(renderer.domElement);
-      }
-      renderer.dispose();
-    };
-  }, []);
-
-  // Voice Synthesis Functions
-  const animateBars = (playing) => {
-    voiceBarsRef.current.forEach((bar) => {
-      if (bar) {
-        bar.style.animationPlayState = playing ? 'running' : 'paused';
-        bar.style.transform = playing ? '' : 'scaleY(1)';
-      }
+      renderer.setSize(w, h);
     });
-  };
 
-  const speakIntroduction = () => {
-    if (!('speechSynthesis' in window)) {
-      alert("Your browser doesn't support speech synthesis.");
-      return;
-    }
+    // ─── Voice Introduction ───────────────────────────────────────
+    const playBtn   = document.getElementById('play-btn');
+    const replayBtn = document.getElementById('replay-btn');
+    const bars      = document.querySelectorAll('.voice-bar');
 
-    window.speechSynthesis.cancel();
-
-    const introText = `
-      Hello. I am Yuktha Priya Masupalli, a versatile software engineer with expertise in AI/ML, full-stack development, frontend design, data science, and data engineering.
-      I build scalable systems, from interactive UIs to robust backends, machine learning models, and data pipelines. 
-      My work spans multimodal AI, cloud deployments, and innovative research published in IEEE and AAAI.
-      Let's explore how my skills can contribute to your team.
-    `;
-
-    const utterance = new SpeechSynthesisUtterance(introText.trim());
-    utterance.rate = 0.94;
-    utterance.pitch = 1.08;
-    utterance.volume = 0.95;
-
-    const voices = window.speechSynthesis.getVoices();
-    const preferredVoice = voices.find(v => 
-      v.name.toLowerCase().includes('samantha') || 
-      v.name.toLowerCase().includes('google us english female')
-    );
-    if (preferredVoice) utterance.voice = preferredVoice;
-
-    utterance.onstart = () => {
-      setIsPlaying(true);
-      animateBars(true);
-    };
-
-    utterance.onend = () => {
-      setIsPlaying(false);
-      animateBars(false);
-    };
-
-    utterance.onerror = (e) => {
-      console.error('Speech error:', e);
-      setIsPlaying(false);
-      animateBars(false);
-    };
-
-    window.speechSynthesis.speak(utterance);
-  };
-
-  const toggleSpeech = () => {
-    if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
-      window.speechSynthesis.pause();
-      setIsPlaying(false);
-      animateBars(false);
-    } else if (window.speechSynthesis.paused) {
-      window.speechSynthesis.resume();
-      setIsPlaying(true);
-      animateBars(true);
-    } else {
-      speakIntroduction();
-    }
-  };
-
-  const replaySpeech = () => {
-    window.speechSynthesis.cancel();
-    speakIntroduction();
-  };
-
-  // Wait for voices to load (Safari/iOS fix)
-  useEffect(() => {
-    if (window.speechSynthesis.getVoices().length === 0) {
-      window.speechSynthesis.addEventListener('voiceschanged', () => {
-        // voices loaded — can be used in speakIntroduction
+    function setBarsActive(active) {
+      bars.forEach(bar => {
+        bar.style.animationPlayState = active ? 'running' : 'paused';
       });
     }
-  }, []);
 
-  return (
-    <div className="app-wrapper">
-      <div className="background-glow"></div>
+    function speak() {
+      window.speechSynthesis.cancel();
 
-      <header className="hero">
-        <div className="container">
-          <div className="hologram-wrapper" ref={hologramRef}></div>
+      const text = `Hello, I'm Yuktha Priya Masupalli — a software engineer with experience in full-stack development, 
+      frontend engineering, AI and machine learning, data science, and data engineering. 
+      I build scalable applications, interactive user interfaces, robust backends, 
+      machine learning models, and efficient data pipelines. 
+      My recent work includes multimodal systems and cloud-deployed solutions — 
+      and research published in IEEE and AAAI. 
+      Feel free to explore my projects and reach out.`;
 
-          <h1 className="main-title">Yuktha Priya Masupalli</h1>
-          <h2 className="subtitle">Software Engineer | AI/ML Specialist | Full-Stack Developer</h2>
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.rate = 0.95;
+      utterance.pitch = 1.05;
 
-          <div className="skills-tags">
-            <span>Full-Stack Development</span>
-            <span>Frontend Engineering</span>
-            <span>AI/ML Models</span>
-            <span>Data Science</span>
-            <span>Data Engineering</span>
-            <span>Cloud & DevOps</span>
-          </div>
+      const voices = window.speechSynthesis.getVoices();
+      const female = voices.find(v => v.name.toLowerCase().includes('samantha') || v.name.includes('female'));
+      if (female) utterance.voice = female;
 
-          <div className="voice-activator">
-            <div className="voice-wave">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <div
-                  key={i}
-                  className="voice-bar"
-                  ref={(el) => (voiceBarsRef.current[i] = el)}
-                />
-              ))}
-            </div>
+      utterance.onstart = () => setBarsActive(true);
+      utterance.onend   = () => setBarsActive(false);
+      utterance.onerror = () => setBarsActive(false);
 
-            <p className="voice-label">
-              Activate voice introduction
-            </p>
+      window.speechSynthesis.speak(utterance);
+    }
 
-            <div className="voice-controls">
-              <button
-                className={`voice-btn ${isPlaying ? 'active' : ''}`}
-                onClick={toggleSpeech}
-                aria-label={isPlaying ? "Pause voice" : "Play voice introduction"}
-              >
-                <i className={isPlaying ? "fas fa-pause" : "fas fa-play"}></i>
-              </button>
+    playBtn.addEventListener('click', speak);
+    replayBtn.addEventListener('click', speak);
 
-              <button
-                className="voice-btn replay-btn"
-                onClick={replaySpeech}
-                aria-label="Replay introduction"
-              >
-                <i className="fas fa-redo"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <main className="main-content">
-        <section className="section evolution">
-          <div className="container">
-            <h2>Professional Journey</h2>
-            <div className="content">
-              <p>
-                From a Diploma in Computer Engineering at S.V Govt. Polytechnic to B.Tech at JNTUA College of Engineering, 
-                and now pursuing MS at Texas A&M University-San Antonio (GPA 3.87/4.0).
-              </p>
-              <p>
-                As a Graduate Research Assistant, I develop scalable software solutions, AI models, and data pipelines. 
-                At Digitalsoft AI Solutions, I built full-stack AI applications using LangChain, frontend interfaces, and backend services.
-              </p>
-              <p>
-                Skills span software engineering, full-stack development (React, Node.js), frontend optimization, ML/AI (PyTorch, scikit-learn), 
-                data science analytics, and data engineering (ETL, Spark, SQL/NoSQL).
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section className="section projects">
-          <div className="container">
-            <h2>Key Projects & Contributions</h2>
-            <div className="content">
-              <p>
-                Versatile projects demonstrating software engineering, AI/ML innovation, full-stack capabilities, 
-                frontend expertise, data science insights, and data engineering efficiency.
-              </p>
-              <div className="project-list">
-                <div className="project-item">
-                  <h3>JagCoach AI Platform</h3>
-                  <p>Full-stack application with React frontend, Node.js backend, ML models for multimodal analysis (audio/video), 
-                  deployed on GCP. Optimized data pipelines for real-time processing.</p>
-                </div>
-                <div className="project-item">
-                  <h3>University Recommendation System</h3>
-                  <p>Data engineering project using Neo4j graphs, ML algorithms (KNN), and Python backend. 
-                  Built interactive frontend dashboard for personalized recommendations.</p>
-                </div>
-                <div className="project-item">
-                  <h3>Public Health Monitoring Tool</h3>
-                  <p>Data science and AI solution with NLP models, ETL pipelines on AWS, Kubernetes orchestration. 
-                  Developed responsive frontend for visualization and alerts.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="section publications">
-          <div className="container">
-            <h2>Research & Publications</h2>
-            <div className="pub-grid">
-              <div className="pub-card">
-                <h3>Improving Medical Imaging Model Calibration through Probabilistic Embedding</h3>
-                <p className="venue">IEEE Big Data Conference</p>
-                <a
-                  href="https://ieeexplore.ieee.org/document/10825661/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="pub-link"
-                >
-                  Read Paper →
-                </a>
-              </div>
-
-              <div className="pub-card">
-                <h3>Benchmarking the Robustness of Contrastive Learning Models</h3>
-                <p className="venue">AAAI Conference</p>
-                <a
-                  href="https://arxiv.org/abs/2501.09134"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="pub-link"
-                >
-                  Read Paper →
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="section connect">
-          <div className="container">
-            <h2>Connect & Collaborate</h2>
-            <div className="social-links">
-              <a href="https://www.linkedin.com/in/yukthapriya" target="_blank" rel="noopener noreferrer">
-                <i className="fab fa-linkedin"></i> LinkedIn
-              </a>
-              <a href="https://github.com/yukthapriya" target="_blank" rel="noopener noreferrer">
-                <i className="fab fa-github"></i> GitHub
-              </a>
-              <a
-                href="https://scholar.google.com/citations?hl=en&user=UkX-bOYAAAAJ"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="fas fa-graduation-cap"></i> Google Scholar
-              </a>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <footer>
-        <div className="container">
-          <p>© {new Date().getFullYear()} Yuktha Priya Masupalli — Innovative Software Solutions</p>
-        </div>
-      </footer>
-    </div>
-  );
-};
-
-export default App;
-```
+    // Load voices (for Safari)
+    window.speechSynthesis.onvoiceschanged = () => {};
+  </script>
+</body>
+</html>
