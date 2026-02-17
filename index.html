@@ -1,136 +1,175 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Yuktha Priya Masupalli | Software & AI Engineer</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Yuktha Priya Masupalli | Agentic AI Engineer</title>
 
-  <meta name="description" content="Software Engineer with experience in full-stack development, AI/ML, frontend engineering, data science, and data engineering. MS @ Texas A&M | IEEE & AAAI publications."/>
+  <meta name="description" content="Agentic AI specialist building autonomous, goal-directed systems with tool-use, multi-modal reasoning, long-horizon planning and self-correction. Texas A&M MS | IEEE & AAAI publications." />
+  <meta name="theme-color" content="#0b1220" />
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <!-- Fonts & icons -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <script src="https://cdn.jsdelivr.net/npm/three@0.168.0/build/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.168.0/examples/js/controls/OrbitControls.min.js"></script>
+  <!-- Site CSS -->
+  <link rel="stylesheet" href="App.css" />
 
-  <link rel="stylesheet" href="App.css"/>
-
-  <base href="/"/>
+  <base href="/" />
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="hero">
-    <div class="container">
-      <div id="hologram" class="hologram"></div>
+  <div class="stars" aria-hidden="true"></div>
+  <div class="stars2" aria-hidden="true"></div>
 
-      <h1>Yuktha Priya Masupalli</h1>
-      <h2>Software Engineer • AI/ML • Full-Stack • Data</h2>
+  <nav class="site-nav" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="/" class="logo">Yuktha Priya</a>
 
-      <div class="skills">
-        <span>Full-Stack Development</span>
-        <span>Frontend Engineering</span>
-        <span>AI / Machine Learning</span>
-        <span>Data Science & Analytics</span>
-        <span>Data Engineering & Pipelines</span>
-        <span>Cloud (AWS • GCP)</span>
-      </div>
+      <button id="nav-toggle" class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
+        <span class="hamburger" aria-hidden="true"></span>
+      </button>
 
-      <div class="voice-section">
-        <div class="voice-wave">
-          <div class="voice-bar"></div>
-          <div class="voice-bar"></div>
-          <div class="voice-bar"></div>
-          <div class="voice-bar"></div>
-          <div class="voice-bar"></div>
-        </div>
-        <p>Play a short voice introduction</p>
-        <div class="voice-buttons">
-          <button id="play-btn" class="btn voice-btn">
-            <i class="fas fa-play"></i> Play
-          </button>
-          <button id="replay-btn" class="btn voice-btn">
-            <i class="fas fa-redo"></i> Replay
-          </button>
-        </div>
+      <div id="primary-nav" class="nav-links" data-visible="false">
+        <a href="#agentic">Agentic Systems</a>
+        <a href="#projects">Projects</a>
+        <a href="#publications">Publications</a>
+        <a href="#contact">Contact</a>
+        <a href="resume.pdf" download class="btn btn-small nav-resume">Resume</a>
       </div>
     </div>
-  </header>
+  </nav>
 
-  <main class="main-content">
-    <section class="section">
-      <div class="container">
-        <h2>Background & Experience</h2>
-        <p>
-          MS in Computer Science (GPA 3.87/4.0) at Texas A&M University-San Antonio. 
-          B.Tech from JNTUA College of Engineering. Diploma from S.V Govt. Polytechnic.
-        </p>
-        <p>
-          Graduate Research Assistant focused on machine learning models, data pipelines, 
-          and scalable software systems. Previously at Digitalsoft AI Solutions, 
-          developed full-stack AI applications using modern frameworks and cloud services.
-        </p>
+  <main id="main" tabindex="-1">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="holo-avatar" aria-hidden="false">
+          <!-- responsive avatar: provide multiple sizes if you have them -->
+          <img src="Photo.jpg"
+               srcset="Photo-400.jpg 400w, Photo-800.jpg 800w, Photo-1200.jpg 1200w"
+               sizes="(max-width: 600px) 180px, (max-width: 1200px) 260px, 320px"
+               alt="Portrait of Yuktha Priya Masupalli" loading="lazy" />
+          <div class="holo-ring" aria-hidden="true"></div>
+        </div>
+
+        <div class="hero-body">
+          <h1>Agentic AI Engineer</h1>
+          <h2>Architect of Autonomous Intelligence</h2>
+
+          <p class="lead">
+            I design <strong>goal-directed autonomous agents</strong> that reason, plan, use tools, self-correct,
+            remember across sessions, and operate in multi-modal environments.
+          </p>
+
+          <div class="agentic-pillars">
+            <div>🧠 Multi-step Reasoning & Planning</div>
+            <div>🛠️ Tool Use & Function Calling</div>
+            <div>🔄 Self-Correction & Reflection Loops</div>
+            <div>📸 Vision + Language Agents (CLIP-based)</div>
+            <div>🗣️ Voice-Activated Agent Interfaces</div>
+            <div>⚡ Real-time Adaptation & Memory</div>
+          </div>
+
+          <div class="hero-buttons">
+            <button id="activate-voice" class="btn btn-primary voice-trigger" aria-pressed="false" aria-live="polite">
+              <i class="fas fa-microphone" aria-hidden="true"></i>
+              <span class="voice-label">Activate JARVIS-like Agent Voice</span>
+            </button>
+            <a href="#agentic" class="btn btn-outline">Explore Agentic Work</a>
+          </div>
+
+          <div class="voice-status" id="voice-status" role="status" aria-live="polite">Waiting for activation...</div>
+        </div>
       </div>
     </section>
 
-    <section class="section projects-section">
+    <!-- Agentic section -->
+    <section id="agentic" class="section">
       <div class="container">
-        <h2>Selected Projects</h2>
-        <div class="projects">
-          <div class="project">
-            <h3>JagCoach – Multimodal AI Application</h3>
-            <p>Full-stack platform with React frontend, backend services, audio/video processing, 
-            ML models for analysis, and deployment on GCP. Focused on performance, UX, and data efficiency.</p>
-            <div class="tags">
-              <span>React</span><span>Node.js</span><span>ML</span><span>GCP</span>
-            </div>
+        <h2>Agentic AI Capabilities I Build</h2>
+        <div class="capabilities-grid">
+          <div class="capability-card">
+            <h3>Autonomous Goal Decomposition</h3>
+            <p>Agents that break complex objectives into executable sub-tasks with dynamic replanning.</p>
           </div>
-
-          <div class="project">
-            <h3>University Recommendation Engine</h3>
-            <p>Graph-based recommendation system using Neo4j, machine learning algorithms, 
-            Python backend, and interactive frontend dashboard.</p>
-            <div class="tags">
-              <span>Neo4j</span><span>Python</span><span>Frontend</span><span>ML</span>
-            </div>
+          <div class="capability-card">
+            <h3>Tool-Augmented Reasoning</h3>
+            <p>Integration with external APIs, code interpreters, browsers, databases — real function calling.</p>
           </div>
-
-          <div class="project">
-            <h3>Public Health Monitoring System</h3>
-            <p>Data pipeline and analytics tool with NLP components, AWS infrastructure, 
-            Kubernetes orchestration, and responsive visualization interface.</p>
-            <div class="tags">
-              <span>AWS</span><span>Kubernetes</span><span>NLP</span><span>Data Eng</span>
-            </div>
+          <div class="capability-card">
+            <h3>Multi-Modal Observation → Action</h3>
+            <p>CLIP-powered vision-language agents that understand screenshots, documents, video frames.</p>
+          </div>
+          <div class="capability-card">
+            <h3>Reflection & Memory Layers</h3>
+            <p>Self-critique, long-term memory (vector stores), session memory, episodic recall.</p>
+          </div>
+          <div class="capability-card">
+            <h3>Voice-Controlled Agents</h3>
+            <p>Speech-to-action pipelines with natural dialogue, context retention, interruption handling.</p>
+          </div>
+          <div class="capability-card">
+            <h3>Secure & Observable Agents</h3>
+            <p>Guardrails, audit logs, human-in-the-loop fallbacks, vulnerability detection in Rust.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <!-- Projects, publications, contact (unchanged structure, responsive via CSS) -->
+    <section id="projects" class="section projects-section">
       <div class="container">
-        <h2>Research Publications</h2>
-        <div class="pubs">
-          <div class="pub">
+        <h2>Agentic & Multimodal Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <h3>JagCoach – Autonomous Multimodal Coach</h3>
+            <p>Voice + video + text agent that observes user behavior, plans coaching steps, uses tools (calendar, search, analysis), self-corrects responses.</p>
+            <div class="tags"><span>CLIP</span><span>Voice Agent</span><span>GCP</span><span>Tool Use</span></div>
+          </div>
+          <div class="project-card">
+            <h3>Autonomous Research & Recommendation Agent</h3>
+            <p>Goal-directed agent using Neo4j + LLM planning + web search + ranking to recommend universities autonomously.</p>
+            <div class="tags"><span>Agentic Loop</span><span>Neo4j</span><span>Planning</span><span>Reflection</span></div>
+          </div>
+          <div class="project-card">
+            <h3>Public Health Early-Warning Agent</h3>
+            <p>NLP + multimodal monitoring agent that detects signals, reasons about causality, and triggers alerts autonomously.</p>
+            <div class="tags"><span>Autonomous Monitoring</span><span>AWS</span><span>Kubernetes</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications" class="section">
+      <div class="container">
+        <h2>Research Supporting Agentic Systems</h2>
+        <div class="pub-list">
+          <div class="pub-item">
             <h3>Improving Medical Imaging Model Calibration through Probabilistic Embedding</h3>
-            <div class="venue">IEEE Big Data Conference</div>
-            <a href="https://ieeexplore.ieee.org/document/10825661/" target="_blank" class="link">Read paper</a>
+            <div class="pub-venue">IEEE Big Data – foundational for reliable multimodal agents</div>
+            <a href="https://ieeexplore.ieee.org/document/10825661/" target="_blank" rel="noopener noreferrer" class="pub-link">Read →</a>
           </div>
-          <div class="pub">
+          <div class="pub-item">
             <h3>Benchmarking the Robustness of Contrastive Learning Models</h3>
-            <div class="venue">AAAI Conference</div>
-            <a href="https://arxiv.org/abs/2501.09134" target="_blank" class="link">Read paper</a>
+            <div class="pub-venue">AAAI – critical for vision-language agents in real-world noise</div>
+            <a href="https://arxiv.org/abs/2501.09134" target="_blank" rel="noopener noreferrer" class="pub-link">Read →</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section contact-section">
+    <section id="contact" class="section contact-section">
       <div class="container">
-        <h2>Let's Connect</h2>
-        <div class="social">
-          <a href="https://www.linkedin.com/in/yukthapriya" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-          <a href="https://github.com/yukthapriya" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-          <a href="https://scholar.google.com/citations?hl=en&user=UkX-bOYAAAAJ" target="_blank"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
+        <h2>Let's Build Next-Gen Agents Together</h2>
+        <p>Open to roles / collaborations on agentic frameworks, autonomous medical agents, voice interfaces, tool-augmented LLMs.</p>
+
+        <div class="social-icons" aria-label="Social links">
+          <a href="https://www.linkedin.com/in/yukthapriya" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+          <a href="https://github.com/yukthapriya" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+          <a href="https://scholar.google.com/citations?hl=en&user=UkX-bOYAAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></a>
         </div>
       </div>
     </section>
@@ -138,98 +177,43 @@
 
   <footer>
     <div class="container">
-      <p>© 2026 Yuktha Priya Masupalli</p>
+      <p>© 2026 Yuktha Priya Masupalli – Agentic Intelligence Architect</p>
     </div>
   </footer>
 
+  <!-- Mobile nav toggle script + voice script hookup (keeps your existing voice logic) -->
   <script>
-    // ─── Three.js Hologram ────────────────────────────────────────
-    const hologramContainer = document.getElementById('hologram');
+    (function () {
+      const navToggle = document.getElementById('nav-toggle');
+      const primaryNav = document.getElementById('primary-nav');
 
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-    renderer.setSize(280, 280);
-    hologramContainer.appendChild(renderer.domElement);
-
-    const geometry = new THREE.TorusKnotGeometry(1, 0.28, 120, 16, 2, 3);
-    const material = new THREE.MeshBasicMaterial({
-      color: 0x00c4ff,
-      wireframe: true,
-      transparent: true,
-      opacity: 0.65
-    });
-    const mesh = new THREE.Mesh(geometry, material);
-    scene.add(mesh);
-
-    camera.position.z = 4.5;
-
-    const controls = new THREE.OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
-    controls.dampingFactor = 0.06;
-    controls.enableZoom = false;
-    controls.enablePan = false;
-
-    function animate() {
-      requestAnimationFrame(animate);
-      mesh.rotation.x += 0.002;
-      mesh.rotation.y += 0.004;
-      controls.update();
-      renderer.render(scene, camera);
-    }
-    animate();
-
-    // Resize handler
-    window.addEventListener('resize', () => {
-      const w = hologramContainer.clientWidth;
-      const h = hologramContainer.clientHeight;
-      camera.aspect = w / h;
-      camera.updateProjectionMatrix();
-      renderer.setSize(w, h);
-    });
-
-    // ─── Voice Introduction ───────────────────────────────────────
-    const playBtn   = document.getElementById('play-btn');
-    const replayBtn = document.getElementById('replay-btn');
-    const bars      = document.querySelectorAll('.voice-bar');
-
-    function setBarsActive(active) {
-      bars.forEach(bar => {
-        bar.style.animationPlayState = active ? 'running' : 'paused';
+      navToggle.addEventListener('click', () => {
+        const expanded = navToggle.getAttribute('aria-expanded') === 'true' || false;
+        navToggle.setAttribute('aria-expanded', String(!expanded));
+        const visible = primaryNav.getAttribute('data-visible') === 'true';
+        primaryNav.setAttribute('data-visible', String(!visible));
       });
-    }
 
-    function speak() {
-      window.speechSynthesis.cancel();
+      // close nav on outside click (mobile)
+      document.addEventListener('click', (e) => {
+        if (!primaryNav || !navToggle) return;
+        if (primaryNav.getAttribute('data-visible') !== 'true') return;
+        const nav = primaryNav;
+        if (!nav.contains(e.target) && !navToggle.contains(e.target)) {
+          nav.setAttribute('data-visible', 'false');
+          navToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
 
-      const text = `Hello, I'm Yuktha Priya Masupalli — a software engineer with experience in full-stack development, 
-      frontend engineering, AI and machine learning, data science, and data engineering. 
-      I build scalable applications, interactive user interfaces, robust backends, 
-      machine learning models, and efficient data pipelines. 
-      My recent work includes multimodal systems and cloud-deployed solutions — 
-      and research published in IEEE and AAAI. 
-      Feel free to explore my projects and reach out.`;
-
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.rate = 0.95;
-      utterance.pitch = 1.05;
-
-      const voices = window.speechSynthesis.getVoices();
-      const female = voices.find(v => v.name.toLowerCase().includes('samantha') || v.name.includes('female'));
-      if (female) utterance.voice = female;
-
-      utterance.onstart = () => setBarsActive(true);
-      utterance.onend   = () => setBarsActive(false);
-      utterance.onerror = () => setBarsActive(false);
-
-      window.speechSynthesis.speak(utterance);
-    }
-
-    playBtn.addEventListener('click', speak);
-    replayBtn.addEventListener('click', speak);
-
-    // Load voices (for Safari)
-    window.speechSynthesis.onvoiceschanged = () => {};
+      // keyboard: close on Escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && primaryNav.getAttribute('data-visible') === 'true') {
+          primaryNav.setAttribute('data-visible', 'false');
+          navToggle.setAttribute('aria-expanded', 'false');
+          navToggle.focus();
+        }
+      });
+    }());
   </script>
 </body>
 </html>
