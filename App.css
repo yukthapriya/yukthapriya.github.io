@@ -10,7 +10,48 @@
   --radius: 12px;
   --container-max: 1200px;
 }
+/* Add or merge these styles with your existing App.css */
 
+/* Logo area */
+.logo {
+  display:inline-flex;
+  align-items:center;
+  gap:0.6rem;
+  text-decoration:none;
+  color:var(--text);
+}
+.logo-text {
+  font-weight:700;
+  display:flex;
+  flex-direction:column;
+  line-height:1;
+}
+.logo-text .logo-role {
+  font-size:0.7rem;
+  color:var(--muted);
+  font-weight:600;
+}
+.logo-dot { color: var(--accent); margin: 0 6px; }
+
+/* Avatar fallback handling (ensure reasonable sizing) */
+.holo-avatar img {
+  width:100%;
+  max-width:360px;
+  height:auto;
+  border-radius:50%;
+  object-fit:cover;
+  border:3px solid var(--primary);
+}
+
+/* Contact form send-result */
+.send-result { font-size:0.95rem; margin-top:.5rem; }
+
+/* Small tweak for nav on small screens (if not present) */
+@media (max-width: 979px) {
+  .nav-toggle { display:inline-block; }
+  .nav-links { display:none; }
+  .nav-links[data-visible="true"] { display:flex; flex-direction:column; }
+}
 /* Reset */
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
