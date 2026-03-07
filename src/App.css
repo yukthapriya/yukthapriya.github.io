@@ -156,6 +156,38 @@ main {
 .animate-fade-in-delay-2 { animation: fadeIn  0.7s ease 0.7s both; }
 .animate-fade-in-delay-3 { animation: fadeIn  0.7s ease 0.9s both; }
 
+/* ─── Reduced Motion / Accessibility ────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-section {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .animate-fade-in,
+  .animate-slide-up,
+  .animate-fade-in-delay,
+  .animate-fade-in-delay-2,
+  .animate-fade-in-delay-3 {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .stars,
+  .stars2 {
+    animation: none;
+  }
+
+  .skill-bar-fill {
+    transition: none;
+  }
+
+  .holo-ring {
+    animation: none;
+  }
+}
+
 /* ─── Skip link ──────────────────────────────────────────────────────────────── */
 .skip-link {
   position: fixed;
